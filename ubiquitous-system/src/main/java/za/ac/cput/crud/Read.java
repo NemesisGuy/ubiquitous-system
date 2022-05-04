@@ -1,6 +1,6 @@
 /*
- *     
- * 
+ *
+ *
  */
 package za.ac.cput.crud;
 
@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Peter Buckingham
  */
 public class Read {

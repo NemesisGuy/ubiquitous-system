@@ -4,7 +4,6 @@
 package za.ac.cput.crud;
 
 /**
- *
  * @author Peter Buckingham
  */
 public class Runner {

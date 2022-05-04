@@ -1,6 +1,6 @@
 /*
- *     
- * 
+ *
+ *
  */
 package za.ac.cput.crud;
 
@@ -12,15 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Peter Buckingham
  */
 public class Update {
     public void updateBook() {
 
-        DatabaseConnection databaseConnection = new  DatabaseConnection();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
 
-        Connection conn  = databaseConnection.getDatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
 
         String sql = "UPDATE testBookTable SET title=?, subTitle=?, author=? WHERE title=?";
 
