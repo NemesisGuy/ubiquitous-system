@@ -155,6 +155,7 @@ String ConfirmEmail = txtConfirmEmail.getText();
 String CellNo = txtCellNo.getText();
 String Password = txtPassword.getText();
 String ConfirmPassword = txtConfirmPassword.getText();
+JOptionPane.showMessageDialog(null,"User is successfully created:\n"+"User ID: "+txtUserID.getText()+"\nName: "+txtName.getText()+"\nSurname: "+txtSurname.getText()+"\nEmail: "+txtEmail.getText()+"\nCell no: "+txtCellNo.getText()+"\nPassword: "+txtPassword.getText());        
 }
 
 if (e.getActionCommand().equals("Cancel")){
