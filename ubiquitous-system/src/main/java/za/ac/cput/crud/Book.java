@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.googlebooksapi;
+package za.ac.cput.crud;
 
 import java.awt.Image;
 

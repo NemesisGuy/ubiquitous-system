@@ -303,10 +303,6 @@ public class CRUDGui extends javax.swing.JFrame {
     private void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUserActionPerformed
         createUserForm.setVisible(rootPaneCheckingEnabled);
         createUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
-
-      //  Create create = new Create();
-        //create.createUser();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddUserActionPerformed
 
     private void jButtonUpdateBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateBookActionPerformed
@@ -331,7 +327,7 @@ public class CRUDGui extends javax.swing.JFrame {
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(this, "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: 220165289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");
         System.out.println("Author : Peter Buckingham \n");
@@ -344,7 +340,7 @@ public class CRUDGui extends javax.swing.JFrame {
        
            
             
-                JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: 220165289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("");
                 System.out.println("Thanks for using my program!");
                 System.out.println("Author : Peter Buckingham \n");

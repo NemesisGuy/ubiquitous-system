@@ -30,7 +30,7 @@ public class Book {
         this.description = description;
         this.rating = rating;
         this.imageLink = imageLink;
-        this.frontCover = frontCover;
+       // this.frontCover = frontCover;
         this.subTitle = subTitle;
     }
 
