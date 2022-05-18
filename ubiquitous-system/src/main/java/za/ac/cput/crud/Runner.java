@@ -10,16 +10,17 @@ public class Runner {
 
     public static void main(String[] args) {
         addBookToDatabase();
-        readBooksFromDataBase();
+        readBooksFromDatabase();
         updateBookInDatabase();
-        readBooksFromDataBase();
+        readBooksFromDatabase();
         deleteBookFromDatabase();
-        readBooksFromDataBase();
+        readBooksFromDatabase();
 
         addUserToDatabase();
-        readUsersFromDataBase();
+        readUsersFromDatabase();
         updateUserInDatabase();
         deleteUserFromDatabase();
+        readBookByNameFromDatabase();
 
     }
 
@@ -39,7 +40,7 @@ public class Runner {
         delete.deleteBook();
     }
 
-    public static void readBooksFromDataBase() {
+    public static void readBooksFromDatabase() {
         Read read = new Read();
         read.readAllBooks();
     }
@@ -50,7 +51,7 @@ public class Runner {
         create.createUser();
     }
 
-    public static void readUsersFromDataBase() {
+    public static void readUsersFromDatabase() {
         Read read = new Read();
         read.readAllUsers();
     }
@@ -63,5 +64,10 @@ public class Runner {
     public static void deleteUserFromDatabase() {
         Delete delete = new Delete();
         delete.deleteUser();
+    }
+    public static void readBookByNameFromDatabase()
+    {
+        Read read = new Read();
+        read.readBookByTitle();
     }
 }

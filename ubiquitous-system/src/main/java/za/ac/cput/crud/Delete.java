@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  * @author Peter Buckingham
  */
 public class Delete {
+
     String title;
     String userName;
 
@@ -24,8 +25,11 @@ public class Delete {
 
         Connection conn = databaseConnection.getDatabaseConnection();
         title = JOptionPane.showInputDialog(null, "Please enter the name of the book you would like to delete:");
+         while (title == null || title.isEmpty() || title.isBlank()) {
+            title = JOptionPane.showInputDialog(null, "Please enter the name of the book you would like to find:");
+        }
         // title ="Harry Potter 2";
-        String sql = "DELETE FROM testBookTable WHERE title=?";
+        String sql = "DELETE FROM booktable WHERE title=?";
         PreparedStatement statement = null;
         try {
 
@@ -36,7 +40,10 @@ public class Delete {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A book titled:\n" + title + "\n was deleted successfully!");
+                JOptionPane.showMessageDialog( null, "A book titled:\n" + title + "\n was deleted successfully!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
                 conn.close();
+            }else{
+            JOptionPane.showMessageDialog( null, "A book titled:\n" + title + "\n was not found and was not deleted!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Delete.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,23 +55,27 @@ public class Delete {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();
-        userName = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to delete:");
+        while (userName==null|| userName.isEmpty()||userName.isBlank()) {
+            userName = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to delete:");
+        }
 
         String sql = "DELETE FROM userTable WHERE userName=?";
         PreparedStatement statement = null;
         try {
-
+            
             statement = conn.prepareStatement(sql);
-
             statement.setString(1, userName);
-
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("A user named:\n" + userName + "\n was deleted successfully!");
                 conn.close();
+            }else
+            {
+                JOptionPane.showMessageDialog( null, "Please enter a user name.  \n \n A user named: " +userName+ " does not exsist !!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Delete.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 }
