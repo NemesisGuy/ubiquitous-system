@@ -165,7 +165,7 @@ String Price = txtPrice.getText();
 }
 
 if (e.getActionCommand().equals("Cancel")){
-System.exit(0);
+System.exit(0); //Closes the form
 }
 if (e.getActionCommand().equals("Clear")){
 txtTitle.setText("");
