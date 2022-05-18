@@ -94,15 +94,17 @@ this.setVisible( true );
 }
 public void actionPerformed(ActionEvent e){
 
-if (e.getActionCommand().equals("Login")){
-
-}
 if (e.getActionCommand().equals("Exit")){
 System.exit(0);
 }
-if (e.getActionCommand().equals("Clear")){
-
-}
+ if (e.getActionCommand().equals("Create User")){
+      this.setVisible(false);
+  new AddUserGui().setVisible(true); // Add User Form to show after the Create User button.
+       }
+if (e.getActionCommand().equals("Update Details")){
+      this.setVisible(false);
+new UpdateDetailsGui().setVisible(true); // Update Details Form to show after the Update Details button.
+       }
 }
 public static void main(String[] args){
 AdminUserGui adminAccess = new AdminUserGui();
