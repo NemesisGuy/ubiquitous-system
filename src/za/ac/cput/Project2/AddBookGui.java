@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class AddBookGui extends JFrame implements ActionListener {
 
-private JMenuItem SaveItem, ClearItem, CancelItem; 
+private JMenuItem saveItem, clearItem, cancelItem; 
 private JLabel lblTitle;
 private JLabel lblSubtitle;
 private JLabel lblAuthor;
