@@ -9,9 +9,9 @@ package za.ac.cput.Project2;
  * @author wendy
  */
 public class User {
-private String Name;
-private String Surname;
-private String UserID;
+private String name;
+private String surname;
+private String userID;
 private String Password; 
 private String Email;
 private int CellNo;
