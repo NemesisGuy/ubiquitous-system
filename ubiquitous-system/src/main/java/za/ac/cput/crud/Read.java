@@ -4,14 +4,15 @@
  */
 package za.ac.cput.crud;
 
+import com.google.api.client.testing.json.AbstractJsonParserTest;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import za.ac.cput.googlebooksapi.Book;
 
 /**
  * @author Peter Buckingham
@@ -21,11 +22,12 @@ public class Read {
     DisplayBookForm displayBookForm;
     String title, subTitle, author, ISBN, description, rating, imageLink;
 
-    public void readBookByTitle() {
+    public Book readBookByTitle() {
         String inputTitle = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        while (inputTitle == null || inputTitle.isEmpty() || inputTitle.isBlank()) {
+
+        while (inputTitle == null || inputTitle.isEmpty() || inputTitle.isEmpty()) {
             inputTitle = JOptionPane.showInputDialog(null, "Please enter the name of the book you would like to find:");
         }
         String sql = "SELECT * FROM booktable WHERE title='" + inputTitle + "'";
@@ -52,29 +54,29 @@ public class Read {
 
                     output = output + ++count + " " + title + " " + subTitle + " " + author + " " + ISBN + " " + rating + " \n" + description + "\n" + imageLink;
 
-                    // String output = "Book #%d: %s - %s - %s ";
-                    //  System.out.println(String.format(output, ++count, title, subTitle, author));
-                    
                     break;
                 }
                 conn.close();
                 JOptionPane.showMessageDialog(null, "Success - Book titled " + inputTitle + " found: \n" + output);
-               // displayBookForm = new DisplayBookForm(title, subTitle, author, description, rating, imageLink);
-                Book book = new Book(0, title, subTitle, ISBN, author, description, rating, imageLink);
-                displayBookForm = new DisplayBookForm(book);
-               // displayBookForm.setVisible(true);
-                System.out.println(title +" " + subTitle);
-               // displayBookForm.setAlwaysOnTop(true);
-                
 
-            }                                              //  new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
+                Book book = new Book(0, title, subTitle, ISBN, author, description, rating, imageLink);
+                //displayBookForm = new DisplayBookForm(book);
+                System.out.println(book.getISBN()+"from read class");
+                        
+
+                System.out.println(title + " " + subTitle);
+                return book;
+
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return null;
     }
 
-    public void readAllBooks() {
+    public ArrayList<Book> readAllBooks() {
+         ArrayList<Book> bookList = new ArrayList<Book>();
+        Book book = new Book();
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();
@@ -82,7 +84,6 @@ public class Read {
         Statement statement = null;
         try {
             statement = conn.createStatement();
-
             ResultSet result = statement.executeQuery(sql);
 
             int count = 0;
@@ -98,9 +99,7 @@ public class Read {
                 String imageLink = result.getString(8);
 
                 output = output + ++count + " " + title + " " + subTitle + " " + author + " " + ISBN + " " + rating + " \n" + description + "\n" + imageLink;
-
-                // String output = "Book #%d: %s - %s - %s ";
-                //  System.out.println(String.format(output, ++count, title, subTitle, author));
+                bookList.add(new Book(title, subTitle, ISBN, author, description, rating, imageLink));
             }
             conn.close();
             JOptionPane.showMessageDialog(null, output);
@@ -108,19 +107,18 @@ public class Read {
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return bookList;
     }
 
-    public void readAllUsers() {
+    public ArrayList<User> readAllUsers() {
+        ArrayList<User> userList = new ArrayList<User>();
+        User user = new User();
         DatabaseConnection databaseConnection = new DatabaseConnection();
-
         Connection conn = databaseConnection.getDatabaseConnection();
-        String sql = "SELECT * FROM userTable";
-
+        String sql = "SELECT * FROM usertable";
         Statement statement = null;
         try {
             statement = conn.createStatement();
-
             ResultSet result = statement.executeQuery(sql);
 
             int count = 0;
@@ -135,7 +133,9 @@ public class Read {
                 String userAccessLevel = result.getString(7);
 
                 output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
+                userList.add(new User(firstName, lastName, userName, email, password));
 
+              
             }
             conn.close();
             JOptionPane.showMessageDialog(null, output);
@@ -143,14 +143,18 @@ public class Read {
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return userList;
 
     }
 
-    public void readUserByName() {
+    public User readUserByName() {
+        User user = new User();
+
         String name = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        while (name == null || name.isEmpty() || name.isBlank()) {
+        while (name == null || name.isEmpty() || name.isEmpty())
+        {
             name = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to find:");
         }
         String sql = "SELECT * FROM usertable WHERE firstName='" + name + "'";
@@ -176,16 +180,22 @@ public class Read {
                     String userAccessLevel = result.getString(7);
 
                     output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
+                    user.setFirstName(firstName);
+                    user.setLastName(lastName);
+                    user.setUserName(userName);
+                    user.setEmail(email);
+                    user.setPassword(password);
                     break;
-                    // String output = "Book #%d: %s - %s - %s ";
-                    //  System.out.println(String.format(output, ++count, title, subTitle, author));
                 }
                 conn.close();
                 JOptionPane.showMessageDialog(null, "Success - User " + name + " found: \n" + output);
+
+                return user;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
 
     }
 

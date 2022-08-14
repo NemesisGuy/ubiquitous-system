@@ -4,6 +4,9 @@
  */
 package za.ac.cput.crud;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Peter Buckingham
@@ -215,11 +218,11 @@ public class CreateUserForm extends javax.swing.JDialog {
         jPanelBottomLayout.setHorizontalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSubmit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonCancel)
-                .addGap(170, 170, 170))
+                .addGap(198, 198, 198))
         );
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,11 +275,94 @@ public class CreateUserForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
+    private boolean validateFormNames()
+    {
+        if(jTextFieldFirstName.getText().isBlank())
+        {  JOptionPane.showMessageDialog(null, "Error: invald First Name! \n User creation unsuccessfull!");
+        }else if(jTextFieldLastName.getText().isBlank())
+        { JOptionPane.showMessageDialog(null, "Error: invald Last Name! \n User creation unsuccessfull!");
+        }else if(jTextFieldUserName.getText().isBlank())
+        {JOptionPane.showMessageDialog(null, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+        Random rand = new Random();
+        int number = rand.nextInt(9999);
+         jTextFieldUserName.setText(jTextFieldFirstName.getText()+"."+ jTextFieldLastName.getText() +"#"+number);
+        }else {
+        return true;
+        }
+        return false;
+    }
+    private boolean validateFormEmails() {
+
+        Validator validator = new Validator();
+        if (validator.isEmailValid(jTextFieldEmail.getText())) {
+            if (validator.compareEmails(jTextFieldEmail.getText(), jTextFieldConfirmEmail.getText())) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Error: email address missmatch! \n User creation unsuccessfull!");
+                clearEmail();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invald email address! \n User creation unsuccessfull!");
+            clearEmail();
+        }
+
+        return false;
+    }
+
+    private void validateFormPaswords() {
+        Create create = new Create();
+        Validator validator = new Validator();
+        String tempPassword = new String(jPasswordFieldPassword.getPassword());
+        String tempPasswordConfirm = new String(jPasswordFieldConfirmPassword.getPassword());
+        if (validator.isValidPassword(tempPassword)) {
+
+            if (validator.comparePasswords(tempPassword, tempPasswordConfirm)) {
+                createUser();
+                clearForm();
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Error: password missmatch! \n User creation unsuccessfull!");
+                clearPasswords();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
+            clearPasswords();
+            //not stronk
+        }
+    }
+
+    private void validateFormFileds() {
+       if(validateFormNames()){
+            if(validateFormEmails()){
+                validateFormPaswords();
+            }
+        }    
+    }
+
+    private void clearPasswords() {
+
+        jPasswordFieldPassword.setText("");
+        jPasswordFieldConfirmPassword.setText("");
+    }
+
+    private void clearEmail() {
+        jTextFieldEmail.setText("");
+        jTextFieldConfirmEmail.setText("");
+    }
+
+    private void clearForm() {
+        jTextFieldFirstName.setText("");
+        jTextFieldLastName.setText("");
+        jTextFieldUserName.setText("");
+        clearEmail();
+        clearPasswords();
+    }
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
-        Create create = new Create();
-        String tempPassword = new String(jPasswordFieldPassword.getPassword());
-        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText() ,jTextFieldUserName.getText(), jTextFieldEmail.getText(),tempPassword, 0);
+        //validate then talk to db
+        validateFormFileds();
+
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
@@ -287,7 +373,7 @@ public class CreateUserForm extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
@@ -356,4 +442,12 @@ public class CreateUserForm extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
+
+    private void createUser() {
+        Create create = new Create(); 
+        String tempPassword = new String(jPasswordFieldPassword.getPassword());
+        
+        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), tempPassword, 0);
+
+    }
 }

@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import za.ac.cput.googlebooksapi.Book;
 
 public class DisplayBookForm extends javax.swing.JFrame {
 
@@ -51,25 +50,19 @@ public class DisplayBookForm extends javax.swing.JFrame {
             description = book.getDescription();
             rating = book.getRating();
             imageLink = book.getImageLink();
-            //System.out.println(book.getTitle()+" Testing constuctor !!");
-
-            // this.setMyBookTitle(book.getTitle());
             this.setVisible(true);
-
             initComponents();
+            
             jLabelTitle.setText(myBookTitle);
             jLabelSubTitle.setText(subtTitle);
             jLabelAuthor.setText(author);
             jTextAreaDescription.setText(description);
             jLabelRating.setText(rating);
-            // URL url;
-            //ImageIcon imageIcon = new ImageIcon();
 
             URL url = new URL(imageLink);
             Image image = ImageIO.read(url);
             ImageIcon imageIcon;
             jLabelPicture.setIcon(imageIcon = new ImageIcon( image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
-           // updateBookForm.jLabelPicture.setIcon(imageIcon = new ImageIcon( tempImage.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
 
         } catch (MalformedURLException ex) {
             Logger.getLogger(DisplayBookForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -376,9 +369,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                // DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
-              //  System.out.println(getMyBookTitle() + "...");
-              ///  jLabelTitle.setText("this is hard coded");
+               
             }
         });
     }

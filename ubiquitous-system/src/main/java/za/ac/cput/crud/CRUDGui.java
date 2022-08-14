@@ -4,12 +4,12 @@
  */
 package za.ac.cput.crud;
 
+import com.google.api.client.testing.json.AbstractJsonParserTest;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import static za.ac.cput.crud.UpdateBookForm.updateBookForm;
 
 /**
  *
@@ -25,7 +25,8 @@ public class CRUDGui extends javax.swing.JFrame {
     }
     CreateUserForm createUserForm = new CreateUserForm(this, rootPaneCheckingEnabled);
     CreateBookForm createBookForm = new CreateBookForm();
-    UpdateBookForm updateBookForm = new  UpdateBookForm();
+    UpdateBookForm updateBookForm = new UpdateBookForm();
+    UpdateUserForm updateUserForm = new UpdateUserForm();
     DisplayBookForm displayBookForm = new DisplayBookForm();
 
     /**
@@ -279,25 +280,38 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteBookActionPerformed
 
     private void jButtonSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchBookActionPerformed
-        
+
         Read read = new Read();
         read.readBookByTitle();// TODO add your handling code here:
     }//GEN-LAST:event_jButtonSearchBookActionPerformed
 
     private void jButtonSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchUserActionPerformed
         // TODO add your handling code here:
-        Read read =new Read();
+        Read read = new Read();
         read.readUserByName();
     }//GEN-LAST:event_jButtonSearchUserActionPerformed
 
     private void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateUserActionPerformed
+
+        //find user  
+        //update user
+        Read read = new Read();
+        User user = read.readUserByName();
+        updateUserForm = new UpdateUserForm(user);
+        updateUserForm.setVisible(rootPaneCheckingEnabled);
+        updateUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+
         Update update = new Update();
-        update.updateUser();        // TODO add your handling code here:
+        // update.updateUser();       // TODO add your handling code here:
     }//GEN-LAST:event_jButtonUpdateUserActionPerformed
 
     private void jButtonUserListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserListActionPerformed
         Read read = new Read();
-        read.readAllUsers();        // TODO add your handling code here:
+        UserListForm userListForm = new UserListForm(read.readAllUsers());
+        userListForm.setVisible(rootPaneCheckingEnabled);
+        userListForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonUserListActionPerformed
 
     private void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUserActionPerformed
@@ -306,48 +320,52 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddUserActionPerformed
 
     private void jButtonUpdateBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateBookActionPerformed
-        Update update = new Update();
-        update.updateBook();// TODO add your handling code here:
+        //read book 
+        Read read = new Read();
+        Book book = read.readBookByTitle();
+        //updateBookForm.get
+        updateBookForm = new UpdateBookForm(book);
+        //   updateBookForm = new UpdateBookForm(book.getTitle(), book.getSubTitle(), book.getAuthors(), book.getDescription(), book.getRating(), book.getImageLink());
+        updateBookForm.setVisible(rootPaneCheckingEnabled);
+        //updateBookForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+
+        //if book found
+        //display boo update form and populate with data from DB
+        //if user presses update button then push to DB (update)
+        ////////////// Update update = new Update();
+        ////////////// update.updateBook();
+        // if book found then diplay book details with form
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonUpdateBookActionPerformed
 
     private void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBookListActionPerformed
         // TODO add your handling code here:
         Read read = new Read();
-        read.readAllBooks();
+        //read.readAllBooks();
+        BookListForm bookListForm = new BookListForm(read.readAllBooks());
+        bookListForm.setVisible(true);
+        bookListForm.setAlwaysOnTop(true);
     }//GEN-LAST:event_jButtonBookListActionPerformed
 
     private void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBookActionPerformed
         createBookForm.setVisible(rootPaneCheckingEnabled);
         createBookForm.setAlwaysOnTop(rootPaneCheckingEnabled);
-      //  Create create = new Create();
-       //create.createBook();/////
+        //  Create create = new Create();
+        //create.createBook();/////
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddBookActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(this, "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
-        System.out.println("");
-        System.out.println("Thanks for using my program!");
-        System.out.println("Author : Peter Buckingham \n");
-        System.err.println("");
-        System.exit(0);
+        exit();
 
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void windowClosingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosingHandler
-       
-           
-            
-                JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
-                System.out.println("");
-                System.out.println("Thanks for using my program!");
-                System.out.println("Author : Peter Buckingham \n");
-                System.err.println("");
-                System.exit(0);
-            
-        
+
+        exit();
+
         // TODO add your handling code here:
     }//GEN-LAST:event_windowClosingHandler
 
@@ -384,6 +402,15 @@ public class CRUDGui extends javax.swing.JFrame {
                 new CRUDGui().setVisible(true);
             }
         });
+    }
+
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

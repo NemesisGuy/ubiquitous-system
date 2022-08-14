@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="CRUD - Opertation - Create User Form"/>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -44,8 +43,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanelTop" max="32767" attributes="0"/>
-              <Component id="jPanelMid" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanelTop" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanelMid3" alignment="0" max="32767" attributes="0"/>
               <Component id="jPanelBottom" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -54,7 +53,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelTop" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanelMid" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanelMid3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelBottom" max="32767" attributes="0"/>
               </Group>
@@ -98,12 +97,12 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Create User :"/>
+                <Property name="text" type="java.lang.String" value="Update User :"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelMid">
+        <Container class="javax.swing.JPanel" name="jPanelMid3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="c0" red="c0" type="rgb"/>
@@ -119,23 +118,23 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelUserName" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelComfirmEmail" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelConfirmPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFirstNameUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelEmailUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelLastNameUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelUserNameUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPasswordUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelComfirmEmailUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelConfirmPasswordUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPasswordFieldPassword" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldLastName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldUserName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldConfirmEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldFirstName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPasswordFieldConfirmPassword" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPasswordFieldPasswordUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldLastNameUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldUserNameUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldEmailUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldConfirmEmailUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldFirstNameUpdate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPasswordFieldConfirmPasswordUpdate" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
@@ -146,38 +145,38 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabelFirstName" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldFirstName" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFirstNameUpdate" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldFirstNameUpdate" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelLastNameUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldLastNameUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelUserName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelUserNameUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldUserNameUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelEmailUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldEmailUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldConfirmEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelComfirmEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldConfirmEmailUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelComfirmEmailUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordFieldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPasswordUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPasswordFieldPasswordUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelConfirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordFieldConfirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelConfirmPasswordUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPasswordFieldConfirmPasswordUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -185,7 +184,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelFirstName">
+            <Component class="javax.swing.JLabel" name="jLabelFirstNameUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -193,7 +192,7 @@
                 <Property name="text" type="java.lang.String" value="First Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelUserName">
+            <Component class="javax.swing.JLabel" name="jLabelUserNameUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -201,7 +200,7 @@
                 <Property name="text" type="java.lang.String" value="User Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEmail">
+            <Component class="javax.swing.JLabel" name="jLabelEmailUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -209,7 +208,7 @@
                 <Property name="text" type="java.lang.String" value="Email:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelPassword">
+            <Component class="javax.swing.JLabel" name="jLabelPasswordUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -217,25 +216,25 @@
                 <Property name="text" type="java.lang.String" value="Password:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldUserName">
+            <Component class="javax.swing.JTextField" name="jTextFieldUserNameUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Enter user name"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUserNameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUserNameUpdateActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldEmail">
+            <Component class="javax.swing.JTextField" name="jTextFieldEmailUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Enter email"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEmailActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEmailUpdateActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelLastName">
+            <Component class="javax.swing.JLabel" name="jLabelLastNameUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -243,7 +242,7 @@
                 <Property name="text" type="java.lang.String" value="Last Name: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelComfirmEmail">
+            <Component class="javax.swing.JLabel" name="jLabelComfirmEmailUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -251,28 +250,28 @@
                 <Property name="text" type="java.lang.String" value="Confirm Email:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldLastName">
+            <Component class="javax.swing.JTextField" name="jTextFieldLastNameUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Enter last name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldConfirmEmail">
+            <Component class="javax.swing.JTextField" name="jTextFieldConfirmEmailUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Re-enter email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordFieldPassword">
+            <Component class="javax.swing.JPasswordField" name="jPasswordFieldPasswordUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Enter password"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldPasswordActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldPasswordUpdateActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelConfirmPassword">
+            <Component class="javax.swing.JLabel" name="jLabelConfirmPasswordUpdate">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -280,13 +279,13 @@
                 <Property name="text" type="java.lang.String" value="Confirm Password:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordFieldConfirmPassword">
+            <Component class="javax.swing.JPasswordField" name="jPasswordFieldConfirmPasswordUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Re-enter password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName">
+            <Component class="javax.swing.JTextField" name="jTextFieldFirstNameUpdate">
               <Properties>
                 <Property name="columns" type="int" value="40"/>
                 <Property name="toolTipText" type="java.lang.String" value="Enter first name"/>

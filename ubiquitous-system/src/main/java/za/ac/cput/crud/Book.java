@@ -33,6 +33,28 @@ public class Book {
         this.frontCover = frontCover;
         this.subTitle = subTitle;
     }
+     public Book( String title, String subTitle, String ISBN, String authors, String description, String rating, String imageLink) {
+       // this.bookId = bookId;
+        this.title = title;
+        this.ISBN = ISBN;
+        this.authors = authors;
+        this.description = description;
+        this.rating = rating;
+        this.imageLink = imageLink;
+        this.frontCover = frontCover;
+        this.subTitle = subTitle;
+    }
+    public Book( String title, String subTitle, String authors, String description, String rating, String imageLink) {
+       // this.bookId = bookId;
+        this.title = title;
+        this.ISBN = ISBN;
+        this.authors = authors;
+        this.description = description;
+        this.rating = rating;
+        this.imageLink = imageLink;
+        this.frontCover = frontCover;
+        this.subTitle = subTitle;
+    }
 
     public Book() {
     }
@@ -94,6 +116,10 @@ public class Book {
     }
 
     public String getISBN() {
+        if (ISBN == null)
+        {
+          ISBN = "book isbn getter set this";
+        }
         return ISBN;
     }
 

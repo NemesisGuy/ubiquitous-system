@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author Peter Buckingham
@@ -26,7 +27,6 @@ public class Create {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-
             statement.setString(1, "Harry Potter");
             statement.setString(2, "and the Prisoner of Azkaban");
             statement.setString(3, "jk. Roling");
@@ -73,7 +73,6 @@ public class Create {
         } catch (SQLException ex) {
             Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void createUser() {
@@ -103,7 +102,6 @@ public class Create {
         } catch (SQLException ex) {
             Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void createUser(String firstName, String lastName, String userName, String email, String password, int userAccessLevel) {
@@ -112,7 +110,7 @@ public class Create {
 
         Connection conn = databaseConnection.getDatabaseConnection();
 
-        String sql = "INSERT INTO userTable(firstName, lastName, userName, email, password, userAccessLevel) VALUES (?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO usertable(firstName, lastName, userName, email, password, userAccessLevel) VALUES (?, ?, ?, ?,?,?)";
 
         PreparedStatement statement = null;
         try {
@@ -127,6 +125,7 @@ public class Create {
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "A new user named " + firstName + " " + lastName + " was inserted successfully!");
                 System.out.println("A new user named " + firstName + " " + lastName + " was inserted successfully!");
                 conn.close();
             }
