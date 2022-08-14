@@ -398,7 +398,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         try {
             databaseConnection.getDatabaseConnection();
             JOptionPane.showMessageDialog(this, "Success : " + "\n Established connection to remote database successfully!!  \n");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(SystemSettingsConectionsForm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error : " + "\n Connection to remote Database not Established successfully!!  \n");
             
