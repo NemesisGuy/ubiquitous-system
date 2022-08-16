@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import za.ac.cput.Settings.Configuration;
 import za.ac.cput.googlebooksapi.BookDisplay;
 
 /**
@@ -64,39 +65,19 @@ public class BookListForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jPanelTop = new javax.swing.JPanel();
-        jLabelHeading = new javax.swing.JLabel();
         jPanelMid3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanelBottom = new javax.swing.JPanel();
         jButtonCancel = new javax.swing.JButton();
+        jPanelTop = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanelImagePanelBanner = new javax.swing.JPanel();
+        jLabelPictureBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
-
-        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
-
-        jLabelHeading.setBackground(new java.awt.Color(192, 192, 192));
-        jLabelHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabelHeading.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHeading.setText(" Book List :");
-
-        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
-        jPanelTop.setLayout(jPanelTopLayout);
-        jPanelTopLayout.setHorizontalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHeading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanelTopLayout.setVerticalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabelHeading)
-                .addGap(30, 30, 30))
-        );
 
         jPanelMid3.setBackground(new java.awt.Color(192, 192, 192));
         jPanelMid3.setForeground(new java.awt.Color(0, 0, 0));
@@ -134,16 +115,16 @@ public class BookListForm extends javax.swing.JFrame {
         jPanelMid3Layout.setHorizontalGroup(
             jPanelMid3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMid3Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(20, 20, 20))
         );
         jPanelMid3Layout.setVerticalGroup(
             jPanelMid3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMid3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20))
         );
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
@@ -168,18 +149,70 @@ public class BookListForm extends javax.swing.JFrame {
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addComponent(jButtonCancel)
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20))
+        );
+
+        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
+
+        jLabel3.setBackground(new java.awt.Color(192, 192, 192));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Book List:");
+
+        jPanelImagePanelBanner.setMaximumSize(new java.awt.Dimension(75, 75));
+
+        jLabelPictureBanner.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner.setForeground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner.setIcon(new Configuration().displayLogoBannerFromConfig());
+        jLabelPictureBanner.setMaximumSize(new java.awt.Dimension(75, 75));
+        jLabelPictureBanner.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        javax.swing.GroupLayout jPanelImagePanelBannerLayout = new javax.swing.GroupLayout(jPanelImagePanelBanner);
+        jPanelImagePanelBanner.setLayout(jPanelImagePanelBannerLayout);
+        jPanelImagePanelBannerLayout.setHorizontalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBannerLayout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelImagePanelBannerLayout.setVerticalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBannerLayout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
+        jPanelTop.setLayout(jPanelTopLayout);
+        jPanelTopLayout.setHorizontalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTopLayout.setVerticalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelMid3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,11 +303,21 @@ public class BookListForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
-    private javax.swing.JLabel jLabelHeading;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelPictureBanner;
+    private javax.swing.JLabel jLabelPictureBanner1;
+    private javax.swing.JLabel jLabelPictureBanner2;
     private javax.swing.JPanel jPanelBottom;
+    private javax.swing.JPanel jPanelImagePanelBanner;
+    private javax.swing.JPanel jPanelImagePanelBanner1;
+    private javax.swing.JPanel jPanelImagePanelBanner2;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid3;
     private javax.swing.JPanel jPanelTop;
+    private javax.swing.JPanel jPanelTop1;
+    private javax.swing.JPanel jPanelTop2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

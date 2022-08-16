@@ -4,6 +4,8 @@
  */
 package za.ac.cput.crud;
 
+import za.ac.cput.Settings.Configuration;
+
 /**
  *
  * @author Peter Buckingham
@@ -25,8 +27,6 @@ public class CreateBookForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jPanelTop = new javax.swing.JPanel();
-        jLabelHeading = new javax.swing.JLabel();
         jPanelMid = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jLabelAuthor = new javax.swing.JLabel();
@@ -45,33 +45,15 @@ public class CreateBookForm extends javax.swing.JFrame {
         jPanelBottom = new javax.swing.JPanel();
         jButtonSubmit = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
+        jPanelTop = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanelImagePanelBanner = new javax.swing.JPanel();
+        jLabelPictureBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD - Opertation - Create Book Form");
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
-
-        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
-
-        jLabelHeading.setBackground(new java.awt.Color(192, 192, 192));
-        jLabelHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabelHeading.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHeading.setText("Create Book :");
-
-        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
-        jPanelTop.setLayout(jPanelTopLayout);
-        jPanelTopLayout.setHorizontalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHeading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanelTopLayout.setVerticalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabelHeading)
-                .addGap(30, 30, 30))
-        );
 
         jPanelMid.setBackground(new java.awt.Color(192, 192, 192));
         jPanelMid.setForeground(new java.awt.Color(0, 0, 0));
@@ -133,7 +115,7 @@ public class CreateBookForm extends javax.swing.JFrame {
         jPanelMidLayout.setHorizontalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMidLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitle)
                     .addComponent(jLabelISBN)
@@ -151,12 +133,12 @@ public class CreateBookForm extends javax.swing.JFrame {
                     .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldImageLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(20, 20, 20))
         );
         jPanelMidLayout.setVerticalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMidLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelTitle)
                     .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +166,7 @@ public class CreateBookForm extends javax.swing.JFrame {
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelImageLink)
                     .addComponent(jTextFieldImageLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20))
         );
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
@@ -213,28 +195,80 @@ public class CreateBookForm extends javax.swing.JFrame {
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCancel)
+                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSubmit)
                     .addComponent(jButtonCancel))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
+
+        jLabel3.setBackground(new java.awt.Color(192, 192, 192));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Create Book:");
+
+        jPanelImagePanelBanner.setMaximumSize(new java.awt.Dimension(75, 75));
+
+        jLabelPictureBanner.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner.setForeground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner.setIcon(new Configuration().displayLogoBannerFromConfig());
+        jLabelPictureBanner.setMaximumSize(new java.awt.Dimension(75, 75));
+        jLabelPictureBanner.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        javax.swing.GroupLayout jPanelImagePanelBannerLayout = new javax.swing.GroupLayout(jPanelImagePanelBanner);
+        jPanelImagePanelBanner.setLayout(jPanelImagePanelBannerLayout);
+        jPanelImagePanelBannerLayout.setHorizontalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBannerLayout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelImagePanelBannerLayout.setVerticalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBannerLayout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
+        jPanelTop.setLayout(jPanelTopLayout);
+        jPanelTopLayout.setHorizontalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTopLayout.setVerticalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelMid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,15 +354,17 @@ public class CreateBookForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSubmit;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelAuthor;
     private javax.swing.JLabel jLabelDescription;
-    private javax.swing.JLabel jLabelHeading;
     private javax.swing.JLabel jLabelISBN;
     private javax.swing.JLabel jLabelImageLink;
+    private javax.swing.JLabel jLabelPictureBanner;
     private javax.swing.JLabel jLabelRating;
     private javax.swing.JLabel jLabelSubTitle;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanelBottom;
+    private javax.swing.JPanel jPanelImagePanelBanner;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid;
     private javax.swing.JPanel jPanelTop;

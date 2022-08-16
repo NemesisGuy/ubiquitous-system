@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import za.ac.cput.Settings.Configuration;
 
 /**
  *
@@ -62,39 +63,19 @@ ArrayList<User> userList;
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
-        jPanelTop = new javax.swing.JPanel();
-        jLabelHeading = new javax.swing.JLabel();
         jPanelMid3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanelBottom = new javax.swing.JPanel();
         jButtonCancel = new javax.swing.JButton();
+        jPanelTop = new javax.swing.JPanel();
+        jLabelBannerHeading = new javax.swing.JLabel();
+        jPanelImagePanelBanner1 = new javax.swing.JPanel();
+        jLabelPictureBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
-
-        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
-
-        jLabelHeading.setBackground(new java.awt.Color(192, 192, 192));
-        jLabelHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabelHeading.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHeading.setText(" User List :");
-
-        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
-        jPanelTop.setLayout(jPanelTopLayout);
-        jPanelTopLayout.setHorizontalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHeading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanelTopLayout.setVerticalGroup(
-            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabelHeading)
-                .addGap(30, 30, 30))
-        );
 
         jPanelMid3.setBackground(new java.awt.Color(192, 192, 192));
         jPanelMid3.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,13 +146,65 @@ ArrayList<User> userList;
                 .addGap(30, 30, 30))
         );
 
+        jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
+
+        jLabelBannerHeading.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelBannerHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelBannerHeading.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelBannerHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBannerHeading.setText("User List:");
+
+        jPanelImagePanelBanner1.setMaximumSize(new java.awt.Dimension(75, 75));
+
+        jLabelPictureBanner1.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner1.setForeground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner1.setIcon(new Configuration().displayLogoBannerFromConfig());
+        jLabelPictureBanner1.setMaximumSize(new java.awt.Dimension(75, 75));
+        jLabelPictureBanner1.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        javax.swing.GroupLayout jPanelImagePanelBanner1Layout = new javax.swing.GroupLayout(jPanelImagePanelBanner1);
+        jPanelImagePanelBanner1.setLayout(jPanelImagePanelBanner1Layout);
+        jPanelImagePanelBanner1Layout.setHorizontalGroup(
+            jPanelImagePanelBanner1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBanner1Layout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelImagePanelBanner1Layout.setVerticalGroup(
+            jPanelImagePanelBanner1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBanner1Layout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
+        jPanelTop.setLayout(jPanelTopLayout);
+        jPanelTopLayout.setHorizontalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanelImagePanelBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabelBannerHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTopLayout.setVerticalGroup(
+            jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelImagePanelBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBannerHeading))
+                .addGap(20, 20, 20))
+        );
+
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelMid3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,8 +275,10 @@ ArrayList<User> userList;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
-    private javax.swing.JLabel jLabelHeading;
+    private javax.swing.JLabel jLabelBannerHeading;
+    private javax.swing.JLabel jLabelPictureBanner1;
     private javax.swing.JPanel jPanelBottom;
+    private javax.swing.JPanel jPanelImagePanelBanner1;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid3;
     private javax.swing.JPanel jPanelTop;

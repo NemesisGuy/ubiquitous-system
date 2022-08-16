@@ -61,8 +61,7 @@ public class Read {
 
                 Book book = new Book(0, title, subTitle, ISBN, author, description, rating, imageLink);
                 //displayBookForm = new DisplayBookForm(book);
-                System.out.println(book.getISBN()+"from read class");
-                        
+                System.out.println(book.getISBN() + "from read class");
 
                 System.out.println(title + " " + subTitle);
                 return book;
@@ -75,7 +74,7 @@ public class Read {
     }
 
     public ArrayList<Book> readAllBooks() {
-         ArrayList<Book> bookList = new ArrayList<Book>();
+        ArrayList<Book> bookList = new ArrayList<Book>();
         Book book = new Book();
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -135,7 +134,6 @@ public class Read {
                 output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
                 userList.add(new User(firstName, lastName, userName, email, password));
 
-              
             }
             conn.close();
             JOptionPane.showMessageDialog(null, output);
@@ -153,8 +151,7 @@ public class Read {
         String name = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        while (name == null || name.isEmpty() || name.isEmpty())
-        {
+        while (name == null || name.isEmpty() || name.isEmpty()) {
             name = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to find:");
         }
         String sql = "SELECT * FROM usertable WHERE firstName='" + name + "'";
@@ -196,6 +193,63 @@ public class Read {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+
+    }
+
+    public boolean userLogin(String inputName, String inputPassword) {
+        boolean isUserNameMatched = false;
+        boolean isUserpasswordMatched = false;
+        boolean isUserLoginAllowed = false;
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+        String sql = "SELECT * FROM usertable WHERE userName='" + inputName + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+            String output = "Connected: \n";
+            if (!result.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Error : The user named " + inputName + " was not found! \n Check for typos \n Try register for a new account");
+                System.out.println("No data");
+            } else {
+
+                while (result.next()) {
+                    String userName = result.getString(4);
+                    String password = result.getString(6);
+                    String userAccessLevel = result.getString(7);
+
+                    if (inputName.equalsIgnoreCase(userName)) {
+                        isUserNameMatched = true;
+                    }
+                    if (inputPassword.equals(password)) {
+                        isUserpasswordMatched = true;
+                    }
+                    if (isUserpasswordMatched && isUserNameMatched) {
+                        isUserLoginAllowed = true;
+                        JOptionPane.showMessageDialog(null, "Success - User " + inputName + " found: \n" + inputName + " is being loged in!! ");
+                    }else
+                    {
+                         JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                    }
+                    
+
+                    break;
+                }
+                conn.close();
+               
+
+                return isUserLoginAllowed;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
 
     }
 

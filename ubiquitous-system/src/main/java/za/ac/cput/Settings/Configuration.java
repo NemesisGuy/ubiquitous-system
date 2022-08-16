@@ -4,9 +4,13 @@
  */
 package za.ac.cput.Settings;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
@@ -17,6 +21,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -137,6 +143,32 @@ public class Configuration {
                 System.err.println("Failed to create File!" + ex.getMessage());
             }
 
+    }
+    public Icon displayLogoBannerFromConfig(){
+    ImageIcon imageIcon  =null;
+    try (InputStream input = new FileInputStream("Company-Profile.properties")) {
+
+            Properties prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            System.out.println(prop.getProperty("company.logoPath"));
+         // Icon  new ImageIcon(input);
+            imageIcon  = new ImageIcon(prop.getProperty("company.logoPath"));
+            Image image = imageIcon.getImage(); // transform it 
+            Image scaledImage = image.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+            imageIcon = new ImageIcon(scaledImage);  // transform it back
+          
+  
+          
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return imageIcon;
     }
 
 }

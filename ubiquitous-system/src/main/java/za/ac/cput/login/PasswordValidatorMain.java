@@ -11,16 +11,7 @@ package za.ac.cput.login;
 public class PasswordValidatorMain {
  
     public static void main(String args[]) {
-        String password1 = "Java2blog@";
- 
-        boolean validPassword = isValidPassword(password1);
-        System.out.println("Java2blog@ is valid password:" +validPassword);
- 
-        String password2 = "helloword#123";
- 
-        boolean validPassword1 = isValidPassword(password2);
-        // No upper case
-        System.out.println("helloword#123 is valid password:" +validPassword1);
+    
     }
  
     /**

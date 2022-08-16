@@ -6,6 +6,7 @@ package za.ac.cput.crud;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
+import za.ac.cput.Settings.Configuration;
 
 /**
  *
@@ -137,8 +138,13 @@ public class UpdateUserForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMain = new javax.swing.JPanel();
+        jPanelBottom = new javax.swing.JPanel();
+        jButtonSubmit = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
         jPanelTop = new javax.swing.JPanel();
-        jLabelHeading = new javax.swing.JLabel();
+        jLabelBannerHeading = new javax.swing.JLabel();
+        jPanelImagePanelBanner1 = new javax.swing.JPanel();
+        jLabelPictureBanner1 = new javax.swing.JLabel();
         jPanelMid3 = new javax.swing.JPanel();
         jLabelFirstNameUpdate = new javax.swing.JLabel();
         jLabelUserNameUpdate = new javax.swing.JLabel();
@@ -154,34 +160,99 @@ public class UpdateUserForm extends javax.swing.JFrame {
         jLabelConfirmPasswordUpdate = new javax.swing.JLabel();
         jPasswordFieldConfirmPasswordUpdate = new javax.swing.JPasswordField();
         jTextFieldFirstNameUpdate = new javax.swing.JTextField();
-        jPanelBottom = new javax.swing.JPanel();
-        jButtonSubmit = new javax.swing.JButton();
-        jButtonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
 
+        jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
+        jPanelBottom.setForeground(new java.awt.Color(0, 0, 0));
+
+        jButtonSubmit.setText("Submit");
+        jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSubmitActionPerformed(evt);
+            }
+        });
+
+        jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelBottomLayout = new javax.swing.GroupLayout(jPanelBottom);
+        jPanelBottom.setLayout(jPanelBottomLayout);
+        jPanelBottomLayout.setHorizontalGroup(
+            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBottomLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelBottomLayout.setVerticalGroup(
+            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBottomLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancel)
+                    .addComponent(jButtonSubmit))
+                .addGap(30, 30, 30))
+        );
+
         jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
 
-        jLabelHeading.setBackground(new java.awt.Color(192, 192, 192));
-        jLabelHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabelHeading.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHeading.setText("Update User :");
+        jLabelBannerHeading.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelBannerHeading.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelBannerHeading.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelBannerHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBannerHeading.setText("Update User:");
+
+        jPanelImagePanelBanner1.setMaximumSize(new java.awt.Dimension(75, 75));
+
+        jLabelPictureBanner1.setBackground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner1.setForeground(new java.awt.Color(192, 192, 192));
+        jLabelPictureBanner1.setIcon(new Configuration().displayLogoBannerFromConfig());
+        jLabelPictureBanner1.setMaximumSize(new java.awt.Dimension(75, 75));
+        jLabelPictureBanner1.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        javax.swing.GroupLayout jPanelImagePanelBanner1Layout = new javax.swing.GroupLayout(jPanelImagePanelBanner1);
+        jPanelImagePanelBanner1.setLayout(jPanelImagePanelBanner1Layout);
+        jPanelImagePanelBanner1Layout.setHorizontalGroup(
+            jPanelImagePanelBanner1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBanner1Layout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelImagePanelBanner1Layout.setVerticalGroup(
+            jPanelImagePanelBanner1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBanner1Layout.createSequentialGroup()
+                .addComponent(jLabelPictureBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanelTopLayout = new javax.swing.GroupLayout(jPanelTop);
         jPanelTop.setLayout(jPanelTopLayout);
         jPanelTopLayout.setHorizontalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHeading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelTopLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanelImagePanelBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabelBannerHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTopLayout.setVerticalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTopLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabelHeading)
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20)
+                .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelImagePanelBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBannerHeading))
+                .addGap(20, 20, 20))
         );
 
         jPanelMid3.setBackground(new java.awt.Color(192, 192, 192));
@@ -267,7 +338,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
                     .addComponent(jTextFieldConfirmEmailUpdate, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldFirstNameUpdate, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPasswordFieldConfirmPasswordUpdate, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(50, 50, 50))
+                .addGap(20, 20, 20))
         );
         jPanelMid3Layout.setVerticalGroup(
             jPanelMid3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,51 +374,16 @@ public class UpdateUserForm extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
-        jPanelBottom.setForeground(new java.awt.Color(0, 0, 0));
-
-        jButtonSubmit.setText("Submit");
-        jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSubmitActionPerformed(evt);
-            }
-        });
-
-        jButtonCancel.setText("Cancel");
-        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelBottomLayout = new javax.swing.GroupLayout(jPanelBottom);
-        jPanelBottom.setLayout(jPanelBottomLayout);
-        jPanelBottomLayout.setHorizontalGroup(
-            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSubmit)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancel)
-                .addGap(198, 198, 198))
-        );
-        jPanelBottomLayout.setVerticalGroup(
-            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancel)
-                    .addComponent(jButtonSubmit))
-                .addGap(30, 30, 30))
-        );
-
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelMid3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainLayout.createSequentialGroup()
+                .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelTop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelBottom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelMid3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,18 +392,19 @@ public class UpdateUserForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelMid3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -440,26 +477,18 @@ public class UpdateUserForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSubmit;
+    private javax.swing.JLabel jLabelBannerHeading;
     private javax.swing.JLabel jLabelComfirmEmailUpdate;
     private javax.swing.JLabel jLabelConfirmPasswordUpdate;
-    private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEmail1;
     private javax.swing.JLabel jLabelEmailUpdate;
-    private javax.swing.JLabel jLabelFirstName;
-    private javax.swing.JLabel jLabelFirstName1;
     private javax.swing.JLabel jLabelFirstNameUpdate;
-    private javax.swing.JLabel jLabelHeading;
     private javax.swing.JLabel jLabelLastNameUpdate;
-    private javax.swing.JLabel jLabelPassword;
-    private javax.swing.JLabel jLabelPassword1;
     private javax.swing.JLabel jLabelPasswordUpdate;
-    private javax.swing.JLabel jLabelUserName;
-    private javax.swing.JLabel jLabelUserName1;
+    private javax.swing.JLabel jLabelPictureBanner1;
     private javax.swing.JLabel jLabelUserNameUpdate;
     private javax.swing.JPanel jPanelBottom;
+    private javax.swing.JPanel jPanelImagePanelBanner1;
     private javax.swing.JPanel jPanelMain;
-    private javax.swing.JPanel jPanelMid;
-    private javax.swing.JPanel jPanelMid1;
     private javax.swing.JPanel jPanelMid3;
     private javax.swing.JPanel jPanelTop;
     private javax.swing.JPasswordField jPasswordFieldConfirmPasswordUpdate;
@@ -468,8 +497,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEmailUpdate;
     private javax.swing.JTextField jTextFieldFirstNameUpdate;
     private javax.swing.JTextField jTextFieldLastNameUpdate;
-    private javax.swing.JTextField jTextFieldUserName;
-    private javax.swing.JTextField jTextFieldUserName1;
     private javax.swing.JTextField jTextFieldUserNameUpdate;
     // End of variables declaration//GEN-END:variables
 }
