@@ -4,11 +4,9 @@
  */
 package za.ac.cput.googlebooksapi;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;

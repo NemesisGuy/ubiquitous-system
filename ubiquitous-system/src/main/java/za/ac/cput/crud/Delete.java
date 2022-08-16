@@ -24,9 +24,9 @@ public class Delete {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();
-        title = JOptionPane.showInputDialog(null, "Please enter the name of the book you would like to delete:");
+        title = JOptionPane.showInputDialog(this, "Please enter the name of the book you would like to delete:");
         while (title == null || title.isEmpty() || title.isEmpty()) {
-            title = JOptionPane.showInputDialog(null, "Please enter the name of the book you would like to find:");
+            title = JOptionPane.showInputDialog(this, "Please enter the name of the book you would like to find:");
         }
         // title ="Harry Potter 2";
         String sql = "DELETE FROM booktable WHERE title=?";

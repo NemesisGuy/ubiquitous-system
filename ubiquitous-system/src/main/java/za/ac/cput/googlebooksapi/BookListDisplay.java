@@ -218,6 +218,4 @@ public class BookListDisplay {
     }
    
     
-//  live long
-
 }
