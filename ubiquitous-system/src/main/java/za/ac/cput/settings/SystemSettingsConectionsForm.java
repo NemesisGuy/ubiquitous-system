@@ -2,9 +2,8 @@
  *     
  * 
  */
-package za.ac.cput.Settings;
+package za.ac.cput.settings;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -45,7 +44,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         jButtonTestInternetConnection = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButtonCancel1 = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jTextFieldDatabaseUrl = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -69,7 +68,6 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         jComboBoxDatabaseNameSelection = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(250, 249, 246));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -162,11 +160,11 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(192, 192, 192));
 
-        jButtonCancel1.setText("Cancel");
-        jButtonCancel1.setMaximumSize(new java.awt.Dimension(67, 67));
-        jButtonCancel1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose.setText("Close");
+        jButtonClose.setMaximumSize(new java.awt.Dimension(67, 67));
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancel1ActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
             }
         });
 
@@ -176,14 +174,14 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jButtonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -421,6 +419,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancel3ActionPerformed
@@ -487,11 +486,12 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseUrlActionPerformed
 
-    private void jButtonCancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancel1ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
-        exit();
+       this.setVisible(false);
+       this.dispose();
         
-    }//GEN-LAST:event_jButtonCancel1ActionPerformed
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonTestInternetConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTestInternetConnectionActionPerformed
         // TODO add your handling code here:
@@ -552,9 +552,9 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancel1;
     private javax.swing.JButton jButtonCancel10;
     private javax.swing.JButton jButtonCancel3;
+    private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonTestInternetConnection;
     private javax.swing.JComboBox<String> jComboBoxDatabaseNameSelection;

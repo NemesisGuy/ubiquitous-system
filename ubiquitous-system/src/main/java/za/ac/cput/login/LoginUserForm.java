@@ -4,8 +4,10 @@
  */
 package za.ac.cput.login;
 
-import za.ac.cput.Settings.Configuration;
-import za.ac.cput.crud.Create;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import za.ac.cput.crud.CRUDGui;
+import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
 
 /**
@@ -30,7 +32,8 @@ public class LoginUserForm extends javax.swing.JFrame {
 
         jPanelBottom = new javax.swing.JPanel();
         jButtonLogin = new javax.swing.JButton();
-        jButtonCancel = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
+        jButtonSignUp = new javax.swing.JButton();
         jPanelMid = new javax.swing.JPanel();
         jLabelUserName = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
@@ -53,10 +56,17 @@ public class LoginUserForm extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancel.setText("Cancel");
-        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Exit");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
+            }
+        });
+
+        jButtonSignUp.setText("Sign Up");
+        jButtonSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSignUpActionPerformed(evt);
             }
         });
 
@@ -65,19 +75,22 @@ public class LoginUserForm extends javax.swing.JFrame {
         jPanelBottomLayout.setHorizontalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(jButtonLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCancel)
-                .addGap(170, 170, 170))
+                .addComponent(jButtonSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancel)
-                    .addComponent(jButtonLogin))
+                    .addComponent(jButtonExit)
+                    .addComponent(jButtonLogin)
+                    .addComponent(jButtonSignUp))
                 .addGap(20, 20, 20))
         );
 
@@ -206,25 +219,30 @@ public class LoginUserForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         // TODO add your handling code here:
-   //     Create create = new Create();
-   //     String tempPassword = new String(jPasswordFieldPassword.getPassword());
-    //     create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText() ,jTextFieldUserName.getText(), jTextFieldEmail.getText(),tempPassword, 0);
+        //     Create create = new Create();
+        //     String tempPassword = new String(jPasswordFieldPassword.getPassword());
+        //     create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText() ,jTextFieldUserName.getText(), jTextFieldEmail.getText(),tempPassword, 0);
         Read read = new Read();
         read.userLogin(jTextFieldUserName.getText(), new String(jPasswordFieldPassword.getPassword()));
-           
-           
+        this.setVisible(false);
+        CRUDGui crudGui = new CRUDGui();
+        crudGui.setVisible(rootPaneCheckingEnabled);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
+        exit();
 
-    }//GEN-LAST:event_jButtonCancelActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
         // TODO add your handling code here:
@@ -234,9 +252,25 @@ public class LoginUserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
 
+    private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
+        this.dispose();
+    }//GEN-LAST:event_jButtonSignUpActionPerformed
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
+    }
+
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -277,8 +311,9 @@ public class LoginUserForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLogin;
+    private javax.swing.JButton jButtonSignUp;
     private javax.swing.JLabel jLabelBannerHeading;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPictureBanner1;

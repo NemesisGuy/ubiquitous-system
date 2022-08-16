@@ -5,11 +5,8 @@
 package za.ac.cput.crud;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import za.ac.cput.Settings.Configuration;
-import za.ac.cput.googlebooksapi.BookDisplay;
+import za.ac.cput.settings.Configuration;
 
 /**
  *
@@ -192,8 +189,8 @@ public class BookListForm extends javax.swing.JFrame {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTopLayout.setVerticalGroup(
@@ -203,7 +200,7 @@ public class BookListForm extends javax.swing.JFrame {
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
@@ -236,6 +233,7 @@ public class BookListForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
@@ -304,20 +302,12 @@ public class BookListForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelPictureBanner;
-    private javax.swing.JLabel jLabelPictureBanner1;
-    private javax.swing.JLabel jLabelPictureBanner2;
     private javax.swing.JPanel jPanelBottom;
     private javax.swing.JPanel jPanelImagePanelBanner;
-    private javax.swing.JPanel jPanelImagePanelBanner1;
-    private javax.swing.JPanel jPanelImagePanelBanner2;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid3;
     private javax.swing.JPanel jPanelTop;
-    private javax.swing.JPanel jPanelTop1;
-    private javax.swing.JPanel jPanelTop2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

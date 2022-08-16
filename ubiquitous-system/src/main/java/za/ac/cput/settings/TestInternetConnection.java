@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Settings;
+package za.ac.cput.settings;
 
 import java.net.InetAddress;
 import javax.swing.JOptionPane;

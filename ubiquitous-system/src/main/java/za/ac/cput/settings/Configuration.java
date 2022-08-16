@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Settings;
+package za.ac.cput.settings;
 
 import java.awt.Image;
 import java.io.File;
@@ -12,11 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;

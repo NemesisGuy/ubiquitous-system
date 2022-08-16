@@ -4,7 +4,7 @@
  */
 package za.ac.cput.crud;
 
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
 
 /**
  *

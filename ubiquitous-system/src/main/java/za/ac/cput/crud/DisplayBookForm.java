@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
 
 public class DisplayBookForm extends javax.swing.JFrame {
 

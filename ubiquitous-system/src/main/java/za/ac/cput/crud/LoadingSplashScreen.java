@@ -6,13 +6,16 @@ package za.ac.cput.crud;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import za.ac.cput.login.LoginUserForm;
 
 /**
  *
  * @author Peter Buckingham
  */
 public class LoadingSplashScreen extends javax.swing.JFrame {
+
     boolean complete = false;
+
     /**
      * Creates new form LoadingSplashScreen
      */
@@ -25,36 +28,38 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                     jProgressBarLoading.setValue(i);
                     if (i % 2 == 0) {
                         try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
+                            Thread.sleep(50);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
-                    }
-                    if(i<33)
-                    {
+                    if (i < 33) {
                         loadingProgressBarLabel.setText("Finding files...");
-                    }else if (i>33 && i<66) {
+                    } else if (i > 33 && i < 66) {
                         loadingProgressBarLabel.setText("Connecting to database...");
-                    }else if (i>66 && i<99) {
-                    loadingProgressBarLabel.setText("Loading properties...");
-                    
-                    }else{
-                        loadingProgressBarLabel.setText("Complete...");
-                        ///close
-                        
+                    } else if (i > 66 && i < 99) {
+                        loadingProgressBarLabel.setText("Loading properties...");
+
+                    } else {
+                        loadingProgressBarLabel.setText("Complete...");                 
                     }
-                           
+
                     try {
                         Thread.sleep(30);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
-            // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }//end of thread
+                dispose();
+                new LoginUserForm().setVisible(rootPaneCheckingEnabled);
+                // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
+            
         });
         thread.start();
         complete = true;
+          
+
     }
 
     /**
@@ -184,6 +189,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -212,19 +218,20 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoadingSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-final LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
+        final LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 loadingSplashScreen.setVisible(true);
                 if (!loadingSplashScreen.complete) {
                 } else {
-                   // loadingSplashScreen.dispose();
+                    // loadingSplashScreen.dispose();
+
                 }
-                
+
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

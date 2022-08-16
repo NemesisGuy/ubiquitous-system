@@ -6,7 +6,7 @@ package za.ac.cput.crud;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
 
 /**
  *

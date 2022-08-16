@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Settings;
+package za.ac.cput.settings;
 
 import java.io.File;
 import java.io.IOException;

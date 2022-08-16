@@ -6,7 +6,7 @@ package za.ac.cput.crud;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
 
 /**
  *
@@ -408,6 +408,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldUserNameUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameUpdateActionPerformed

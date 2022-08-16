@@ -4,13 +4,11 @@
  */
 package za.ac.cput.crud;
 
-import com.google.api.client.testing.json.AbstractJsonParserTest;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
+import za.ac.cput.settings.SystemSettingsConectionsForm;
 
 /**
  *
@@ -55,6 +53,18 @@ public class CRUDGui extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanelImagePanelBanner = new javax.swing.JPanel();
         jLabelPictureBanner = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuFile = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuEdit = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuSettings = new javax.swing.JMenu();
+        jMenuItemConnectivity = new javax.swing.JMenuItem();
+        jMenuItemCompanyProfile = new javax.swing.JMenuItem();
+        jMenuHelp = new javax.swing.JMenu();
+        jMenuItemAbout = new javax.swing.JMenuItem();
+        jMenuItemHelpWiki = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD - Opertations -  Menu");
@@ -146,25 +156,25 @@ public class CRUDGui extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonAddUser)
-                    .addComponent(jButtonAddBook))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonBookList)
-                    .addComponent(jButtonUserList))
-                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAddBook, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonBookList, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonUserList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonUpdateUser)
-                    .addComponent(jButtonUpdateBook))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonDeleteUser)
-                    .addComponent(jButtonDeleteBook))
-                .addGap(50, 50, 50)
+                    .addComponent(jButtonUpdateBook, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSearchBook)
-                    .addComponent(jButtonSearchUser, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonDeleteUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeleteBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSearchBook, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
@@ -202,7 +212,7 @@ public class CRUDGui extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(304, 304, 304)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -211,7 +221,7 @@ public class CRUDGui extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
@@ -252,8 +262,8 @@ public class CRUDGui extends javax.swing.JFrame {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTopLayout.setVerticalGroup(
@@ -263,7 +273,7 @@ public class CRUDGui extends javax.swing.JFrame {
                 .addGroup(jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -284,6 +294,69 @@ public class CRUDGui extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
+
+        jMenuFile.setText("File");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuFile.add(jMenuItem1);
+
+        jMenuBar1.add(jMenuFile);
+
+        jMenuEdit.setText("Edit");
+
+        jMenuItem4.setText("jMenuItem2");
+        jMenuEdit.add(jMenuItem4);
+
+        jMenuItem5.setText("jMenuItem3");
+        jMenuEdit.add(jMenuItem5);
+
+        jMenuBar1.add(jMenuEdit);
+
+        jMenuSettings.setText("Settings");
+
+        jMenuItemConnectivity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        jMenuItemConnectivity.setText("Connectivity");
+        jMenuItemConnectivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConnectivityActionPerformed(evt);
+            }
+        });
+        jMenuSettings.add(jMenuItemConnectivity);
+
+        jMenuItemCompanyProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, 0));
+        jMenuItemCompanyProfile.setText("Company Profile");
+        jMenuItemCompanyProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCompanyProfileActionPerformed(evt);
+            }
+        });
+        jMenuSettings.add(jMenuItemCompanyProfile);
+
+        jMenuBar1.add(jMenuSettings);
+
+        jMenuHelp.setText("Help");
+
+        jMenuItemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
+        jMenuItemAbout.setText("About");
+        jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutActionPerformed(evt);
+            }
+        });
+        jMenuHelp.add(jMenuItemAbout);
+
+        jMenuItemHelpWiki.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, 0));
+        jMenuItemHelpWiki.setText("Help Wiki");
+        jMenuItemHelpWiki.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemHelpWikiActionPerformed(evt);
+            }
+        });
+        jMenuHelp.add(jMenuItemHelpWiki);
+
+        jMenuBar1.add(jMenuHelp);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -330,7 +403,7 @@ public class CRUDGui extends javax.swing.JFrame {
         User user = read.readUserByName();
         updateUserForm = new UpdateUserForm(user);
         updateUserForm.setVisible(rootPaneCheckingEnabled);
-        updateUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+        //updateUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
 
         Update update = new Update();
         // update.updateUser();       // TODO add your handling code here:
@@ -400,6 +473,30 @@ public class CRUDGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_windowClosingHandler
 
+    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAboutActionPerformed
+
+    private void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompanyProfileActionPerformed
+        // TODO add your handling code here:
+        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
+        systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
+       // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItemCompanyProfileActionPerformed
+
+    private void jMenuItemHelpWikiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpWikiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemHelpWikiActionPerformed
+
+    private void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConnectivityActionPerformed
+        // TODO add your handling code here:
+        SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm();
+        systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
+       // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+        
+        
+    }//GEN-LAST:event_jMenuItemConnectivityActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -458,6 +555,18 @@ public class CRUDGui extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUserList;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelPictureBanner;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuEdit;
+    private javax.swing.JMenu jMenuFile;
+    private javax.swing.JMenu jMenuHelp;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItemAbout;
+    private javax.swing.JMenuItem jMenuItemCompanyProfile;
+    private javax.swing.JMenuItem jMenuItemConnectivity;
+    private javax.swing.JMenuItem jMenuItemHelpWiki;
+    private javax.swing.JMenu jMenuSettings;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

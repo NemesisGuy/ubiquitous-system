@@ -5,10 +5,8 @@
 package za.ac.cput.crud;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import za.ac.cput.Settings.Configuration;
+import za.ac.cput.settings.Configuration;
 
 /**
  *
@@ -228,6 +226,7 @@ ArrayList<User> userList;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed

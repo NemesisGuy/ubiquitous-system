@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Settings;
+package za.ac.cput.settings;
 
 /**
  *
@@ -10,10 +10,8 @@ package za.ac.cput.Settings;
  * nemesisnet.co.za
  */
 
-import java.util.ArrayList;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-import za.ac.cput.crud.Book;
 
 public class TimeZones{
  private String[] ids;
