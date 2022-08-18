@@ -101,7 +101,7 @@ public class Read {
                 bookList.add(new Book(title, subTitle, ISBN, author, description, rating, imageLink));
             }
             conn.close();
-            JOptionPane.showMessageDialog(null, output);
+          //  JOptionPane.showMessageDialog(null, output);
 
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);

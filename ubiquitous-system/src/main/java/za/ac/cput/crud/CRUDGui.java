@@ -448,7 +448,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //read.readAllBooks();
         BookListForm bookListForm = new BookListForm(read.readAllBooks());
         bookListForm.setVisible(true);
-        bookListForm.setAlwaysOnTop(true);
+        bookListForm.setAutoRequestFocus(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButtonBookListActionPerformed
 
     private void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBookActionPerformed

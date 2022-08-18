@@ -6,6 +6,7 @@ package za.ac.cput.login;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import za.ac.cput.Bookings.LibraryStatus;
 import za.ac.cput.crud.CRUDGui;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
@@ -230,9 +231,13 @@ public class LoginUserForm extends javax.swing.JFrame {
         Read read = new Read();
         read.userLogin(jTextFieldUserName.getText(), new String(jPasswordFieldPassword.getPassword()));
         this.setVisible(false);
-        CRUDGui crudGui = new CRUDGui();
-        crudGui.setVisible(rootPaneCheckingEnabled);
         this.dispose();
+        //CRUDGui crudGui = new CRUDGui();
+        //crudGui.setVisible(rootPaneCheckingEnabled);
+        read.readAllBooks();
+        LibraryStatus libraryStatus = new LibraryStatus(read.readAllBooks());
+        libraryStatus.setVisible(rootPaneCheckingEnabled);
+        
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

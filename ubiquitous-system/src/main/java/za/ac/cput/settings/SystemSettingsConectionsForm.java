@@ -441,6 +441,9 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
+        String fileName = "Database-Connection.properties";
+        Path path = Paths.get("resources/settings/" + fileName);
+        Path folderPath = Paths.get("resources/settings/");
         Map<String, String> properties = new HashMap<String, String>(); // creates Map where keys and values of string type
 //method to store elements
         properties.put("db.connectionName", jTextFieldDatabaseConnectionName.getText());
@@ -450,8 +453,9 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         properties.put("db.user", jTextFieldDatabaseUserName.getText());
         properties.put("db.password",  jTextFieldDatabaseUserPassword.getText());
         Configuration configuration = new Configuration();
-        Path path = Paths.get("/src/settings/");
-        if(configuration.writeConfig(path,"Database-Connection", properties)) 
+      //  Path path = Paths.get("/src/settings/");
+       
+        if(configuration.writeConfig(path, properties)) 
            //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
         { //started at 5:22pm till am 14-Aug-2022
             JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");

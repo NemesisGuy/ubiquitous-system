@@ -4,9 +4,15 @@
  */
 package za.ac.cput.crud;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import za.ac.cput.login.LoginUserForm;
+import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.FileHandler;
 
 /**
  *
@@ -41,7 +47,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                         loadingProgressBarLabel.setText("Loading properties...");
 
                     } else {
-                        loadingProgressBarLabel.setText("Complete...");                 
+                        loadingProgressBarLabel.setText("Complete...");
                     }
 
                     try {
@@ -50,15 +56,51 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                         Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }//end of thread
+                //    Path path = Paths.get("/settings/");
+                //     Configuration configuration = new Configuration();
+                //       if (!configuration.isConfigFileFound(path, "Database-Connection") && !configuration.isConfigFileFound(path, "Company-Profile")) {
+                //            System.out.println("Configs misssing, running Config Init!");
+                //              configuration.intiDefaultConfigs();
+                //          }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                String fileName = "Database-Connection.properties";
+//                Path path = Paths.get("resources/settings/" + fileName);
+//                Path folderPath = Paths.get("resources/settings/");
+//
+//                FileHandler fileHandler = new FileHandler();
+//                fileHandler.initConfig(folderPath, path);
+//                Map<String, String> properties = new HashMap<String, String>();
+//                //     name website conrty timzone adminname currency
+//                properties.put("db.connectionName", "Default");
+//                properties.put("db.url", "192.168.0.32");
+//                properties.put("db.port", "9048");
+//                properties.put("db.name", "Library");
+//                properties.put("db.user", "root");
+//                properties.put("db.password", "example");
+//                Configuration configuration = new Configuration();
+//                configuration.writeConfig(path, properties);
+
+                /////////////////////////////////////////////////////////////////////
+                String fileName = "Database-Connection.properties";
+                Path path = Paths.get("resources/settings/" + fileName);
+                FileHandler fileHandler = new FileHandler();
+                Configuration configuration = new Configuration();
+                if (!fileHandler.isConfigFileFound(path)) {
+                    configuration.intiDefaultConfigs();
+                    System.out.println("Default Configs created and active");
+                }
+                
+
+                //intiDefaultConfigs();
                 dispose();
                 new LoginUserForm().setVisible(rootPaneCheckingEnabled);
                 // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-            
+
         });
         thread.start();
         complete = true;
-          
 
     }
 
