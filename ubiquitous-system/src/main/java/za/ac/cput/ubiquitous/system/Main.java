@@ -5,7 +5,6 @@
 package za.ac.cput.ubiquitous.system;
 
 import za.ac.cput.crud.LoadingSplashScreen;
-import za.ac.cput.login.LoginUserForm;
 
 /**
  * @author Peter Buckingham

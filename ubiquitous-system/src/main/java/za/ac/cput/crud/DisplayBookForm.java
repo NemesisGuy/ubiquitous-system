@@ -17,7 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.FrameSettings;
 
 public class DisplayBookForm extends javax.swing.JFrame {
 
@@ -146,6 +149,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD - Opertation - Display Book ");
+        setIconImage(displayFrameImageIcon());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -403,6 +407,18 @@ public class DisplayBookForm extends javax.swing.JFrame {
                
             }
         });
+    }
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,12 +4,14 @@
  */
 package za.ac.cput.login;
 
+import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import za.ac.cput.Bookings.LibraryStatus;
 import za.ac.cput.crud.CRUDGui;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
+import za.ac.cput.settings.FrameSettings;
 
 /**
  *
@@ -46,6 +48,7 @@ public class LoginUserForm extends javax.swing.JFrame {
         jLabelPictureBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(displayFrameImageIcon());
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
         jPanelBottom.setForeground(new java.awt.Color(0, 0, 0));
@@ -263,6 +266,10 @@ public class LoginUserForm extends javax.swing.JFrame {
         new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
         this.dispose();
     }//GEN-LAST:event_jButtonSignUpActionPerformed
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

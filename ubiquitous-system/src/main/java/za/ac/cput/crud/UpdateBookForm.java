@@ -17,7 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.FrameSettings;
 
 public class UpdateBookForm extends javax.swing.JFrame {
 
@@ -120,6 +123,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD - Opertation - Update Book ");
+        setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
 
@@ -441,21 +445,29 @@ public class UpdateBookForm extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose1;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelAuthor;
     private javax.swing.JLabel jLabelBannerHeading;
     private javax.swing.JLabel jLabelPicture;
     private javax.swing.JLabel jLabelPictureBanner1;
-    private javax.swing.JLabel jLabelPictureBanner2;
-    private javax.swing.JLabel jLabelPictureBanner3;
-    private javax.swing.JLabel jLabelPictureBanner4;
     private javax.swing.JLabel jLabelRating;
     private javax.swing.JLabel jLabelRating1;
     private javax.swing.JLabel jLabelSubTitle;
@@ -463,15 +475,9 @@ public class UpdateBookForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBottom;
     private static javax.swing.JPanel jPanelImagePanel;
     private javax.swing.JPanel jPanelImagePanelBanner1;
-    private javax.swing.JPanel jPanelImagePanelBanner2;
-    private javax.swing.JPanel jPanelImagePanelBanner3;
-    private javax.swing.JPanel jPanelImagePanelBanner4;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid;
     private javax.swing.JPanel jPanelTop;
-    private javax.swing.JPanel jPanelTop2;
-    private javax.swing.JPanel jPanelTop3;
-    private javax.swing.JPanel jPanelTop4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaDescription;
     private javax.swing.JTextField jTextFieldAuhor;

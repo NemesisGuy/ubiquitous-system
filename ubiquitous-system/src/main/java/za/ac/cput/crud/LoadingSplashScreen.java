@@ -4,22 +4,32 @@
  */
 package za.ac.cput.crud;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import za.ac.cput.login.LoginUserForm;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FileHandler;
+import za.ac.cput.settings.FrameSettings;
+import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
 
 /**
  *
  * @author Peter Buckingham
  */
 public class LoadingSplashScreen extends javax.swing.JFrame {
-
     boolean complete = false;
 
     /**
@@ -82,6 +92,11 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 //                configuration.writeConfig(path, properties);
 
                 /////////////////////////////////////////////////////////////////////
+  //              jLabelSplashBanner
+  //selectedFile.
+                
+               // displayLogoBanner(url);
+                
                 String fileName = "Database-Connection.properties";
                 Path path = Paths.get("resources/settings/" + fileName);
                 FileHandler fileHandler = new FileHandler();
@@ -111,58 +126,59 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelMain = new javax.swing.JPanel();
+        jPanelImagePanelBanner = new javax.swing.JPanel();
+        jLabelPictureBanner = new javax.swing.JLabel();
+        jPanelHeading = new javax.swing.JPanel();
+        jLabelHeading = new javax.swing.JLabel();
+        jPanelLoading = new javax.swing.JPanel();
         jProgressBarLoading = new javax.swing.JProgressBar();
         loadingProgressBarLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(250, 249, 246));
+        setIconImage(displayFrameImageIcon());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/OpenBookLogo.jpg"))); // NOI18N
-        jLabel1.setText("SplashImage");
-        jLabel1.setToolTipText("");
+        jLabelPictureBanner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPictureBanner.setText("SplashImage");
+        jLabelPictureBanner.setToolTipText("");
+        displayBanner();
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelImagePanelBannerLayout = new javax.swing.GroupLayout(jPanelImagePanelBanner);
+        jPanelImagePanelBanner.setLayout(jPanelImagePanelBannerLayout);
+        jPanelImagePanelBannerLayout.setHorizontalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelImagePanelBannerLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelImagePanelBannerLayout.setVerticalGroup(
+            jPanelImagePanelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelImagePanelBannerLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelPictureBanner, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 50)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Ubiquitous System");
+        jLabelHeading.setFont(new java.awt.Font("Dialog", 0, 50)); // NOI18N
+        jLabelHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHeading.setText("Ubiquitous System");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelHeadingLayout = new javax.swing.GroupLayout(jPanelHeading);
+        jPanelHeading.setLayout(jPanelHeadingLayout);
+        jPanelHeadingLayout.setHorizontalGroup(
+            jPanelHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHeadingLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelHeadingLayout.setVerticalGroup(
+            jPanelHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHeadingLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel2)
+                .addComponent(jLabelHeading)
                 .addGap(30, 30, 30))
         );
 
@@ -172,20 +188,20 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 
         loadingProgressBarLabel.setText("Loading...");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelLoadingLayout = new javax.swing.GroupLayout(jPanelLoading);
+        jPanelLoading.setLayout(jPanelLoadingLayout);
+        jPanelLoadingLayout.setHorizontalGroup(
+            jPanelLoadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoadingLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelLoadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(loadingProgressBarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jProgressBarLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelLoadingLayout.setVerticalGroup(
+            jPanelLoadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLoadingLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(loadingProgressBarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,27 +209,27 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
+        jPanelMain.setLayout(jPanelMainLayout);
+        jPanelMainLayout.setHorizontalGroup(
+            jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMainLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelHeading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelMainLayout.setVerticalGroup(
+            jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMainLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelHeading, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelLoading, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -221,12 +237,12 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -235,7 +251,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args the command line arguments
+     * @param args tphe command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -260,7 +276,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoadingSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        final LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
+         LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -275,14 +291,72 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         });
 
     }
+    public void displayLogoBanner(File selectedFile) {
+        URL url;
+        //pull fron config file
+        try {
+            System.out.println(selectedFile.getAbsolutePath());
+            url = new URL("file:///" + selectedFile.getAbsolutePath());
+            Image image = null;
+            try {
+                image = ImageIO.read(url);
+            } catch (IOException ex) {
+                Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ImageIcon imageIcon;
+            jLabelPictureBanner.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanelBanner.getWidth(), jPanelImagePanelBanner.getHeight(), Image.SCALE_SMOOTH)));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     public void displayLogoBanner(URL selectedFileUrl) {
+      
+         // System.out.println(selectedFile.getAbsolutePath());
+         //   url = new URL("file:///" + selectedFile.getAbsolutePath());
+         Image image = null;
+         try {
+             image = ImageIO.read(selectedFileUrl);
+         } catch (IOException ex) {
+             Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         ImageIcon imageIcon;
+         jLabelPictureBanner.setIcon(imageIcon = new ImageIcon(image));
+
+    }
+     public void displayBanner()
+     {
+         URL url;
+                try {
+                 //   url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\OpenBookLogo.jpg");
+                   // url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-logo.png");ubiquitous-system-banner.png
+                      url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-banner.png");
+                // C:\Users\Admin\Documents\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\src\main\resources\images\\ubiquitous-system-icon.png
+                    displayLogoBanner(url);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    }
+     public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel jLabelHeading;
+    private javax.swing.JLabel jLabelPictureBanner;
+    private javax.swing.JPanel jPanelHeading;
+    private javax.swing.JPanel jPanelImagePanelBanner;
+    private javax.swing.JPanel jPanelLoading;
+    private javax.swing.JPanel jPanelMain;
     private javax.swing.JProgressBar jProgressBarLoading;
     private javax.swing.JLabel loadingProgressBarLabel;
     // End of variables declaration//GEN-END:variables

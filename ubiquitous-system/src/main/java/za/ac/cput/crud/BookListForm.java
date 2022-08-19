@@ -4,9 +4,13 @@
  */
 package za.ac.cput.crud;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.FrameSettings;
 
 /**
  *
@@ -73,6 +77,7 @@ public class BookListForm extends javax.swing.JFrame {
         jLabelPictureBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
 
@@ -297,6 +302,18 @@ public class BookListForm extends javax.swing.JFrame {
                 new BookListForm().setVisible(true);
             }
         });
+    }
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+    public void exit() {
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("");
+        System.out.println("Thanks for using my program!");
+        System.out.println("Author : Peter Buckingham \n");
+        System.err.println("");
+        System.exit(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -20,7 +20,7 @@ import za.ac.cput.settings.Configuration;
  * @author Peter Buckingham
  */
 public class DatabaseConnection {
-
+//derby port 1527
     public Connection getDatabaseConnection()  {
         
         String fileName = "Database-Connection.properties";

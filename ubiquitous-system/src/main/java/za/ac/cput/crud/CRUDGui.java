@@ -4,9 +4,11 @@
  */
 package za.ac.cput.crud;
 
+import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import za.ac.cput.settings.Configuration;
+import za.ac.cput.settings.FrameSettings;
 import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
 import za.ac.cput.settings.SystemSettingsConectionsForm;
 
@@ -68,6 +70,7 @@ public class CRUDGui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD - Opertations -  Menu");
+        setIconImage(displayFrameImageIcon());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 windowClosingHandler(evt);
@@ -531,7 +534,12 @@ public class CRUDGui extends javax.swing.JFrame {
             }
         });
     }
-
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+  
+    
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

@@ -56,6 +56,8 @@ public class Configuration {
         String fileName = "Company-Profile.properties";
         Path path = Paths.get("resources/settings/" + fileName);
         Path folderPath = Paths.get("resources/settings/");
+        String logoFileName = "Company-Profile.properties";
+        Path logoFilePath = Paths.get("resources/settings/" + logoFileName);
         Configuration configuration = new Configuration();
         FileHandler fileHandler = new FileHandler();    
         Map<String, String> properties = new HashMap<String, String>();
@@ -66,6 +68,7 @@ public class Configuration {
         properties.put("company.timeZone", "+2:00");
         properties.put("company.adminName", "Jhon Snow");
         properties.put("company.currency", "R");
+        properties.put("company.logoPath", logoFilePath.toString());
         fileHandler.initConfig(folderPath, path);
         configuration.writeConfig(path, properties);
     }

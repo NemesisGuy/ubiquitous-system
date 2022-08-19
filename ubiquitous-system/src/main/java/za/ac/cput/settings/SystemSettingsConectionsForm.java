@@ -4,6 +4,7 @@
  */
 package za.ac.cput.settings;
 
+import java.awt.Image;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -16,8 +17,7 @@ import za.ac.cput.crud.DatabaseConnection;
 
 /**
  *
- * @author Peter B
- * nemesisnet.co.za
+ * @author Peter B nemesisnet.co.za
  */
 public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
@@ -43,7 +43,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButtonTestInternetConnection = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelBottomc = new javax.swing.JPanel();
         jButtonClose = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jTextFieldDatabaseUrl = new javax.swing.JTextField();
@@ -68,9 +68,10 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         jComboBoxDatabaseNameSelection = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(displayFrameImageIcon());
 
         jPanel1.setBackground(new java.awt.Color(250, 249, 246));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
 
         jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
 
@@ -158,7 +159,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jPanel5.setBackground(new java.awt.Color(192, 192, 192));
+        jPanelBottomc.setBackground(new java.awt.Color(192, 192, 192));
 
         jButtonClose.setText("Close");
         jButtonClose.setMaximumSize(new java.awt.Dimension(67, 67));
@@ -168,18 +169,18 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelBottomcLayout = new javax.swing.GroupLayout(jPanelBottomc);
+        jPanelBottomc.setLayout(jPanelBottomcLayout);
+        jPanelBottomcLayout.setHorizontalGroup(
+            jPanelBottomcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBottomcLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanelBottomcLayout.setVerticalGroup(
+            jPanelBottomcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBottomcLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -388,7 +389,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBottomc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -404,7 +405,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelBottomc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -423,15 +424,15 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancel3ActionPerformed
-            // TODO add your handling code here:
-             DatabaseConnection databaseConnection = new DatabaseConnection();
+        // TODO add your handling code here:
+        DatabaseConnection databaseConnection = new DatabaseConnection();
         try {
             databaseConnection.getDatabaseConnection();
             JOptionPane.showMessageDialog(this, "Success : " + "\n Established connection to remote database successfully!!  \n");
         } catch (Exception ex) {
             Logger.getLogger(SystemSettingsConectionsForm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error : " + "\n Connection to remote Database not Established successfully!!  \n");
-            
+
         }
     }//GEN-LAST:event_jButtonCancel3ActionPerformed
 
@@ -451,18 +452,16 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         properties.put("db.port", jTextFieldDatabasePort.getText());
         properties.put("db.name", jTextFieldDatabaseName.getText());
         properties.put("db.user", jTextFieldDatabaseUserName.getText());
-        properties.put("db.password",  jTextFieldDatabaseUserPassword.getText());
+        properties.put("db.password", jTextFieldDatabaseUserPassword.getText());
         Configuration configuration = new Configuration();
-      //  Path path = Paths.get("/src/settings/");
-       
-        if(configuration.writeConfig(path, properties)) 
-           //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
+        //  Path path = Paths.get("/src/settings/");
+
+        if (configuration.writeConfig(path, properties)) //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
         { //started at 5:22pm till am 14-Aug-2022
             JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
-        }else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
-            
+
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
@@ -492,9 +491,9 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
-       this.setVisible(false);
-       this.dispose();
-        
+        this.setVisible(false);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonTestInternetConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTestInternetConnectionActionPerformed
@@ -502,7 +501,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         TestInternetConnection testInternetConnection = new TestInternetConnection();
         testInternetConnection.testInternetConnection();
 
-        
+
     }//GEN-LAST:event_jButtonTestInternetConnectionActionPerformed
 
     /**
@@ -546,6 +545,12 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
             }
         });
     }
+
+    public Image displayFrameImageIcon() {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();
+    }
+
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
@@ -576,9 +581,9 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPictureBanner;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelBottomc;
     private javax.swing.JPanel jPanelImagePanelBanner;
     private javax.swing.JPanel jPanelTop;
     private javax.swing.JTextField jTextFieldDatabaseConnectionName;

@@ -36,6 +36,8 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
      */
     public SystemSettingsCompanyProfileForm() {
         initComponents();
+      //  displayFrameImageIcon();
+        
     }
 
     /**
@@ -78,17 +80,18 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jComboBoxDatabaseNameSelection = new javax.swing.JComboBox<>();
-        jPanelBottom = new javax.swing.JPanel();
-        jButtonClose = new javax.swing.JButton();
+        jPanelBottomc = new javax.swing.JPanel();
+        jButtonClose1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(displayFrameImageIcon());
         setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 740));
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
         jPanelMain.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        jPanelMain.setPreferredSize(new java.awt.Dimension(800, 630));
+        jPanelMain.setPreferredSize(new java.awt.Dimension(800, 700));
 
         jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
 
@@ -218,7 +221,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         );
 
         jPanelCompanyDetails.setBackground(new java.awt.Color(192, 192, 192));
-        jPanelCompanyDetails.setMaximumSize(new java.awt.Dimension(800, 2000));
+        jPanelCompanyDetails.setMaximumSize(new java.awt.Dimension(800, 800));
         jPanelCompanyDetails.setVerifyInputWhenFocusTarget(false);
 
         jTextFieldWebSite.addActionListener(new java.awt.event.ActionListener() {
@@ -373,6 +376,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         );
 
         jPanelTestDatabseConnection.setBackground(new java.awt.Color(192, 192, 192));
+        jPanelTestDatabseConnection.setMaximumSize(new java.awt.Dimension(1000, 1000));
 
         jButtonCancel3.setText("Test");
         jButtonCancel3.setMaximumSize(new java.awt.Dimension(67, 67));
@@ -418,31 +422,32 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
+        jPanelBottomc.setBackground(new java.awt.Color(192, 192, 192));
+        jPanelBottomc.setPreferredSize(new java.awt.Dimension(100, 111));
 
-        jButtonClose.setText("Close");
-        jButtonClose.setMaximumSize(new java.awt.Dimension(67, 67));
-        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose1.setText("Close");
+        jButtonClose1.setMaximumSize(new java.awt.Dimension(67, 67));
+        jButtonClose1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCloseActionPerformed(evt);
+                jButtonClose1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelBottomLayout = new javax.swing.GroupLayout(jPanelBottom);
-        jPanelBottom.setLayout(jPanelBottomLayout);
-        jPanelBottomLayout.setHorizontalGroup(
-            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBottomLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelBottomcLayout = new javax.swing.GroupLayout(jPanelBottomc);
+        jPanelBottomc.setLayout(jPanelBottomcLayout);
+        jPanelBottomcLayout.setHorizontalGroup(
+            jPanelBottomcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBottomcLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClose1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelBottomLayout.setVerticalGroup(
-            jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+        jPanelBottomcLayout.setVerticalGroup(
+            jPanelBottomcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBottomcLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jButtonClose1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
@@ -450,10 +455,10 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelLogoSelector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelCompanyDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelTestDatabseConnection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBottomc, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,8 +471,8 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelTestDatabseConnection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelBottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanelBottomc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -479,8 +484,8 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -542,26 +547,20 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldWebSiteActionPerformed
 
-    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        this.dispose();
-        
-    }//GEN-LAST:event_jButtonCloseActionPerformed
-
     private void jButtonSetLogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSetLogoActionPerformed
         // TODO add your handling code here:
         String fileName = "Company-Profile.properties";
-        Path path = Paths.get("resources/settings/" + fileName);
-        Path folderPath = Paths.get("resources/settings/");
+        Path configsPath = Paths.get("resources/settings/" + fileName);
+        
         selectedFile = jFileChooser.getSelectedFile();
-        System.out.println("Image set a Banner logo : " + selectedFile.getAbsolutePath());
+        System.out.println("Image set asp Banner logo : " + selectedFile.getAbsolutePath());
         displayLogoBanner(selectedFile);
         //CopyFile
+        Path folderPath = Paths.get("resources/images/"+selectedFile.getName());
         FileHandler fileHandler = new FileHandler();
-        
-        
-        File file = new File(folderPath+selectedFile.getName());
+        File file = new File(folderPath.toString());
+        System.out.println("Folder write path is : \t" +folderPath+selectedFile.getName());
+               
         file.getParentFile().mkdirs(); // Will create parent directories if not exists
         fileHandler.copyFile(selectedFile, file);
         //set in conifg
@@ -571,7 +570,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         properties.put("company.logoPath", file.getAbsolutePath());
         Configuration configuration = new Configuration();
 
-        if (configuration.writeConfig(path, properties)) 
+        if (configuration.writeConfig(configsPath, properties)) 
         {
             JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
         } else {
@@ -598,6 +597,13 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonUploadLogo1ActionPerformed
+
+    private void jButtonClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClose1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.dispose();
+
+    }//GEN-LAST:event_jButtonClose1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -677,9 +683,15 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
     public Icon displayLogoBannerFromConfig(){
         Configuration configuration = new Configuration();
         configuration.displayLogoBannerFromConfig();
+        
         return configuration.displayLogoBannerFromConfig();
         
     
+    }
+    public Image displayFrameImageIcon()
+    {
+        FrameSettings frameSettings = new FrameSettings();
+        return frameSettings.frameSettingsSetIconImage();  
     }
 
    
@@ -695,7 +707,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel10;
     private javax.swing.JButton jButtonCancel3;
-    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonClose1;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonSetLogo;
     private javax.swing.JButton jButtonUploadLogo1;
@@ -714,7 +726,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCompanyLogoSelector;
     private javax.swing.JLabel jLabelPicture;
     private javax.swing.JLabel jLabelPictureBanner;
-    private javax.swing.JPanel jPanelBottom;
+    private javax.swing.JPanel jPanelBottomc;
     private javax.swing.JPanel jPanelCompanyDetails;
     private javax.swing.JPanel jPanelImagePanel;
     private javax.swing.JPanel jPanelImagePanelBanner;
