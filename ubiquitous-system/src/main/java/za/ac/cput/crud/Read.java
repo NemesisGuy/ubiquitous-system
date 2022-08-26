@@ -213,7 +213,7 @@ public class Read {
 
             int count = 0;
             String output = "Connected: \n";
-            if (!result.isBeforeFirst()) {
+            if (result.next() == false) {
                 JOptionPane.showMessageDialog(null, "Error : The user named " + inputName + " was not found! \n Check for typos \n Try register for a new account");
                 System.out.println("No data");
             } else {
@@ -232,7 +232,7 @@ public class Read {
                     if (isUserpasswordMatched && isUserNameMatched) {
                         isUserLoginAllowed = true;
                         JOptionPane.showMessageDialog(null, "Success - User " + inputName + " found: \n" + inputName + " is being loged in!! ");
-                    }else
+                    }else if(!isUserpasswordMatched && !isUserNameMatched)
                     {
                          JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
                     }

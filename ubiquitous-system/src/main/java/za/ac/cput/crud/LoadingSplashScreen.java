@@ -30,6 +30,7 @@ import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
  * @author Peter Buckingham
  */
 public class LoadingSplashScreen extends javax.swing.JFrame {
+
     boolean complete = false;
 
     /**
@@ -92,11 +93,9 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 //                configuration.writeConfig(path, properties);
 
                 /////////////////////////////////////////////////////////////////////
-  //              jLabelSplashBanner
-  //selectedFile.
-                
-               // displayLogoBanner(url);
-                
+                //              jLabelSplashBanner
+                //selectedFile.
+                // displayLogoBanner(url);
                 String fileName = "Database-Connection.properties";
                 Path path = Paths.get("resources/settings/" + fileName);
                 FileHandler fileHandler = new FileHandler();
@@ -105,7 +104,6 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                     configuration.intiDefaultConfigs();
                     System.out.println("Default Configs created and active");
                 }
-                
 
                 //intiDefaultConfigs();
                 dispose();
@@ -251,7 +249,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args tphe command line arguments
+     * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -276,7 +274,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoadingSplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-         LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
+        LoadingSplashScreen loadingSplashScreen = new LoadingSplashScreen();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -291,9 +289,10 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         });
 
     }
+
     public void displayLogoBanner(File selectedFile) {
         URL url;
-        //pull fron config file
+        //pull from config file
         try {
             System.out.println(selectedFile.getAbsolutePath());
             url = new URL("file:///" + selectedFile.getAbsolutePath());
@@ -310,37 +309,42 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         }
 
     }
-     public void displayLogoBanner(URL selectedFileUrl) {
-      
-         // System.out.println(selectedFile.getAbsolutePath());
-         //   url = new URL("file:///" + selectedFile.getAbsolutePath());
-         Image image = null;
-         try {
-             image = ImageIO.read(selectedFileUrl);
-         } catch (IOException ex) {
-             Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         ImageIcon imageIcon;
-         jLabelPictureBanner.setIcon(imageIcon = new ImageIcon(image));
+
+    public void displayLogoBanner(URL selectedFileUrl) {
+
+        // System.out.println(selectedFile.getAbsolutePath());
+        //   url = new URL("file:///" + selectedFile.getAbsolutePath());
+        Image image = null;
+        try {
+            image = ImageIO.read(selectedFileUrl);
+        } catch (IOException ex) {
+            Logger.getLogger(SystemSettingsCompanyProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ImageIcon imageIcon;
+        jLabelPictureBanner.setIcon(imageIcon = new ImageIcon(image));
 
     }
-     public void displayBanner()
-     {
-         URL url;
-                try {
-                 //   url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\OpenBookLogo.jpg");
-                   // url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-logo.png");ubiquitous-system-banner.png
-                      url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-banner.png");
-                // C:\Users\Admin\Documents\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\src\main\resources\images\\ubiquitous-system-icon.png
-                    displayLogoBanner(url);
-                } catch (MalformedURLException ex) {
-                    Logger.getLogger(LoadingSplashScreen.class.getName()).log(Level.SEVERE, null, ex);
-                }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void displayBanner() {
+        URL url;
+        //   url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\OpenBookLogo.jpg");
+        // url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-logo.png");ubiquitous-system-banner.png
+        //        url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-banner.png");
+        // C:\Users\Admin\Documents\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\src\main\resources\images\\ubiquitous-system-icon.png
+       //  url = getClass().getResource("/resources/images/icon.png");
+        url = getClass().getResource("/images/ubiquitous-system-banner.png"); 
+        //^^^returns ...
+        //file:/C:/Users/Admin/Documents/NetBeansProjects/ubiquitous-system/ubiquitous-system/target/classes/images/ubiquitous-system-banner.png
+        
+        System.out.println(url);
+        displayLogoBanner(url);
     }
-     public Image displayFrameImageIcon() {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
+
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

@@ -17,9 +17,9 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Project 2");
+        System.out.println("Ubiquitus System.....Staring Up.... ");
+        System.out.println(".....Please Standby.... ");
         new LoadingSplashScreen().setVisible(true);
-        
-        
 
     }
 

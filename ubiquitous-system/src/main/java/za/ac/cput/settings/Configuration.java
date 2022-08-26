@@ -4,6 +4,7 @@
  */
 package za.ac.cput.settings;
 
+import com.google.api.client.testing.json.AbstractJsonParserTest;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,7 +60,7 @@ public class Configuration {
         String logoFileName = "Company-Profile.properties";
         Path logoFilePath = Paths.get("resources/settings/" + logoFileName);
         Configuration configuration = new Configuration();
-        FileHandler fileHandler = new FileHandler();    
+        FileHandler fileHandler = new FileHandler();
         Map<String, String> properties = new HashMap<String, String>();
         //     name website conrty timzone adminname currency
         properties.put("company.name", "Example Inc");
@@ -72,6 +73,7 @@ public class Configuration {
         fileHandler.initConfig(folderPath, path);
         configuration.writeConfig(path, properties);
     }
+
     public void intiDefaultDatabaseConnectionConfig() {
         String fileName = "Database-Connection.properties";
         Path path = Paths.get("resources/settings/" + fileName);
@@ -81,16 +83,26 @@ public class Configuration {
         Map<String, String> properties = new HashMap<String, String>(); // creates Map where keys and values of string type
         //method to store elements
         properties.put("db.connectionName", "Default-Connection");
-        properties.put("db.url", "192.168.0.31");
-        properties.put("db.port", "9042");
-        properties.put("db.name", "Library");
-        properties.put("db.user", "admin");
-        properties.put("db.password", "e8pUIoSehi@vjYyY");
+        properties.put("db.url", "librarydatabase.nemesisnet.co.za");
+        properties.put("db.port", "3306");
+        properties.put("db.name", "LibraryDatabase");
+        properties.put("db.user", "LibraryDbUser");
+        properties.put("db.password", "NcP_?+3gV63g");
         fileHandler.initConfig(folderPath, path);
         configuration.writeConfig(path, properties);
+
     }
 
-    
+    public void initDefaultCompanyLogo() {
+        String fileName = "logo.png";
+        Path path = Paths.get("resources/images/" + fileName);
+        Path folderPathFrom = Paths.get("resources/images/");
+        Path folderPathtTo = Paths.get("resources/images/");
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/images/ubiquitous-system-icon.png"));
+      
+        FileHandler fileHandler = new FileHandler();
+    //    fileHandler.copyFile(getClass().getResource("/resources/images/ubiquitous-system-icon.png"), folderPathtTo);
+    }
 
     public boolean writeConfigTest() {
 
@@ -116,9 +128,8 @@ public class Configuration {
 
     }
 
-  
     public Icon displayLogoBannerFromConfig() {
-         String fileName = "Company-Profile.properties";
+        String fileName = "Company-Profile.properties";
         Path path = Paths.get("resources/settings/" + fileName);
         Path folderPath = Paths.get("resources/settings/");
         ImageIcon imageIcon = null;
@@ -145,7 +156,6 @@ public class Configuration {
         return imageIcon;
     }
 
-    
 //    
 //    
 //    

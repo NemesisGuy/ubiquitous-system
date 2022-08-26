@@ -58,9 +58,10 @@ public class CRUDGui extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItemUserProfile = new javax.swing.JMenuItem();
+        jMenuItemCRUD = new javax.swing.JMenuItem();
         jMenuSettings = new javax.swing.JMenu();
         jMenuItemConnectivity = new javax.swing.JMenuItem();
         jMenuItemCompanyProfile = new javax.swing.JMenuItem();
@@ -298,26 +299,61 @@ public class CRUDGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
+        jMenuFile.setMnemonic('F');
         jMenuFile.setText("File");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, 0));
+        jMenuItem1.setMnemonic('B');
+        jMenuItem1.setText("New Booking");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenuFile.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
+        jMenuItem2.setMnemonic('R');
+        jMenuItem2.setText("New Rental");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuFile.add(jMenuItem2);
 
         jMenuBar1.add(jMenuFile);
 
+        jMenuEdit.setMnemonic('e');
         jMenuEdit.setText("Edit");
 
-        jMenuItem4.setText("jMenuItem2");
-        jMenuEdit.add(jMenuItem4);
+        jMenuItemUserProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, 0));
+        jMenuItemUserProfile.setMnemonic('u');
+        jMenuItemUserProfile.setText("User Profile");
+        jMenuItemUserProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUserProfileActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemUserProfile);
 
-        jMenuItem5.setText("jMenuItem3");
-        jMenuEdit.add(jMenuItem5);
+        jMenuItemCRUD.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        jMenuItemCRUD.setMnemonic('c');
+        jMenuItemCRUD.setText("CRUD");
+        jMenuItemCRUD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCRUDActionPerformed(evt);
+            }
+        });
+        jMenuEdit.add(jMenuItemCRUD);
 
         jMenuBar1.add(jMenuEdit);
 
+        jMenuSettings.setMnemonic('S');
         jMenuSettings.setText("Settings");
 
         jMenuItemConnectivity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        jMenuItemConnectivity.setMnemonic('c');
         jMenuItemConnectivity.setText("Connectivity");
         jMenuItemConnectivity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,6 +363,7 @@ public class CRUDGui extends javax.swing.JFrame {
         jMenuSettings.add(jMenuItemConnectivity);
 
         jMenuItemCompanyProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, 0));
+        jMenuItemCompanyProfile.setMnemonic('P');
         jMenuItemCompanyProfile.setText("Company Profile");
         jMenuItemCompanyProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,9 +374,11 @@ public class CRUDGui extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuSettings);
 
+        jMenuHelp.setMnemonic('h');
         jMenuHelp.setText("Help");
 
         jMenuItemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
+        jMenuItemAbout.setMnemonic('a');
         jMenuItemAbout.setText("About");
         jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,6 +388,7 @@ public class CRUDGui extends javax.swing.JFrame {
         jMenuHelp.add(jMenuItemAbout);
 
         jMenuItemHelpWiki.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, 0));
+        jMenuItemHelpWiki.setMnemonic('w');
         jMenuItemHelpWiki.setText("Help Wiki");
         jMenuItemHelpWiki.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -464,41 +504,61 @@ public class CRUDGui extends javax.swing.JFrame {
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
-
-        exit();
+        this.setVisible(false);
+        this.dispose();
+      //  exit();
 
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void windowClosingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosingHandler
-
-        exit();
+        this.setVisible(false);
+        this.dispose();
+      //  exit();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_windowClosingHandler
 
-    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAboutActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompanyProfileActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
-        systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
-       // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
-    }//GEN-LAST:event_jMenuItemCompanyProfileActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItemHelpWikiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpWikiActionPerformed
+    private void jMenuItemUserProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUserProfileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemHelpWikiActionPerformed
+    }//GEN-LAST:event_jMenuItemUserProfileActionPerformed
+
+    private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
+        // TODO add your handling code here:
+        CRUDGui cRUDGui =  new CRUDGui();
+        cRUDGui.setVisible(rootPaneCheckingEnabled);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItemCRUDActionPerformed
 
     private void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConnectivityActionPerformed
         // TODO add your handling code here:
         SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm();
         systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
-       // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
-        
-        
+        // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItemConnectivityActionPerformed
+
+    private void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompanyProfileActionPerformed
+        // TODO add your handling code here:
+        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
+        systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
+        // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItemCompanyProfileActionPerformed
+
+    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAboutActionPerformed
+
+    private void jMenuItemHelpWikiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpWikiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemHelpWikiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -568,12 +628,13 @@ public class CRUDGui extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbout;
+    private javax.swing.JMenuItem jMenuItemCRUD;
     private javax.swing.JMenuItem jMenuItemCompanyProfile;
     private javax.swing.JMenuItem jMenuItemConnectivity;
     private javax.swing.JMenuItem jMenuItemHelpWiki;
+    private javax.swing.JMenuItem jMenuItemUserProfile;
     private javax.swing.JMenu jMenuSettings;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

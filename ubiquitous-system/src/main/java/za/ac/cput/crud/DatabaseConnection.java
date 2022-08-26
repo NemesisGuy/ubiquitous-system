@@ -21,8 +21,9 @@ import za.ac.cput.settings.Configuration;
  */
 public class DatabaseConnection {
 //derby port 1527
-    public Connection getDatabaseConnection()  {
-        
+
+    public Connection getDatabaseConnection() {
+
         String fileName = "Database-Connection.properties";
         Path path = Paths.get("resources/settings/" + fileName);
         Path folderPath = Paths.get("resources/settings/");
@@ -35,16 +36,20 @@ public class DatabaseConnection {
         String dbPort = properties.getProperty("db.port");
         String dbUser = properties.getProperty("db.user");
         String dbPassword = properties.getProperty("db.password");
-        String dbURL = "jdbc:mysql://" + dbUrl + ":" + dbPort + "/" + dbName + "";
-
+        // String dbURL = "jdbc:mysql://" + dbUrl + ":" + dbPort + "/" + dbName + "";
+        //String dbURL = "jdbc:mysql://" +"librarydatabase.nemesisnet.co.za"+ ":" + "9042" + "/" +"Library " + "";
+   
+        String dbURL = "jdbc:mysql://" + "librarydatabase.nemesisnet.co.za" + ":" + "3306" + "/" + "LibraryDatabase " + "";
         Connection conn = null;
 
         try {
+
             //  Class.forName("com.mysql.jdbc.Driver"); old driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println(dbURL+" "+dbUser+" "+dbPassword);
+            System.out.println(dbURL + " " + dbUser + " " + dbPassword);
             conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
+            // conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
             if (conn != null) {
                 System.out.println("Connected");
             }
@@ -56,5 +61,10 @@ public class DatabaseConnection {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return conn;
+    }
+
+    public static void main(String[] args) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.getDatabaseConnection();
     }
 }

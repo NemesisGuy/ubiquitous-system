@@ -19,22 +19,22 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import za.ac.cput.Bookings.BookingForm;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 
 public class DisplayBookForm extends javax.swing.JFrame {
 
     public static String myBookTitle, subtTitle, author, description, rating, imageLink;
-
+    public Boolean displayBookLoanButton = false;
+    public Book book =  null; 
     /**
      * Creates new form CreateBookForm
      */
     public DisplayBookForm() {
         initComponents();
     }
-
-    //        create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
-    public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn) {
+     public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn) {
         myBookTitle = titleIn;
         subtTitle = subtTitleIn;
         author = authorIn;
@@ -43,11 +43,13 @@ public class DisplayBookForm extends javax.swing.JFrame {
         imageLink = imageLinkIn;
         initComponents();
     }
-    //  public static DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
-//    public  DisplayBookForm displayBookForm = new DisplayBookForm("Hyperion ", "Space books ", "Dan Simmions", "The book that reinvented Space Opera, from the Hugo and World Fantasy Award-winning author of The Terror, which is now a chilling TV show. It is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.  ", "4", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405546838l/77566.jpg");
 
+    //  create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
+    //  public static DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
+    //  public  DisplayBookForm displayBookForm = new DisplayBookForm("Hyperion ", "Space books ", "Dan Simmions", "The book that reinvented Space Opera, from the Hugo and World Fantasy Award-winning author of The Terror, which is now a chilling TV show. It is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.  ", "4", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405546838l/77566.jpg");
     public DisplayBookForm(Book book) {
         try {
+            this.book = book;
             myBookTitle = book.getTitle();
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
@@ -56,7 +58,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
             imageLink = book.getImageLink();
             this.setVisible(true);
             initComponents();
-            
+
             jLabelTitle.setText(myBookTitle);
             jLabelSubTitle.setText(subtTitle);
             jLabelAuthor.setText(author);
@@ -66,8 +68,41 @@ public class DisplayBookForm extends javax.swing.JFrame {
             URL url = new URL(imageLink);
             Image image = ImageIO.read(url);
             ImageIcon imageIcon;
-            jLabelPicture.setIcon(imageIcon = new ImageIcon( image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
+            jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
 
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(DisplayBookForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DisplayBookForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public DisplayBookForm(Book book, Boolean displayBookLoanButton) {
+        try {
+            this.book = book;
+            myBookTitle = book.getTitle();
+            subtTitle = book.getSubTitle();
+            author = book.getAuthors();
+            description = book.getDescription();
+            rating = book.getRating();
+            imageLink = book.getImageLink();
+            
+            this.setVisible(true);
+            initComponents();
+            jButtonLoan.setVisible(displayBookLoanButton);
+            jLabelTitle.setText(myBookTitle);
+            jLabelSubTitle.setText(subtTitle);
+            jLabelAuthor.setText(author);
+            jTextAreaDescription.setText(description);
+            jLabelRating.setText(rating);
+
+            URL url = new URL(imageLink);
+            Image image = ImageIO.read(url);
+            ImageIcon imageIcon;
+            jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
+           
+           
+            
         } catch (MalformedURLException ex) {
             Logger.getLogger(DisplayBookForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -142,6 +177,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
         jTextAreaDescription = new javax.swing.JTextArea();
         jPanelBottom = new javax.swing.JPanel();
         jButtonClose = new javax.swing.JButton();
+        jButtonLoan = new javax.swing.JButton();
         jPanelTop = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanelImagePanelBanner1 = new javax.swing.JPanel();
@@ -217,16 +253,16 @@ public class DisplayBookForm extends javax.swing.JFrame {
         jPanelMidLayout.setHorizontalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMidLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitle)
                     .addComponent(jLabelSubTitle)
                     .addComponent(jLabelAuthor)
                     .addComponent(jLabelRating)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addComponent(jPanelImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanelMidLayout.setVerticalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +280,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelRating)))
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20))
         );
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
@@ -259,21 +295,35 @@ public class DisplayBookForm extends javax.swing.JFrame {
             }
         });
 
+        jButtonLoan.setMnemonic('C');
+        jButtonLoan.setText("Loan");
+        jButtonLoan.setToolTipText("Click to Loan This Book");
+        jButtonLoan.setVisible(displayBookLoanButton);
+        jButtonLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBottomLayout = new javax.swing.GroupLayout(jPanelBottom);
         jPanelBottom.setLayout(jPanelBottomLayout);
         jPanelBottomLayout.setHorizontalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBottomLayout.createSequentialGroup()
-                .addGap(236, 236, 236)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonLoan)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jButtonClose)
-                .addGap(228, 228, 228))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jButtonClose)
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20)
+                .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonClose)
+                    .addComponent(jButtonLoan))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanelTop.setBackground(new java.awt.Color(192, 192, 192));
@@ -316,7 +366,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
                 .addComponent(jPanelImagePanelBanner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTopLayout.setVerticalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,13 +415,20 @@ public class DisplayBookForm extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();        // TODO add your handling code here:
 
-       
+
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoanActionPerformed
+        // TODO add your handling code here:
+        BookingForm bookingForm  = new BookingForm(book);
+       bookingForm.setVisible(true);
+     //  bookingForm.setFont(getFont());
+    }//GEN-LAST:event_jButtonLoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,14 +461,16 @@ public class DisplayBookForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+
             }
         });
     }
+
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
+
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
@@ -423,6 +482,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonLoan;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAuthor;
     private javax.swing.JLabel jLabelPicture;

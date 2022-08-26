@@ -20,7 +20,7 @@ import za.ac.cput.settings.SystemSettingsConectionsForm;
  * @author Peter Buckingham
  */
 public class LibraryStatus extends javax.swing.JFrame {
-
+ 
     ArrayList<Book> bookList;
 
     /**
@@ -242,9 +242,11 @@ public class LibraryStatus extends javax.swing.JFrame {
                 .addComponent(jPanelBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuFile.setMnemonic('F');
         jMenuFile.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, 0));
+        jMenuItem1.setMnemonic('B');
         jMenuItem1.setText("New Booking");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +256,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         jMenuFile.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
+        jMenuItem2.setMnemonic('R');
         jMenuItem2.setText("New Rental");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,9 +267,11 @@ public class LibraryStatus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuFile);
 
+        jMenuEdit.setMnemonic('e');
         jMenuEdit.setText("Edit");
 
         jMenuItemUserProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, 0));
+        jMenuItemUserProfile.setMnemonic('u');
         jMenuItemUserProfile.setText("User Profile");
         jMenuItemUserProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,6 +281,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         jMenuEdit.add(jMenuItemUserProfile);
 
         jMenuItemCRUD.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        jMenuItemCRUD.setMnemonic('c');
         jMenuItemCRUD.setText("CRUD");
         jMenuItemCRUD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,9 +292,11 @@ public class LibraryStatus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuEdit);
 
+        jMenuSettings.setMnemonic('s');
         jMenuSettings.setText("Settings");
 
         jMenuItemConnectivity.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        jMenuItemConnectivity.setMnemonic('c');
         jMenuItemConnectivity.setText("Connectivity");
         jMenuItemConnectivity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +306,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         jMenuSettings.add(jMenuItemConnectivity);
 
         jMenuItemCompanyProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, 0));
+        jMenuItemCompanyProfile.setMnemonic('P');
         jMenuItemCompanyProfile.setText("Company Profile");
         jMenuItemCompanyProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,9 +317,11 @@ public class LibraryStatus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuSettings);
 
+        jMenuHelp.setMnemonic('h');
         jMenuHelp.setText("Help");
 
         jMenuItemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
+        jMenuItemAbout.setMnemonic('a');
         jMenuItemAbout.setText("About");
         jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,6 +331,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         jMenuHelp.add(jMenuItemAbout);
 
         jMenuItemHelpWiki.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, 0));
+        jMenuItemHelpWiki.setMnemonic('w');
         jMenuItemHelpWiki.setText("Help Wiki");
         jMenuItemHelpWiki.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,7 +373,8 @@ public class LibraryStatus extends javax.swing.JFrame {
             // your valueChanged overridden method 
 
             System.out.println(jTable1.getSelectedRow());
-            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
+           // DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
+            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()),true);
 
             // BookDisplay currentBookDisplay = new BookDisplay();
             ///       try {
@@ -404,8 +417,10 @@ public class LibraryStatus extends javax.swing.JFrame {
         // TODO add your handling code here:
         CRUDGui cRUDGui =  new CRUDGui();
         cRUDGui.setVisible(rootPaneCheckingEnabled);
-        this.setVisible(false);
-        this.dispose();
+        cRUDGui.setAutoRequestFocus(true);
+      //  cRUDGui.set
+       // this.setVisible(true);
+       // this.dispose();
     }//GEN-LAST:event_jMenuItemCRUDActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
