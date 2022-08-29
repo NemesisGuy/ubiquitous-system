@@ -16,35 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Create {
 
-    public void createBook() {
-
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-
-        Connection conn = databaseConnection.getDatabaseConnection();
-
-        String sql = "INSERT INTO booktable(title, subTitle, author, ISBN, description, rate, imageLink) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        PreparedStatement statement = null;
-        try {
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, "Harry Potter");
-            statement.setString(2, "and the Prisoner of Azkaban");
-            statement.setString(3, "jk. Roling");
-            statement.setString(4, "0-7475-4215-5");
-            statement.setString(5, "Harry Potter and the Prisoner of Azkaban by J.K. Rowling, which follows the Boy Who Lived during his third year at Hogwarts School of Witchcraft and Wizardry. This year, the school is guarded by Dementors, sinister hooded creatures sent by the Ministry of Magic as a defence against the escaped murderer Sirius Black who is pursuing Harry. Assisted by Hermione, Ron and the new Defence Against the Dark Arts teacher Remus Lupin, Harry faces a race against time to prevent Voldemort’s return and find out the truth about his parents’ murder.");
-            statement.setString(6, "4");
-            statement.setString(7, "https://covers.openlibrary.org/b/id/10580435-L.jpg");
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new book was inserted successfully!");
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+   
     public void createBook(String title, String subTitle, String author, String ISBN, String description, String rate, String imageLink) {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -75,34 +47,7 @@ public class Create {
         }
     }
 
-    public void createUser() {
-
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-
-        Connection conn = databaseConnection.getDatabaseConnection();
-
-        String sql = "INSERT INTO userTable(firstName, lastName, userName, email, password, userAccessLevel) VALUES (?, ?, ?, ?,?,?)";
-
-        PreparedStatement statement = null;
-        try {
-            statement = conn.prepareStatement(sql);
-
-            statement.setString(1, "Jhon ");
-            statement.setString(2, "Doe");
-            statement.setString(3, "JD");
-            statement.setString(4, "JhonDoe1999@gmail.com");
-            statement.setString(5, "1234");
-            statement.setString(6, "0");
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new user was inserted successfully!");
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
 
     public void createUser(String firstName, String lastName, String userName, String email, String password, int userAccessLevel) {
 
@@ -121,6 +66,7 @@ public class Create {
             statement.setString(3, userName);
             statement.setString(4, email);
             statement.setString(5, password);
+           // System.out.println("This is what was put in the DB : " +password);
             statement.setString(6, Integer.toString(userAccessLevel));
 
             int rowsInserted = statement.executeUpdate();
@@ -133,5 +79,36 @@ public class Create {
             Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    public void createLoan(User user, Loan loan){
+    String userId = user.getUserId();
+    loan.getClass();
+     DatabaseConnection databaseConnection = new DatabaseConnection();
+
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+        String sql = "INSERT INTO bookloanstable(userId, bookId, loanFromDate, dueOnDate, returned) VALUES (?, ?, ?, ?, ?)";
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.prepareStatement(sql);
+
+            statement.setString(1, loan.getUserId());
+            statement.setString(2, String.valueOf(loan.getBookId()));
+            statement.setString(3, loan.getLoanFromDate());
+            statement.setString(4, loan.getDueOnDate());
+            statement.setString(5, Boolean.toString(loan.isReturned()));
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "A new user made a loan and  was inserted successfully!");
+                System.out.println("A new user named was inserted successfully!");
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+     
     }
 }

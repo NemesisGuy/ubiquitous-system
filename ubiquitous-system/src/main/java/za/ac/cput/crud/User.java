@@ -8,37 +8,30 @@ package za.ac.cput.crud;
  *
  * @author Peter Buckingham
  */
-class User {
-    private String firstName, lastName, userName, email, password, accessLevel; 
+public class User {
 
-    public User(String firstName, String lastName, String userName, String email, String password, String accessLevel) {
+    private String userId, firstName, lastName, userName, email, password, accessLevel;
+
+    public User(String userId, String firstName, String lastName, String userName, String email, String password, String accessLevel) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.accessLevel = accessLevel;
-    }
-     public User(String firstName, String lastName, String userName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.accessLevel = accessLevel;
-    }
-
-
-    public User(String firstName, String lastName, String userName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.email = email;
     }
 
     public User() {
     }
-    
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getAccessLevel() {
         return accessLevel;

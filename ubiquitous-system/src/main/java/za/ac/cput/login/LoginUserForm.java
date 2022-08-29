@@ -11,6 +11,7 @@ import za.ac.cput.Bookings.LibraryStatus;
 import za.ac.cput.crud.CRUDGui;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
+import za.ac.cput.crud.User;
 import za.ac.cput.settings.FrameSettings;
 
 /**
@@ -228,20 +229,24 @@ public class LoginUserForm extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         // TODO add your handling code here:
-        //     Create create = new Create();
-        //     String tempPassword = new String(jPasswordFieldPassword.getPassword());
-        //     create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText() ,jTextFieldUserName.getText(), jTextFieldEmail.getText(),tempPassword, 0);
+
         Read read = new Read();
-        // read.userLogin(jTextFieldUserName.getText(), new String(jPasswordFieldPassword.getPassword()));
-        if (read.userLogin(jTextFieldUserName.getText(), new String(jPasswordFieldPassword.getPassword()))) {
+        String pwd = jPasswordFieldPassword.getText();
+
+        User user = read.userLogin(jTextFieldUserName.getText(), pwd);
+
+        System.out.println("user name from loin form " + jTextFieldUserName.getText());
+        System.out.println("from Login password form : " + pwd);
+
+        if (user == null) {
+            System.out.println("User not found - btn");
+        } else {
 
             this.setVisible(false);
 
             this.dispose();
-            //CRUDGui crudGui = new CRUDGui();
-            //crudGui.setVisible(rootPaneCheckingEnabled);
             read.readAllBooks();
-            LibraryStatus libraryStatus = new LibraryStatus(read.readAllBooks());
+            LibraryStatus libraryStatus = new LibraryStatus(user, read.readAllBooks());////////add user as an arg 
             libraryStatus.setVisible(rootPaneCheckingEnabled);
         }
 

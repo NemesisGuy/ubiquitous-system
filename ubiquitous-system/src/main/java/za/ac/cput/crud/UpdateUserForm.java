@@ -42,7 +42,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }
     private void updateUser()
     {
-        User user = new User(jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), jPasswordFieldPasswordUpdate.getPassword().toString());
+        User user = new User("",jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), jPasswordFieldPasswordUpdate.getText(),"0");
         Update update = new Update();
         update.updateUser(firstName, user);
         dispose();
@@ -85,8 +85,8 @@ public class UpdateUserForm extends javax.swing.JFrame {
     private void validateFormPaswords() {
        
         Validator validator = new Validator();
-        String tempPassword = new String(jPasswordFieldPasswordUpdate.getPassword());
-        String tempPasswordConfirm = new String(jPasswordFieldConfirmPasswordUpdate.getPassword());
+        String tempPassword = new String(jPasswordFieldPasswordUpdate.getText());
+        String tempPasswordConfirm = new String(jPasswordFieldConfirmPasswordUpdate.getText());
         if (validator.isValidPassword(tempPassword)) {
 
             if (validator.comparePasswords(tempPassword, tempPasswordConfirm)) {

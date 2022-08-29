@@ -13,8 +13,12 @@ import utilities.Dates;
 import za.ac.cput.Bookings.LibraryStatus;
 import za.ac.cput.crud.Book;
 import za.ac.cput.crud.CRUDGui;
+import za.ac.cput.crud.Create;
+import za.ac.cput.crud.DatabaseConnection;
+import za.ac.cput.crud.Loan;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
+import za.ac.cput.crud.User;
 import za.ac.cput.settings.FrameSettings;
 
 /**
@@ -23,6 +27,7 @@ import za.ac.cput.settings.FrameSettings;
  */
 public class BookingForm extends javax.swing.JFrame {
 Book book = null;
+User user = null;
 Dates dates = new Dates();   
     /**
      * Creates new form registerForm
@@ -30,10 +35,12 @@ Dates dates = new Dates();
     public BookingForm() {
         initComponents();
     }
-    public BookingForm(Book book) {
+    public BookingForm(User user,Book book) {
         this.book = book;
+        this.user = user;
         initComponents();
-        Dates dates = new Dates();       
+        Dates dates = new Dates();  
+        jTextFieldBookUserName.setText(user.getUserName());
         jTextFieldBookTitle.setText(book.getTitle());
         jTextFieldDateOfIssue.setText(dates.getFormattedStartDate());
         jTextFieldDueDate.setText(dates.getFormattedEndDate());
@@ -61,7 +68,7 @@ Dates dates = new Dates();
         jTextFieldDateOfIssue = new javax.swing.JTextField();
         jTextFieldDueDate = new javax.swing.JTextField();
         jLabelUserNeme = new javax.swing.JLabel();
-        jTextFieldBookTitle1 = new javax.swing.JTextField();
+        jTextFieldBookUserName = new javax.swing.JTextField();
         jPanelTop = new javax.swing.JPanel();
         jLabelBannerHeading = new javax.swing.JLabel();
         jPanelImagePanelBanner1 = new javax.swing.JPanel();
@@ -153,12 +160,12 @@ Dates dates = new Dates();
         jLabelUserNeme.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUserNeme.setText("User Name :");
 
-        jTextFieldBookTitle1.setEditable(false);
-        jTextFieldBookTitle1.setColumns(40);
-        jTextFieldBookTitle1.setToolTipText("Enter user name");
-        jTextFieldBookTitle1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldBookUserName.setEditable(false);
+        jTextFieldBookUserName.setColumns(40);
+        jTextFieldBookUserName.setToolTipText("Enter user name");
+        jTextFieldBookUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBookTitle1ActionPerformed(evt);
+                jTextFieldBookUserNameActionPerformed(evt);
             }
         });
 
@@ -175,7 +182,7 @@ Dates dates = new Dates();
                     .addComponent(jLabelUserNeme))
                 .addGap(87, 87, 87)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldBookTitle1)
+                    .addComponent(jTextFieldBookUserName)
                     .addComponent(jTextFieldDueDate)
                     .addGroup(jPanelMidLayout.createSequentialGroup()
                         .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -190,7 +197,7 @@ Dates dates = new Dates();
                 .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUserNeme)
-                    .addComponent(jTextFieldBookTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldBookUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBookTitle)
@@ -296,8 +303,22 @@ Dates dates = new Dates();
         // TODO add your handling code here:
         this.setVisible(false);
         //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
-        JOptionPane.showMessageDialog(this, "You Have booked out "+ book.getTitle() + ".\n Please return it by the due date of " + dates.getFormattedEndDate() +".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,user.getUserName()+", You Have booked out "+ book.getTitle() + ".\n Please return it by the due date of " + dates.getFormattedEndDate() +".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
+        
+        Loan loan = new Loan(user, book);
+        
+        Create create = new Create();
+        
+        create.createLoan(user, loan);
+        
+        
+       // TODO Fancy SQL JOIN Statments here:
+        
+        
         this.dispose();
+        
+        
+        
         
     }//GEN-LAST:event_jButtonConfimActionPerformed
 
@@ -309,15 +330,15 @@ Dates dates = new Dates();
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDueDateActionPerformed
 
-    private void jTextFieldBookTitle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBookTitle1ActionPerformed
+    private void jTextFieldBookUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBookUserNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldBookTitle1ActionPerformed
+    }//GEN-LAST:event_jTextFieldBookUserNameActionPerformed
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
     public void exit() {
-        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");
         System.out.println("Author : Peter Buckingham \n");
@@ -391,7 +412,7 @@ Dates dates = new Dates();
     private javax.swing.JPanel jPanelMid;
     private javax.swing.JPanel jPanelTop;
     private javax.swing.JTextField jTextFieldBookTitle;
-    private javax.swing.JTextField jTextFieldBookTitle1;
+    private javax.swing.JTextField jTextFieldBookUserName;
     private javax.swing.JTextField jTextFieldDateOfIssue;
     private javax.swing.JTextField jTextFieldDueDate;
     // End of variables declaration//GEN-END:variables

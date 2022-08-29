@@ -28,6 +28,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
     public static String myBookTitle, subtTitle, author, description, rating, imageLink;
     public Boolean displayBookLoanButton = false;
     public Book book =  null; 
+    public User user =  null;
     /**
      * Creates new form CreateBookForm
      */
@@ -77,9 +78,10 @@ public class DisplayBookForm extends javax.swing.JFrame {
         }
     }
 
-    public DisplayBookForm(Book book, Boolean displayBookLoanButton) {
+    public DisplayBookForm(User user,Book book, Boolean displayBookLoanButton) {
         try {
             this.book = book;
+            this.user =user;
             myBookTitle = book.getTitle();
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
@@ -425,7 +427,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
 
     private void jButtonLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoanActionPerformed
         // TODO add your handling code here:
-        BookingForm bookingForm  = new BookingForm(book);
+        BookingForm bookingForm  = new BookingForm(user,book);
        bookingForm.setVisible(true);
      //  bookingForm.setFont(getFont());
     }//GEN-LAST:event_jButtonLoanActionPerformed

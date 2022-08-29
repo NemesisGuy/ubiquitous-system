@@ -122,7 +122,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextFieldBookTitle1" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBookUserName" max="32767" attributes="0"/>
                       <Component id="jTextFieldDueDate" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -142,7 +142,7 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelUserNeme" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldBookTitle1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBookUserName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -236,14 +236,14 @@
             <Property name="text" type="java.lang.String" value="User Name :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldBookTitle1">
+        <Component class="javax.swing.JTextField" name="jTextFieldBookUserName">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="40"/>
             <Property name="toolTipText" type="java.lang.String" value="Enter user name"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldBookTitle1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldBookUserNameActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

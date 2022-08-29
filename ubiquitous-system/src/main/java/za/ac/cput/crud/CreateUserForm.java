@@ -486,7 +486,7 @@ public class CreateUserForm extends javax.swing.JDialog {
         Create create = new Create(); 
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
         
-        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), tempPassword, 0);
+        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
 
     }
     public Image displayFrameImageIcon() {

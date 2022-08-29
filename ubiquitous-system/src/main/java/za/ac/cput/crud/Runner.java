@@ -32,7 +32,7 @@ public class Runner {
 
     public static void addBookToDatabase() {
         Create create = new Create();
-        create.createBook();///create a constructor that can build it with args mayb
+    //    create.createBook();///create a constructor that can build it with args mayb
     }
 
     public static void deleteBookFromDatabase() {
@@ -48,7 +48,7 @@ public class Runner {
 
     public static void addUserToDatabase() {
         Create create = new Create();
-        create.createUser();
+     //   create.createUser();
     }
 
     public static void readUsersFromDatabase() {
