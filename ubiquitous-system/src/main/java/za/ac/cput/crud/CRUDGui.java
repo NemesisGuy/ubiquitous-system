@@ -17,11 +17,20 @@ import za.ac.cput.settings.SystemSettingsConectionsForm;
  * @author Peter Buckingham
  */
 public class CRUDGui extends javax.swing.JFrame {
-
+    public static User user;
     /**
      * Creates new form CRUDGui
      */
+    public CRUDGui(User user) {
+        this.user = user;
+        setTitle("Ubiquitous System" +" - " + "CRUD Control Panel" );
+        if (Integer.getInteger(user.getAccessLevel())>0) {
+            initComponents();
+        }else{System.err.println("you do not have access to this, please contact the system admin!");}
+       // initComponents();
+    }
     public CRUDGui() {
+       
         initComponents();
     }
     CreateUserForm createUserForm = new CreateUserForm(this, rootPaneCheckingEnabled);
@@ -57,7 +66,6 @@ public class CRUDGui extends javax.swing.JFrame {
         jLabelPictureBanner = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFile = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
         jMenuItemUserProfile = new javax.swing.JMenuItem();
@@ -302,16 +310,6 @@ public class CRUDGui extends javax.swing.JFrame {
         jMenuFile.setMnemonic('F');
         jMenuFile.setText("File");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, 0));
-        jMenuItem1.setMnemonic('B');
-        jMenuItem1.setText("New Booking");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuItem1);
-
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
         jMenuItem2.setMnemonic('R');
         jMenuItem2.setText("New Rental");
@@ -518,10 +516,6 @@ public class CRUDGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_windowClosingHandler
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -532,7 +526,7 @@ public class CRUDGui extends javax.swing.JFrame {
 
     private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
         // TODO add your handling code here:
-        CRUDGui cRUDGui =  new CRUDGui();
+        CRUDGui cRUDGui =  new CRUDGui(user);
         cRUDGui.setVisible(rootPaneCheckingEnabled);
         this.setVisible(false);
         this.dispose();
@@ -590,7 +584,8 @@ public class CRUDGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CRUDGui().setVisible(true);
+                CRUDGui cRUDGui = new CRUDGui(user);
+                cRUDGui.setVisible(true);
             }
         });
     }
@@ -627,7 +622,6 @@ public class CRUDGui extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEdit;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuHelp;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemCRUD;

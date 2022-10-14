@@ -2,8 +2,9 @@
  *     
  * 
  */
-package za.ac.cput.crud;
+package za.ac.cput.bookshelf;
 
+import za.ac.cput.crud.*;
 import java.awt.Image;
 import java.util.Random;
 import javax.swing.JFrame;
@@ -15,14 +16,14 @@ import za.ac.cput.settings.FrameSettings;
  *
  * @author Peter Buckingham
  */
-public class CreateUserForm extends javax.swing.JDialog {
+public class UserProfileForm extends javax.swing.JDialog {
 
     /**
      * Creates new form createUserForm
      */
-    public CreateUserForm(java.awt.Frame parent, boolean modal) {
+    public UserProfileForm(java.awt.Frame parent, boolean modal,User user) {
         super(parent, modal);
-        setTitle("Ubiquitous System" +" - " + "Create a User" );
+        setTitle("Ubiquitous System" +" - " + "User Profile" );
         initComponents();
     }
 
@@ -46,9 +47,9 @@ public class CreateUserForm extends javax.swing.JDialog {
         jTextFieldLastName = new javax.swing.JTextField();
         jTextFieldConfirmEmail = new javax.swing.JTextField();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
-        jLabelConfirmPassword = new javax.swing.JLabel();
-        jPasswordFieldConfirmPassword = new javax.swing.JPasswordField();
         jTextFieldFirstName = new javax.swing.JTextField();
+        jLabelComfirmEmail1 = new javax.swing.JLabel();
+        jTextFieldEmail1 = new javax.swing.JTextField();
         jPanelBottom = new javax.swing.JPanel();
         jButtonSubmit = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
@@ -114,14 +115,20 @@ public class CreateUserForm extends javax.swing.JDialog {
             }
         });
 
-        jLabelConfirmPassword.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelConfirmPassword.setText("Confirm Password:");
-
-        jPasswordFieldConfirmPassword.setColumns(40);
-        jPasswordFieldConfirmPassword.setToolTipText("Re-enter password");
-
         jTextFieldFirstName.setColumns(40);
         jTextFieldFirstName.setToolTipText("Enter first name");
+
+        jLabelComfirmEmail1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelComfirmEmail1.setText("Total Loans:");
+
+        jTextFieldEmail1.setEditable(false);
+        jTextFieldEmail1.setColumns(40);
+        jTextFieldEmail1.setToolTipText("Enter email");
+        jTextFieldEmail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmail1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelMidLayout = new javax.swing.GroupLayout(jPanelMid);
         jPanelMid.setLayout(jPanelMidLayout);
@@ -136,7 +143,7 @@ public class CreateUserForm extends javax.swing.JDialog {
                     .addComponent(jLabelUserName)
                     .addComponent(jLabelPassword)
                     .addComponent(jLabelComfirmEmail)
-                    .addComponent(jLabelConfirmPassword))
+                    .addComponent(jLabelComfirmEmail1))
                 .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,8 +152,8 @@ public class CreateUserForm extends javax.swing.JDialog {
                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldConfirmEmail, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordFieldConfirmPassword, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(20, 20, 20))
+                    .addComponent(jTextFieldEmail1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMidLayout.setVerticalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,11 +182,11 @@ public class CreateUserForm extends javax.swing.JDialog {
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPassword)
                     .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelConfirmPassword)
-                    .addComponent(jPasswordFieldConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(jLabelComfirmEmail1)
+                    .addComponent(jTextFieldEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
@@ -226,7 +233,7 @@ public class CreateUserForm extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Create User:");
+        jLabel3.setText("User Profile :");
 
         jPanelImagePanelBanner.setMaximumSize(new java.awt.Dimension(75, 75));
 
@@ -258,7 +265,7 @@ public class CreateUserForm extends javax.swing.JDialog {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -351,17 +358,10 @@ public class CreateUserForm extends javax.swing.JDialog {
         Create create = new Create();
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
-        String tempPasswordConfirm = new String(jPasswordFieldConfirmPassword.getPassword());
+      
         if (validator.isValidPassword(tempPassword)) {
 
-            if (validator.comparePasswords(tempPassword, tempPasswordConfirm)) {
-                createUser();
-                clearForm();
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Error: password missmatch! \n User creation unsuccessfull!");
-                clearPasswords();
-            }
+           
 
         } else {
             JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
@@ -381,7 +381,7 @@ public class CreateUserForm extends javax.swing.JDialog {
     private void clearPasswords() {
 
         jPasswordFieldPassword.setText("");
-        jPasswordFieldConfirmPassword.setText("");
+       
     }
 
     private void clearEmail() {
@@ -396,13 +396,6 @@ public class CreateUserForm extends javax.swing.JDialog {
         clearEmail();
         clearPasswords();
     }
-    private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        // TODO add your handling code here:
-        //validate then talk to db
-        validateFormFileds();
-
-    }//GEN-LAST:event_jButtonSubmitActionPerformed
-
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
@@ -411,8 +404,17 @@ public class CreateUserForm extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
-
     }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
+        // TODO add your handling code here:
+        //validate then talk to db
+        validateFormFileds();
+    }//GEN-LAST:event_jButtonSubmitActionPerformed
+
+    private void jTextFieldEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmail1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,29 +433,22 @@ public class CreateUserForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CreateUserForm dialog = new CreateUserForm(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+            public void run() {}
         });
     }
 
@@ -462,7 +457,7 @@ public class CreateUserForm extends javax.swing.JDialog {
     private javax.swing.JButton jButtonSubmit;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelComfirmEmail;
-    private javax.swing.JLabel jLabelConfirmPassword;
+    private javax.swing.JLabel jLabelComfirmEmail1;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelFirstName;
     private javax.swing.JLabel jLabelLastName;
@@ -474,20 +469,20 @@ public class CreateUserForm extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid;
     private javax.swing.JPanel jPanelTop;
-    private javax.swing.JPasswordField jPasswordFieldConfirmPassword;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JTextField jTextFieldConfirmEmail;
     private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldEmail1;
     private javax.swing.JTextField jTextFieldFirstName;
     private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
 
     private void createUser() {
-        Create create = new Create(); 
-        String tempPassword = new String(jPasswordFieldPassword.getPassword());
+    //    Create create = new Create(); 
+    //    String tempPassword = new String(jPasswordFieldPassword.getPassword());
         
-        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
+  //      create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
 
     }
     public Image displayFrameImageIcon() {

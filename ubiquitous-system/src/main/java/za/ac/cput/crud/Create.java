@@ -4,6 +4,7 @@
  */
 package za.ac.cput.crud;
 
+import utilities.Loan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -66,7 +67,6 @@ public class Create {
             statement.setString(3, userName);
             statement.setString(4, email);
             statement.setString(5, password);
-           // System.out.println("This is what was put in the DB : " +password);
             statement.setString(6, Integer.toString(userAccessLevel));
 
             int rowsInserted = statement.executeUpdate();
@@ -80,9 +80,16 @@ public class Create {
         }
 
     }
+    
+    
+    
+    
     public void createLoan(User user, Loan loan){
     String userId = user.getUserId();
     loan.getClass();
+        if (loan.getReturnedDate()==null) {
+            loan.setReturnedDate("0-0-0");
+        }
      DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();
@@ -97,12 +104,12 @@ public class Create {
             statement.setString(2, String.valueOf(loan.getBookId()));
             statement.setString(3, loan.getLoanFromDate());
             statement.setString(4, loan.getDueOnDate());
-            statement.setString(5, Boolean.toString(loan.isReturned()));
+            statement.setString(5, loan.getReturnedDate());
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 JOptionPane.showMessageDialog(null, "A new user made a loan and  was inserted successfully!");
-                System.out.println("A new user named was inserted successfully!");
+                System.out.println("A new loan was inserted successfully!");
                 conn.close();
             }
         } catch (SQLException ex) {

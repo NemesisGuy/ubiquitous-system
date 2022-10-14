@@ -20,9 +20,10 @@ import za.ac.cput.settings.FrameSettings;
 public class RegisterUserForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginForm
+     * Creates new form registerForm
      */
     public RegisterUserForm() {
+        setTitle("Ubiquitous System" +" - " + "Sign Up Form" );
         initComponents();
     }
 
@@ -63,6 +64,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
         jPanelBottom.setForeground(new java.awt.Color(0, 0, 0));
 
+        jButtonSignUp.setMnemonic('S');
         jButtonSignUp.setText("Sign Up");
         jButtonSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -23,15 +23,18 @@ public class UpdateUserForm extends javax.swing.JFrame {
      * Creates new form UpdateUserForm
      */
     public UpdateUserForm() {
+        setTitle("Ubiquitous System" +" - " + "Update User Form" );
         initComponents();
     }
 
     public UpdateUserForm(User user) {
+    
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.userName = user.getUserName();
         this.email = user.getEmail();
         this.password = user.getPassword();
+        setTitle("Ubiquitous System" +" - " + "Update User Form"+" - "+ userName );
         initComponents();
         jTextFieldFirstNameUpdate.setText(user.getFirstName());
         jTextFieldLastNameUpdate.setText(user.getLastName());

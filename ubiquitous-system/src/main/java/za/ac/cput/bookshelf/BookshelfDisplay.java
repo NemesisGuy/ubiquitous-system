@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Bookings;
+package za.ac.cput.bookshelf;
 
 import java.awt.Image;
 import za.ac.cput.crud.*;
@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import utilities.Loan;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
@@ -20,7 +21,7 @@ import za.ac.cput.settings.SystemSettingsConectionsForm;
  *
  * @author Peter Buckingham
  */
-public class LibraryStatus extends javax.swing.JFrame {
+public class BookshelfDisplay extends javax.swing.JFrame {
 
     ArrayList<Book> bookList;
     User user;
@@ -28,11 +29,13 @@ public class LibraryStatus extends javax.swing.JFrame {
     /**
      * Creates new form UserListForm
      */
-    public LibraryStatus() {
+    public BookshelfDisplay() {
+        setTitle("Ubiquitous System" +" - " + "Bookshelf");
         initComponents();
     }
 
-    public LibraryStatus(User user, ArrayList<Book> bookList) {
+    public BookshelfDisplay(User user, ArrayList<Book> bookList) {
+        setTitle("Ubiquitous System" +" - " + "Update Book" );
         initComponents();
         this.bookList = bookList;
         this.user = user;
@@ -198,7 +201,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Library :");
+        jLabel3.setText("Bookshelf :");
 
         jPanelImagePanelBanner.setMaximumSize(new java.awt.Dimension(75, 75));
 
@@ -377,20 +380,41 @@ public class LibraryStatus extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         System.out.println("table prints this");// TODO add your handling code here:
-
-        System.err.println("Event trigered : " + evt);
+        String button = "none";
+        System.out.println("Event trigered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
             // your valueChanged overridden method 
 
             System.out.println(jTable1.getSelectedRow());
             // DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
-            DisplayBookForm displayBookForm = new DisplayBookForm(user, bookList.get(jTable1.getSelectedRow()), true);
+            Read read = new Read();
+            Book book = bookList.get(jTable1.getSelectedRow());//book
 
-            // BookDisplay currentBookDisplay = new BookDisplay();
-            ///       try {
-            //            currentBookDisplay.setBook(bookArrayList.get(Integer.valueOf(bookListJTable.getValueAt(bookListJTable.getSelectedRow(), 0).toString())));
-            // //        } catch (Exception e) {
-            //              e.printStackTrace();
+            String userId = user.getUserId();
+            String bookId = String.valueOf(book.getBookId());///get the loan of this book to compare with this users
+
+            Loan lastLoan = read.readLatestLoanByBookId(book);
+            if (lastLoan.getReturnedDate().equalsIgnoreCase("0-0-0")) {
+                if (lastLoan.getUserId().equalsIgnoreCase(userId)) {
+                    button ="returns";                   
+                }
+                System.out.println("Not alavlible , a user cutrently has this book");
+                System.out.println("This is the return due date : " +lastLoan.getReturnedDate());
+                System.out.println("Currnetly out on loan with User id : " +lastLoan.getUserId());
+            } else {
+                System.out.println("Book avalible to loan");
+                button = "loan";
+            }
+
+           
+
+            System.out.println("Current Book id : " +book.getBookId());
+            System.out.println("Currnet User id : " +user.getUserId());
+            
+
+            System.out.println("Button is set to : "+button);
+
+            DisplayBookForm displayBookForm = new DisplayBookForm(user, bookList.get(jTable1.getSelectedRow()), button);// means display loan buton
         }
 
 
@@ -425,9 +449,17 @@ public class LibraryStatus extends javax.swing.JFrame {
 
     private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
         // TODO add your handling code here:
+        int userAccessLevel = Integer.valueOf(user.getAccessLevel());
+        if (userAccessLevel>0) {
         CRUDGui cRUDGui = new CRUDGui();
         cRUDGui.setVisible(rootPaneCheckingEnabled);
         cRUDGui.setAutoRequestFocus(true);
+        }
+        else
+        {
+        JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "you Do not have sufficent privliages to acces this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         //  cRUDGui.set
         // this.setVisible(true);
         // this.dispose();
@@ -438,6 +470,8 @@ public class LibraryStatus extends javax.swing.JFrame {
         Read read = new Read();
         //   DisplayBookForm displayBookForm = new DisplayBookForm(user, read.loanBookByTitle(), rootPaneCheckingEnabled);
         BookingForm bookingForm = new BookingForm(user, read.loanBookByTitle());
+        bookingForm.setVisible(true);
+        bookingForm.setAutoRequestFocus(true);
 
 
     }//GEN-LAST:event_jMenuItemNewLoanActionPerformed
@@ -452,7 +486,7 @@ public class LibraryStatus extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-         SwingUtilities.updateComponentTreeUI(this);
+        SwingUtilities.updateComponentTreeUI(this);
         this.invalidate();
         this.validate();
         this.repaint();
@@ -479,14 +513,22 @@ public class LibraryStatus extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LibraryStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookshelfDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LibraryStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookshelfDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LibraryStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookshelfDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LibraryStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookshelfDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -500,7 +542,7 @@ public class LibraryStatus extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LibraryStatus().setVisible(true);
+                new BookshelfDisplay().setVisible(true);
                 Read read = new Read();
                 //read.readAllBooks();
                 //bookListForm = new BookListForm(read.readAllBooks());

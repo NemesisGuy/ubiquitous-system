@@ -30,6 +30,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
      * Creates new form CreateBookForm
      */
     public UpdateBookForm() {
+        setTitle("Ubiquitous System" +" - " + "Update Book");
         initComponents();
     }
 
@@ -42,6 +43,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
             this.description = description;
             this.rating = rating;
             this.imageLink = imageLink;
+            setTitle("Ubiquitous System" +" - " + "Update Book"+" - "+ title );
             initComponents();
             jTextFieldTitle.setText(title);
             jTextFieldSubTitle.setText(subtTitle);
@@ -71,6 +73,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
             this.description = book.getDescription();
             this.rating = book.getRating();
             this.imageLink = book.getImageLink();
+            setTitle("Ubiquitous System" +" - " + "Update Book"+" - "+ title );
             initComponents();
             jTextFieldTitle.setText(title);
             jTextFieldSubTitle.setText(subtTitle);
@@ -80,9 +83,11 @@ public class UpdateBookForm extends javax.swing.JFrame {
             jTextFieldImageLink.setText(imageLink);
             URL url = new URL(imageLink);
             Image image = ImageIO.read(url);
-            ImageIcon imageIcon;
-            jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
-        } catch (MalformedURLException ex) {
+            if (image!=null){
+                ImageIcon imageIcon;
+                jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
+            }
+            } catch (MalformedURLException ex) {
             Logger.getLogger(UpdateBookForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(UpdateBookForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -168,7 +173,6 @@ public class UpdateBookForm extends javax.swing.JFrame {
 
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTextAreaDescription.setEditable(false);
         jTextAreaDescription.setColumns(20);
         jTextAreaDescription.setLineWrap(true);
         jTextAreaDescription.setRows(5);

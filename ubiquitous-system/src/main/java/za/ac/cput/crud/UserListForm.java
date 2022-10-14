@@ -22,10 +22,12 @@ ArrayList<User> userList;
      * Creates new form UserListForm
      */
     public UserListForm() {
+        setTitle("Ubiquitous System" +" - " + "User List");
         initComponents();
     }
 
     public UserListForm(ArrayList<User> userList) {
+        setTitle("Ubiquitous System" +" - " + "User List");
         initComponents();
         //loop though list to poulate table
         this.userList = userList;

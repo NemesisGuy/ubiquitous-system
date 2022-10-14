@@ -23,7 +23,11 @@ public class Dates {
         System.out.println(dates.getFormattedEndDate());        
         
     }
-
+    public String getFormattedCurrentDate() {
+        LocalDate startingDate = LocalDate.now();
+        return startingDate.toString();
+        
+    }
     public String getFormattedStartDate() {
         LocalDate startingDate = LocalDate.now();
         return startingDate.toString();

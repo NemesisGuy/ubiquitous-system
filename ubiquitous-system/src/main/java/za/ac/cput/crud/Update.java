@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilities.Dates;
+import utilities.Loan;
 
 /**
  * @author Peter Buckingham
@@ -179,4 +181,41 @@ public class Update {
             
         }
     }
+    public void updateLoan(Loan loan) {
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        //String bookToUpdate = null;
+      
+        
+
+        Connection conn = databaseConnection.getDatabaseConnection();
+        String loanId = loan.getLoanId();
+        String date = "0-0-0";
+        
+        
+    
+         String sql = "UPDATE bookloanstable SET returned=?  WHERE id='" + loanId +"' ";
+        Dates dates = new Dates();
+        PreparedStatement statement = null;
+    try {
+        
+            statement = conn.prepareStatement(sql);
+            
+            statement.setString(1, dates.getFormattedCurrentDate());
+            
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "An existing loan with the ID of: " + loanId + " was updated successfully!");
+                System.out.println("An existing loan with the ID of: " + loanId +" was updated successfully! returned on : " + dates.getFormattedCurrentDate());
+                conn.close();
+            }else{
+            JOptionPane.showMessageDialog( null, "error occoured loan not found", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
+                LOGGER.warning("Warring user attemped updating a Loan that does not esist! ");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Update.class.getName()).log(Level.SEVERE, null, ex);
+            //LOGGER.info("Logging an INFO-level message");
+        }
+    }
+
 }

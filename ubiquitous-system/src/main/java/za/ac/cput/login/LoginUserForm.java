@@ -7,7 +7,7 @@ package za.ac.cput.login;
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import za.ac.cput.Bookings.LibraryStatus;
+import za.ac.cput.bookshelf.BookshelfDisplay;
 import za.ac.cput.crud.CRUDGui;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
@@ -24,6 +24,7 @@ public class LoginUserForm extends javax.swing.JFrame {
      * Creates new form registerForm
      */
     public LoginUserForm() {
+        setTitle("Ubiquitous System" +" - " + "Login Form" );
         initComponents();
     }
 
@@ -54,6 +55,7 @@ public class LoginUserForm extends javax.swing.JFrame {
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
         jPanelBottom.setForeground(new java.awt.Color(0, 0, 0));
 
+        jButtonLogin.setMnemonic('L');
         jButtonLogin.setText("Login");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +248,7 @@ public class LoginUserForm extends javax.swing.JFrame {
 
             this.dispose();
             read.readAllBooks();
-            LibraryStatus libraryStatus = new LibraryStatus(user, read.readAllBooks());////////add user as an arg 
+            BookshelfDisplay libraryStatus = new BookshelfDisplay(user, read.readAllBooks());////////add user as an arg 
             libraryStatus.setVisible(rootPaneCheckingEnabled);
         }
 
@@ -325,7 +327,11 @@ public class LoginUserForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginUserForm().setVisible(true);
+               LoginUserForm loginUserForm = new LoginUserForm();
+             
+               loginUserForm.setTitle("Ubiquitous System" +" - " + "Login Form" );
+               loginUserForm.setVisible(true);
+                
             }
         });
     }

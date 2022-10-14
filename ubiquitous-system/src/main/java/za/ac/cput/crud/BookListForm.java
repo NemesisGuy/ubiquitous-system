@@ -24,6 +24,7 @@ public class BookListForm extends javax.swing.JFrame {
      * Creates new form UserListForm
      */
     public BookListForm() {
+        setTitle("Ubiquitous System" +" - " + "Booklist" );
         initComponents();
     }
 
@@ -255,7 +256,7 @@ public class BookListForm extends javax.swing.JFrame {
             // your valueChanged overridden method 
 
             System.out.println(jTable1.getSelectedRow());
-            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
+            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()),"none");
 
             // BookDisplay currentBookDisplay = new BookDisplay();
             ///       try {

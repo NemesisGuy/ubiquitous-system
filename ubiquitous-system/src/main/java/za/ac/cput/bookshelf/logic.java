@@ -2,7 +2,7 @@
  *     
  * 
  */
-package za.ac.cput.Bookings;
+package za.ac.cput.bookshelf;
 
 /**
  *

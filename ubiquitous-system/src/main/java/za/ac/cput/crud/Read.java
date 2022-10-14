@@ -4,7 +4,6 @@
  */
 package za.ac.cput.crud;
 
-import com.google.api.client.testing.json.AbstractJsonParserTest;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilities.Loan;
 
 /**
  * @author Peter Buckingham
@@ -39,10 +39,10 @@ public class Read {
 
             int count = 0;
             String output = "Connected: \n";
-            if (!result.isBeforeFirst()) {
+            if (!result.isBeforeFirst()) {//id DB give data back ? if not do this...
                 JOptionPane.showMessageDialog(null, "Error : The book titled " + inputTitle + " was not found!");
                 System.out.println("No data");
-            } else {
+            } else {///dose have data do this
                 while (result.next()) {
                     title = result.getString(2);
                     subTitle = result.getString(3);
@@ -140,7 +140,7 @@ public class Read {
             String output = "Connected: \n";
 
             while (result.next()) {
-                 String id = result.getString(1);
+                String id = result.getString(1);
                 String title = result.getString(2);
                 String subTitle = result.getString(3);
                 String author = result.getString("author");
@@ -150,7 +150,7 @@ public class Read {
                 String imageLink = result.getString(8);
 
                 output = output + ++count + " " + title + " " + subTitle + " " + author + " " + ISBN + " " + rating + " \n" + description + "\n" + imageLink;
-                bookList.add(new Book(Integer.valueOf(id),title, subTitle, ISBN, author, description, rating, imageLink));
+                bookList.add(new Book(Integer.valueOf(id), title, subTitle, ISBN, author, description, rating, imageLink));
             }
             conn.close();
             //  JOptionPane.showMessageDialog(null, output);
@@ -334,15 +334,15 @@ public class Read {
                         conn.close();
                         return user;
                     } else {
-                        System.out.println("Missmatch ");
-                    JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                        System.out.println("Missmatch - close ");
 
                     }
 
-                    System.out.println("Missmatch ");
-
                 }
+                System.out.println("Missmatch ");
             }
+            // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,4 +355,316 @@ public class Read {
 
     }
 
+    public Loan readUserCurrentLaon(String userId) {
+        int userIdInt = Integer.parseInt(userId);
+        Loan loan = null;
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("User data found!");
+
+                if (result.isLast()) {
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+
+                } else {
+                    //  System.out.println("Missmatch ");
+                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                    //  System.out.println("Missmatch ");
+                }
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public Loan readUserLoanByBookTitle(String userId, Book book) {
+        int userIdInt = Integer.parseInt(userId);
+        int bookId = book.getBookId();
+        Loan loan = null;
+        String date = "0-0-0";
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
+        //  String sql = "UPDATE bookloanstable SET returned=?  WHERE id=" + loanId +" AND returned !='"+date +"'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("User data found!");
+
+                if (result.getString("bookId").equalsIgnoreCase(String.valueOf(bookId)) && result.getString("returned").equalsIgnoreCase(String.valueOf(date))) {
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                    System.out.println("Book Id found!" + loan.getBookId());
+                    System.out.println("User ID found!" + loan.getUserId());
+                    System.out.println("Returned Date found!" + loan.getReturnedDate());
+
+                    conn.close();
+                    return loan;
+
+                }
+                //  System.out.println("Missmatch ");
+                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                //  System.out.println("Missmatch ");
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public Loan readUserLoanByBookTitle(String userId, String bookId) {
+        int userIdInt = Integer.parseInt(userId);
+        int bookIdint = Integer.parseInt(bookId);
+        Loan loan = null;
+        String date = "0-0-0";
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
+        //  String sql = "UPDATE bookloanstable SET returned=?  WHERE id=" + loanId +" AND returned !='"+date +"'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("User data found!");
+
+                if (result.getString(3).equalsIgnoreCase(bookId) && result.getString(6).equalsIgnoreCase(date)) {
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                    System.out.println("Loan ID found = " + loan.getLoanId());
+                    System.out.println("Book ID found = " + loan.getBookId());
+                    System.out.println("User ID found = " + loan.getUserId());
+                    System.out.println("Returned Date found = " + loan.getReturnedDate());
+                    System.out.println("Was retruned as Loan! ");
+
+                    conn.close();
+                    return loan;
+
+                }
+                //  System.out.println("Missmatch ");
+                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                //  System.out.println("Missmatch ");
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public Loan readOutstandingUserLoanByBookId(String userId, Book book) {
+        int userIdInt = Integer.parseInt(userId);
+        Loan loan = null;
+        String bookid = String.valueOf(book.getBookId());
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("User data found!");
+
+                if (result.getString("returned").equalsIgnoreCase("false") || result.getString("returned").equalsIgnoreCase("0-0-0")) {
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                    break;
+                } else {
+                    //  System.out.println("Missmatch ");
+                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                    //  System.out.println("Missmatch ");
+                }
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public ArrayList<Loan> readLaonByBookId(String bookId) {
+        int bookIdInt = Integer.parseInt(bookId);
+        ArrayList<Loan> loanList = new ArrayList<Loan>();
+        User user = new User();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //     String sql = "SELECT * FROM usertable";
+        String sql = "SELECT * FROM bookloanstable WHERE bookId='" + bookId + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+            String output = "Connected: \n";
+
+            while (result.next()) {
+                String Id = result.getString(1);
+                String userId = result.getString(2);
+                String bookIddbd = result.getString(3);
+                String loanFromDate = result.getString(4);
+                String dueOnDate = result.getString(5);
+                String returned = result.getString(6);
+
+                //  output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
+                loanList.add(new Loan(Id, userId, bookIddbd, loanFromDate, dueOnDate, returned));
+                System.out.println("dueOnDate : " + dueOnDate);
+
+            }
+            conn.close();
+            JOptionPane.showMessageDialog(null, output);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loanList;
+
+    }
+
+    public Loan readLatestLoanByBookId(Book book) {
+
+        Loan loan = null;
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+        String sql = "SELECT * FROM bookloanstable WHERE bookId='" + book.getBookId() + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("book loan data found!");
+
+                if (result.isLast()) {
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+
+                } else {
+                    //  System.out.println("Missmatch ");
+                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                    //  System.out.println("Missmatch ");
+                }
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public Loan readIsBookAvalible(Book book) {
+
+        Loan loan = null;
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+        String sql = "SELECT * FROM bookloanstable WHERE bookId='" + book.getBookId() + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("Loan data found!");
+                if (result.getString("returned").equalsIgnoreCase("false") || result.getString("returned").equalsIgnoreCase("0-0-0")) {
+
+                    System.out.println("Book not avalible");
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                } else {
+                    //  System.out.println("Missmatch ");
+                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                    //  System.out.println("Missmatch ");
+                    System.out.println("Book avalible");
+
+                }
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loan;
+
+    }
+
+    public ArrayList<Loan> readUserLoanByUserId(User user) {
+
+        ArrayList<Loan> loanList = new ArrayList<Loan>();
+        // User user = new User();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //     String sql = "SELECT * FROM usertable";
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + user.getUserId() + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+            String output = "Connected: \n";
+
+            while (result.next()) {
+                String Id = result.getString(1);
+                String userId = result.getString(2);
+                String bookIddbd = result.getString(3);
+                String loanFromDate = result.getString(4);
+                String dueOnDate = result.getString(5);
+                String returned = result.getString(6);
+
+                //  output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
+                loanList.add(new Loan(Id, userId, bookIddbd, loanFromDate, dueOnDate, returned));
+                System.out.println("loan Id : " + Id + "\tBook Id : " + bookIddbd + "\t dueOnDate : " + dueOnDate);
+
+            }
+            conn.close();
+            JOptionPane.showMessageDialog(null, output);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loanList;
+
+    }
 }

@@ -37,6 +37,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
      * Creates new form LoadingSplashScreen
      */
     public LoadingSplashScreen() {
+        setTitle("Ubiquitous System" +" - " + "Welcome" );
         initComponents();
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -134,6 +135,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         loadingProgressBarLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ubiqutious System - Loading");
         setBackground(new java.awt.Color(250, 249, 246));
         setIconImage(displayFrameImageIcon());
 

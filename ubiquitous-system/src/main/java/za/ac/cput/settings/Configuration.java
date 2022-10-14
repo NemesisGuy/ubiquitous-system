@@ -32,19 +32,7 @@ import javax.swing.JOptionPane;
 public class Configuration {
 
     public static void main(String[] args) {
-//        String[][] configsTestArr = {{"db.url", "db.user", "db.password"},
-//        {"localhost", "root", "password"}};
-//    //    Map<String, String> map = new HashMap<String, String>();
-        //       Path path = Paths.get("/settings/");
-//  //      map.put("db.connectionName", "test");
-//  //      map.put("db.url", "test");
-// //       map.put("db.port", "80");
-// //       map.put("db.name", "Library");
-// //       map.put("db.user", "test");
-////        map.put("db.password", "example");
 
-        //  Configuration configuration = new Configuration();
-        //    configuration.writeConfig(path,"Database-Connection", map);
     }
 
     public void intiDefaultConfigs() {

@@ -20,6 +20,7 @@ public class CreateBookForm extends javax.swing.JFrame {
      * Creates new form CreateBookForm
      */
     public CreateBookForm() {
+        setTitle("Ubiquitous System" +" - " + "Create a Book" );
         initComponents();
     }
     public static CreateBookForm createBookForm  = new CreateBookForm();

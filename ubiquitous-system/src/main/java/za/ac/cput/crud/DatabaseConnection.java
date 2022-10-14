@@ -22,8 +22,9 @@ import za.ac.cput.settings.Configuration;
 public class DatabaseConnection {
 //derby port 1527
 
-    public Connection getDatabaseConnection() {
+   
 
+    public Connection getDatabaseConnection() {
         String fileName = "Database-Connection.properties";
         Path path = Paths.get("resources/settings/" + fileName);
         Path folderPath = Paths.get("resources/settings/");

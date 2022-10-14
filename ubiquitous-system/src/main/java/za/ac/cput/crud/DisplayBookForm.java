@@ -19,7 +19,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import za.ac.cput.Bookings.BookingForm;
+import utilities.Loan;
+import za.ac.cput.bookshelf.BookingForm;
+import za.ac.cput.bookshelf.ReturnBookingForm;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 
@@ -27,38 +29,62 @@ public class DisplayBookForm extends javax.swing.JFrame {
 
     public static String myBookTitle, subtTitle, author, description, rating, imageLink;
     public Boolean displayBookLoanButton = false;
-    public Book book =  null; 
-    public User user =  null;
+    public Book book = null;
+    public User user = null;
+
     /**
-     * Creates new form CreateBookForm
+     * Creates new form BookDisplayForm
      */
     public DisplayBookForm() {
+        setTitle("Ubiquitous System" +" - " + "Book Display"  );
         initComponents();
     }
-     public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn) {
+
+    public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn) {
+       
         myBookTitle = titleIn;
         subtTitle = subtTitleIn;
         author = authorIn;
         description = descriptionIn;
         rating = ratingIn;
         imageLink = imageLinkIn;
+         setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
         initComponents();
     }
 
     //  create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
     //  public static DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
     //  public  DisplayBookForm displayBookForm = new DisplayBookForm("Hyperion ", "Space books ", "Dan Simmions", "The book that reinvented Space Opera, from the Hugo and World Fantasy Award-winning author of The Terror, which is now a chilling TV show. It is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.  ", "4", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405546838l/77566.jpg");
-    public DisplayBookForm(Book book) {
+    public DisplayBookForm(Book book, String displayBookButtons) {
         try {
+            
             this.book = book;
             myBookTitle = book.getTitle();
+            
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
             description = book.getDescription();
             rating = book.getRating();
             imageLink = book.getImageLink();
+            setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
             this.setVisible(true);
             initComponents();
+            switch (displayBookButtons) {
+                case "loan":
+
+                    jButtonLoan.setVisible(true);
+                    jButtonReturn.setVisible(false);
+                    break;
+                case "returns":
+
+                    jButtonLoan.setVisible(false);
+                    jButtonReturn.setVisible(true);
+                    break;
+                default:
+                    jButtonLoan.setVisible(false);
+                    jButtonReturn.setVisible(false);
+                    ;
+            }
 
             jLabelTitle.setText(myBookTitle);
             jLabelSubTitle.setText(subtTitle);
@@ -78,20 +104,45 @@ public class DisplayBookForm extends javax.swing.JFrame {
         }
     }
 
-    public DisplayBookForm(User user,Book book, Boolean displayBookLoanButton) {
+    public DisplayBookForm(User user, Book book, String displayBookButtons) {
         try {
+            
             this.book = book;
-            this.user =user;
+            this.user = user;
             myBookTitle = book.getTitle();
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
             description = book.getDescription();
             rating = book.getRating();
             imageLink = book.getImageLink();
-            
+            setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
+
             this.setVisible(true);
+            
             initComponents();
-            jButtonLoan.setVisible(displayBookLoanButton);
+            switch (displayBookButtons) {
+                case "loan":
+
+                    jButtonLoan.setVisible(true);
+                    jButtonReturn.setVisible(false);
+                    break;
+                case "returns":
+
+                    jButtonLoan.setVisible(false);
+                    jButtonReturn.setVisible(true);
+                    break;
+                case "none":
+
+                    jButtonLoan.setVisible(false);
+                    jButtonReturn.setVisible(false);
+                    break;
+                default:
+                    jButtonLoan.setVisible(false);
+                    jButtonReturn.setVisible(false);
+                    
+            }
+
+            //jButtonLoan.setVisible(displayBookLoanButton);
             jLabelTitle.setText(myBookTitle);
             jLabelSubTitle.setText(subtTitle);
             jLabelAuthor.setText(author);
@@ -102,9 +153,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
             Image image = ImageIO.read(url);
             ImageIcon imageIcon;
             jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
-           
-           
-            
+
         } catch (MalformedURLException ex) {
             Logger.getLogger(DisplayBookForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -180,6 +229,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
         jPanelBottom = new javax.swing.JPanel();
         jButtonClose = new javax.swing.JButton();
         jButtonLoan = new javax.swing.JButton();
+        jButtonReturn = new javax.swing.JButton();
         jPanelTop = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanelImagePanelBanner1 = new javax.swing.JPanel();
@@ -264,7 +314,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jPanelImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanelMidLayout.setVerticalGroup(
             jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,6 +357,16 @@ public class DisplayBookForm extends javax.swing.JFrame {
             }
         });
 
+        jButtonReturn.setMnemonic('C');
+        jButtonReturn.setText("Return");
+        jButtonReturn.setToolTipText("Click to Loan This Book");
+        jButtonLoan.setVisible(displayBookLoanButton);
+        jButtonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReturnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBottomLayout = new javax.swing.GroupLayout(jPanelBottom);
         jPanelBottom.setLayout(jPanelBottomLayout);
         jPanelBottomLayout.setHorizontalGroup(
@@ -314,7 +374,9 @@ public class DisplayBookForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBottomLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonLoan)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonReturn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonClose)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -324,7 +386,8 @@ public class DisplayBookForm extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonClose)
-                    .addComponent(jButtonLoan))
+                    .addComponent(jButtonLoan)
+                    .addComponent(jButtonReturn))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -402,7 +465,9 @@ public class DisplayBookForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,14 +488,27 @@ public class DisplayBookForm extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoanActionPerformed
         // TODO add your handling code here:
-        BookingForm bookingForm  = new BookingForm(user,book);
-       bookingForm.setVisible(true);
-     //  bookingForm.setFont(getFont());
+        BookingForm bookingForm = new BookingForm(user, book);
+        bookingForm.setVisible(true);
+        //  bookingForm.setFont(getFont());
     }//GEN-LAST:event_jButtonLoanActionPerformed
+
+    private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
+        // TODO add your handling code here:
+        ///return books here
+        Loan loan = new Loan(user, book);
+        Read read = new Read();
+        loan = read.readOutstandingUserLoanByBookId(user.getUserId(), book);
+
+        ReturnBookingForm returnBookingForm = new ReturnBookingForm(user, book, loan);
+        returnBookingForm.setVisible(true);
+
+    }//GEN-LAST:event_jButtonReturnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,6 +563,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonLoan;
+    private javax.swing.JButton jButtonReturn;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAuthor;
     private javax.swing.JLabel jLabelPicture;
