@@ -16,6 +16,10 @@ import java.util.Calendar;
  */
 public class Dates {
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         
         Dates dates = new Dates();
@@ -23,17 +27,31 @@ public class Dates {
         System.out.println(dates.getFormattedEndDate());        
         
     }
+
+    /**
+     *
+     * @return
+     */
     public String getFormattedCurrentDate() {
         LocalDate startingDate = LocalDate.now();
         return startingDate.toString();
         
     }
+
+    /**
+     *
+     * @return
+     */
     public String getFormattedStartDate() {
         LocalDate startingDate = LocalDate.now();
         return startingDate.toString();
         
     }
     
+    /**
+     *
+     * @return
+     */
     public String getFormattedEndDate() {
         LocalDate startingDate = LocalDate.now();
         LocalDate endingDate = startingDate.plusDays(7);

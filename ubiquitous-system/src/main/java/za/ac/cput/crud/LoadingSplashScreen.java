@@ -292,6 +292,10 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 
     }
 
+    /**
+     *
+     * @param selectedFile
+     */
     public void displayLogoBanner(File selectedFile) {
         URL url;
         //pull from config file
@@ -312,6 +316,10 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 
     }
 
+    /**
+     *
+     * @param selectedFileUrl
+     */
     public void displayLogoBanner(URL selectedFileUrl) {
 
         // System.out.println(selectedFile.getAbsolutePath());
@@ -327,6 +335,10 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     *
+     */
     public void displayBanner() {
         URL url;
         //   url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\OpenBookLogo.jpg");
@@ -342,11 +354,19 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         displayLogoBanner(url);
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
 
+    /**
+     *
+     */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

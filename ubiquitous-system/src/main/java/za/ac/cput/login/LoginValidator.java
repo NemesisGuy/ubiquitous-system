@@ -15,6 +15,10 @@ import org.apache.commons.validator.EmailValidator;
  */
 public class LoginValidator {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         LoginValidator validator = new LoginValidator();
         String emailAddress = "username@domain.com";
@@ -23,6 +27,11 @@ public class LoginValidator {
         System.out.println(validator.isValidPassword("test@1234"));
     }
 
+    /**
+     *
+     * @param emailAddress
+     * @return
+     */
     public boolean isEmailValid(String emailAddress) {
         //  String emailAddress = "username@domain.com";
 
@@ -31,11 +40,22 @@ public class LoginValidator {
 
     }
 
+    /**
+     *
+     * @param email
+     * @param emailConfirm
+     * @return
+     */
     public boolean compareEmails(String email, String emailConfirm) {
         return email.equals(emailConfirm);
     }
     // Function to validate the password.
 
+    /**
+     *
+     * @param password
+     * @return
+     */
     public boolean isValidPassword(String password) {
 
         // Regex to check valid password.
@@ -63,6 +83,12 @@ public class LoginValidator {
         return m.matches();
     }
 
+    /**
+     *
+     * @param password
+     * @param comfirmPassword
+     * @return
+     */
     public boolean comparePasswords(String password, String comfirmPassword) {
         if (password.equals(comfirmPassword)) {
             return true;

@@ -39,65 +39,129 @@ public class BookDisplay {
     private String imageLink;
     private BufferedImage coverImage;
 
+    /**
+     *
+     */
     public BookDisplay() {
     }
 
+    /**
+     *
+     * @param book
+     */
     public BookDisplay(Book book) {
         this.book = book;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImageLink() {
         return imageLink;
     }
 
+    /**
+     *
+     * @param imageLink
+     */
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
 
+    /**
+     *
+     * @return
+     */
     public BufferedImage getCoverImage() {
         return coverImage;
     }
 
+    /**
+     *
+     * @param coverImage
+     */
     public void setCoverImage(BufferedImage coverImage) {
         this.coverImage = coverImage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTile() {
         return tile;
     }
 
+    /**
+     *
+     * @param tile
+     */
     public void setTile(String tile) {
         this.tile = tile;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     *
+     * @param author
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIsbn() {
         return isbn;
     }
 
+    /**
+     *
+     * @param isbn
+     */
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
+    /**
+     *
+     * @param book
+     */
     public void setBook(Book book) {
         this.book = book;
     }
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         //     String searchTerm = "8mile";
         BookDisplay bookDisplay = new BookDisplay();
@@ -107,6 +171,11 @@ public class BookDisplay {
 
     }
 
+    /**
+     *
+     * @throws MalformedURLException
+     * @throws IOException
+     */
     public void displayBook() throws MalformedURLException, IOException {
         // String imageUrl = "https://covers.openlibrary.org/b/isbn/9781118957424-L.jpg";
         JFrame bookFrame = new JFrame("Libirary System - Book Details : ");

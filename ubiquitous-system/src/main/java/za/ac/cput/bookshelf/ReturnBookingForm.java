@@ -37,6 +37,12 @@ public class ReturnBookingForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     *
+     * @param user
+     * @param book
+     * @param loan
+     */
     public ReturnBookingForm(User user, Book book, Loan loan) {
         this.book = book;
         this.user = user;
@@ -361,11 +367,19 @@ public class ReturnBookingForm extends javax.swing.JFrame {
     private void jTextFieldDateReturnedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateReturnedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDateReturnedActionPerformed
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
 
+    /**
+     *
+     */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

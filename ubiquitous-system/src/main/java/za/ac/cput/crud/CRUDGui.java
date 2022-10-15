@@ -17,11 +17,19 @@ import za.ac.cput.settings.SystemSettingsConectionsForm;
  * @author Peter Buckingham
  */
 public class CRUDGui extends javax.swing.JFrame {
+
+    /**
+     *
+     */
     public static User user;
     /**
      * Creates new form CRUDGui
+     * @param user
      */
     public CRUDGui(User user) {
+        //constructor with signature : public CRUDGui(User user);
+        //constructor with parameters : User user
+        //constructor description : Creates new form CRUDGui with user parameter , sets the title of the frame
         this.user = user;
         setTitle("Ubiquitous System" +" - " + "CRUD Control Panel" );
         if (Integer.getInteger(user.getAccessLevel())>0) {
@@ -29,7 +37,14 @@ public class CRUDGui extends javax.swing.JFrame {
         }else{System.err.println("you do not have access to this, please contact the system admin!");}
        // initComponents();
     }
+
+    /**
+     *
+     */
     public CRUDGui() {
+        //constructor with signature : public CRUDGui();
+        //constructor with parameters : none
+        //constructor description : Creates new form CRUDGui with no parameters , creates some objects
        
         initComponents();
     }
@@ -415,28 +430,48 @@ public class CRUDGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteUserActionPerformed
+        //JButtonDeleteUserActionPerformed method parameters : ActionEvent evt
+        //jButtonDeleteUserActionPerformed method signature : public void jButtonDeleteUserActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonDeleteUserActionPerformed method return type : void
+        //JButtonDeleteUserActionPerformed method description : This method is called when the user clicks on the Delete User button. It deletes the user from the database.
         Delete delete = new Delete();
-        delete.deleteUser();        // TODO add your handling code here:
+        delete.deleteUser();
     }//GEN-LAST:event_jButtonDeleteUserActionPerformed
 
     private void jButtonDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteBookActionPerformed
+        //JButtonDeleteBookActionPerformed method parameters : ActionEvent evt
+        //  JButtonDeleteBookActionPerformed method signature : void jButtonDeleteBookActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonDeleteBookActionPerformed method return type : void
+        //JButtonDeleteBookActionPerformed method description : This method is called when the user clicks on the Delete Book button. It deletes the book from the database.
         Delete delete = new Delete();
-        delete.deleteBook();// TODO add your handling code here:
+        delete.deleteBook();
     }//GEN-LAST:event_jButtonDeleteBookActionPerformed
 
     private void jButtonSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchBookActionPerformed
+        //JButtonSearchBookActionPerformed method parameters : ActionEvent evt
+        //JButtonSearchBookActionPerformed method signature : void jButtonSearchBookActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonSearchBookActionPerformed method return type : void
+         //JButtonSearchBookActionPerformed method description : This method is called when the user clicks on the Search Book button. It searches the book from the database.
 
         Read read = new Read();
-        read.readBookByTitle();// TODO add your handling code here:
+        read.readBookByTitle();
     }//GEN-LAST:event_jButtonSearchBookActionPerformed
 
     private void jButtonSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchUserActionPerformed
-        // TODO add your handling code here:
+        //  JButtonSearchUserActionPerformed method parameters : ActionEvent evt
+        //JButtonSearchUserActionPerformed method signature : void jButtonSearchUserActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonSearchUserActionPerformed method return type : void
+        //JButtonSearchUserActionPerformed method description : This method is called when the user clicks on the Search User button. It searches the user from the database.
+
         Read read = new Read();
         read.readUserByName();
     }//GEN-LAST:event_jButtonSearchUserActionPerformed
 
     private void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateUserActionPerformed
+        //JButtonUpdateUserActionPerformed method parameters : ActionEvent evt
+        //JButtonUpdateUserActionPerformed method signature : void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonUpdateUserActionPerformed method return type : void
+        //JButtonUpdateUserActionPerformed method description : This method is called when the user clicks on the Update User button. It updates the user in the database.
 
         //find user  
         //update user
@@ -444,27 +479,40 @@ public class CRUDGui extends javax.swing.JFrame {
         User user = read.readUserByName();
         updateUserForm = new UpdateUserForm(user);
         updateUserForm.setVisible(rootPaneCheckingEnabled);
-        //updateUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
-
         Update update = new Update();
-        // update.updateUser();       // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonUpdateUserActionPerformed
 
     private void jButtonUserListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserListActionPerformed
+        //JButtonUserListActionPerformed method parameters : ActionEvent evt
+        //JButtonUserListActionPerformed method signature : void jButtonUserListActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonUserListActionPerformed method return type : void
+        //JButtonUserListActionPerformed method description : This method is called when the user clicks on the User List button. It displays the list of users in the database.
+
         Read read = new Read();
         UserListForm userListForm = new UserListForm(read.readAllUsers());
         userListForm.setVisible(rootPaneCheckingEnabled);
         userListForm.setAlwaysOnTop(rootPaneCheckingEnabled);
 
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonUserListActionPerformed
 
     private void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUserActionPerformed
+        //JButtonAddUserActionPerformed method parameters : ActionEvent evt
+        //JButtonAddUserActionPerformed method signature : void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonAddUserActionPerformed method return type : void
+        //JButtonAddUserActionPerformed method description : This method is called when the user clicks on the Add User button. It adds the user to the database.
+
         createUserForm.setVisible(rootPaneCheckingEnabled);
         createUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButtonAddUserActionPerformed
 
     private void jButtonUpdateBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateBookActionPerformed
+        //JButtonUpdateBookActionPerformed method parameters : ActionEvent evt
+        //JButtonUpdateBookActionPerformed method signature : void jButtonUpdateBookActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonUpdateBookActionPerformed method return type : void
+        //JButtonUpdateBookActionPerformed method description : This method is called when the user clicks on the Update Book button. It updates the book in the database.
+
         //read book 
         Read read = new Read();
         Book book = read.readBookByTitle();
@@ -480,11 +528,15 @@ public class CRUDGui extends javax.swing.JFrame {
         ////////////// Update update = new Update();
         ////////////// update.updateBook();
         // if book found then diplay book details with form
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonUpdateBookActionPerformed
 
     private void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBookListActionPerformed
-        // TODO add your handling code here:
+        //JButtonBookListActionPerformed method parameters : ActionEvent evt
+        //JButtonBookListActionPerformed method signature : void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonBookListActionPerformed method return type : void
+        //JButtonBookListActionPerformed method description : This method is called when the user clicks on the Book List button. It displays the list of books in the database.
+
         Read read = new Read();
         //read.readAllBooks();
         BookListForm bookListForm = new BookListForm(read.readAllBooks());
@@ -493,15 +545,25 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBookListActionPerformed
 
     private void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBookActionPerformed
+
+        //JButtonAddBookActionPerformed method parameters : ActionEvent evt
+        //JButtonAddBookActionPerformed method signature : void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt)
+        //JButtonAddBookActionPerformed method return type : void
+        //JButtonAddBookActionPerformed method description : This method is called when the user clicks on the Add Book button. It adds the book to the database.
+
         createBookForm.setVisible(rootPaneCheckingEnabled);
         createBookForm.setAlwaysOnTop(rootPaneCheckingEnabled);
         //  Create create = new Create();
         //create.createBook();/////
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonAddBookActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-        // TODO add your handling code here:
+        //  jButtonCancelActionPerformed method parameters : ActionEvent evt
+        //  jButtonCancelActionPerformed method signature : void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt)
+        //  jButtonCancelActionPerformed method return type : void
+        //  jButtonCancelActionPerformed method description : This method is called when the user clicks on the Cancel button. It closes the application.
+
         this.setVisible(false);
         this.dispose();
       //  exit();
@@ -509,11 +571,16 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void windowClosingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosingHandler
+        //  windowClosingHandler method parameters : WindowEvent evt
+        //  windowClosingHandler method signature : void windowClosingHandler(java.awt.event.WindowEvent evt)
+        //  windowClosingHandler method return type : void
+        //  windowClosingHandler method description : This method is called when the user clicks on the X button. It closes the application.
+
         this.setVisible(false);
         this.dispose();
       //  exit();
 
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_windowClosingHandler
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -525,7 +592,11 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemUserProfileActionPerformed
 
     private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
-        // TODO add your handling code here:
+        // jMenuItemCRUDActionPerformed method parameters : ActionEvent evt
+        // jMenuItemCRUDActionPerformed method signature : void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt)
+        // jMenuItemCRUDActionPerformed method return type : void
+        // jMenuItemCRUDActionPerformed method description : This method is called when the user clicks on the CRUD button. It displays the CRUD form.
+
         CRUDGui cRUDGui =  new CRUDGui(user);
         cRUDGui.setVisible(rootPaneCheckingEnabled);
         this.setVisible(false);
@@ -533,14 +604,21 @@ public class CRUDGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCRUDActionPerformed
 
     private void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConnectivityActionPerformed
-        // TODO add your handling code here:
+        //  jMenuItemConnectivityActionPerformed method parameters : ActionEvent evt
+        //  jMenuItemConnectivityActionPerformed method signature : void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt)
+        //  jMenuItemConnectivityActionPerformed method return type : void
+        //  jMenuItemConnectivityActionPerformed method description : This method is called when the user clicks on the Connectivity button. It displays the Connectivity form.
+
         SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm();
         systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
         // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItemConnectivityActionPerformed
 
     private void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompanyProfileActionPerformed
-        // TODO add your handling code here:
+        //  jMenuItemCompanyProfileActionPerformed method parameters : ActionEvent evt
+        //  jMenuItemCompanyProfileActionPerformed method signature : void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt)
+        //  jMenuItemCompanyProfileActionPerformed method return type : void
+        //  jMenuItemCompanyProfileActionPerformed method description : This method is called when the user clicks on the Company Profile button. It displays the Company Profile form.
         SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
         systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
         // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
@@ -589,13 +667,24 @@ public class CRUDGui extends javax.swing.JFrame {
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
   
-    
+    /**
+     *
+     */
     public void exit() {
+        // exit method parameters : none
+        // exit method signature : void exit()
+        // exit method return type : void
+        // exit method description : This method is called when the user clicks on the exit button. It closes the application.
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");

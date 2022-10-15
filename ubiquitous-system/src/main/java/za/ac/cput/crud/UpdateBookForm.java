@@ -22,9 +22,41 @@ import javax.swing.JOptionPane;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 
+/**
+ *
+ * @author Admin
+ */
 public class UpdateBookForm extends javax.swing.JFrame {
 
-    public String title, subtTitle, author, description, rating, imageLink;
+    /**
+     *
+     */
+    public String title,
+
+    /**
+     *
+     */
+    subtTitle,
+
+    /**
+     *
+     */
+    author,
+
+    /**
+     *
+     */
+    description,
+
+    /**
+     *
+     */
+    rating,
+
+    /**
+     *
+     */
+    imageLink;
 
     /**
      * Creates new form CreateBookForm
@@ -35,6 +67,16 @@ public class UpdateBookForm extends javax.swing.JFrame {
     }
 
     //        create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
+
+    /**
+     *
+     * @param title
+     * @param subtTitle
+     * @param author
+     * @param description
+     * @param rating
+     * @param imageLink
+     */
     public UpdateBookForm(String title, String subtTitle, String author, String description, String rating, String imageLink) {
         try {
             this.title = title;
@@ -450,11 +492,18 @@ public class UpdateBookForm extends javax.swing.JFrame {
         });
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
+
+    /**
+     *
+     */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

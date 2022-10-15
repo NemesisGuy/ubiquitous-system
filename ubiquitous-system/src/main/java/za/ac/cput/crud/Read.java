@@ -22,6 +22,10 @@ public class Read {
     DisplayBookForm displayBookForm;
     String title, subTitle, author, ISBN, description, rating, imageLink;
 
+    /**
+     *
+     * @return
+     */
     public Book readBookByTitle() {
         String inputTitle = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -73,6 +77,10 @@ public class Read {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public Book loanBookByTitle() {
         String inputTitle = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -124,6 +132,10 @@ public class Read {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Book> readAllBooks() {
         ArrayList<Book> bookList = new ArrayList<Book>();
         Book book = new Book();
@@ -161,6 +173,10 @@ public class Read {
         return bookList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<User> readAllUsers() {
         ArrayList<User> userList = new ArrayList<User>();
         User user = new User();
@@ -198,6 +214,10 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public User readUserByName() {
         User user = new User();
 
@@ -250,6 +270,12 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param inputName
+     * @param inputPassword
+     * @return
+     */
     public User userLoginold(String inputName, String inputPassword) {
         boolean isUserNameMatched = false;
         boolean isUserpasswordMatched = false;
@@ -309,6 +335,12 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param inputName
+     * @param inputPassword
+     * @return
+     */
     public User userLogin(String inputName, String inputPassword) {
 
         User user = null;
@@ -355,6 +387,11 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     public Loan readUserCurrentLaon(String userId) {
         int userIdInt = Integer.parseInt(userId);
         Loan loan = null;
@@ -391,6 +428,12 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param userId
+     * @param book
+     * @return
+     */
     public Loan readUserLoanByBookTitle(String userId, Book book) {
         int userIdInt = Integer.parseInt(userId);
         int bookId = book.getBookId();
@@ -434,6 +477,12 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param userId
+     * @param bookId
+     * @return
+     */
     public Loan readUserLoanByBookTitle(String userId, String bookId) {
         int userIdInt = Integer.parseInt(userId);
         int bookIdint = Integer.parseInt(bookId);
@@ -479,6 +528,12 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param userId
+     * @param book
+     * @return
+     */
     public Loan readOutstandingUserLoanByBookId(String userId, Book book) {
         int userIdInt = Integer.parseInt(userId);
         Loan loan = null;
@@ -515,6 +570,11 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param bookId
+     * @return
+     */
     public ArrayList<Loan> readLaonByBookId(String bookId) {
         int bookIdInt = Integer.parseInt(bookId);
         ArrayList<Loan> loanList = new ArrayList<Loan>();
@@ -554,6 +614,11 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param book
+     * @return
+     */
     public Loan readLatestLoanByBookId(Book book) {
 
         Loan loan = null;
@@ -590,6 +655,11 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param book
+     * @return
+     */
     public Loan readIsBookAvalible(Book book) {
 
         Loan loan = null;
@@ -629,6 +699,11 @@ public class Read {
 
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public ArrayList<Loan> readUserLoanByUserId(User user) {
 
         ArrayList<Loan> loanList = new ArrayList<Loan>();

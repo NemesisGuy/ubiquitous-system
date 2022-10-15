@@ -17,6 +17,11 @@ import java.util.logging.Logger;
  */
 public class FileHandler {
 
+    /**
+     *
+     * @param from
+     * @param to
+     */
     public static void copyFile(File from, File to) {
         try {
             Files.copy(from.toPath(), to.toPath());
@@ -27,6 +32,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     *
+     * @param folderPath
+     * @param path
+     * @return
+     */
     public boolean initConfig(Path folderPath, Path path) {
       
         FileHandler fileHandler = new FileHandler();
@@ -40,6 +51,11 @@ public class FileHandler {
 
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public boolean isConfigFileFound(Path path) {
         boolean fileExsits = false;
         File file = new File(path.toString());
@@ -59,6 +75,11 @@ public class FileHandler {
         return fileExsits;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public boolean isFilePermissionValid(Path path) {
         boolean filePermissionValid = false;
         File file = new File(path.toString());
@@ -82,6 +103,11 @@ public class FileHandler {
         return filePermissionValid;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public boolean createFile(Path path) {
         boolean completed = false;
         File file = new File(path.toString());
@@ -96,6 +122,11 @@ public class FileHandler {
 
     }
 
+    /**
+     *
+     * @param folderPath
+     * @return
+     */
     public boolean createFolder(Path folderPath) {
         boolean folderCreated = false;
         File file = new File(folderPath.toString());

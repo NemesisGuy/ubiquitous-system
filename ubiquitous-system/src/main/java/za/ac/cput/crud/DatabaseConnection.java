@@ -20,10 +20,11 @@ import za.ac.cput.settings.Configuration;
  * @author Peter Buckingham
  */
 public class DatabaseConnection {
-//derby port 1527
 
-   
-
+    /**
+     *
+     * @return
+     */
     public Connection getDatabaseConnection() {
         String fileName = "Database-Connection.properties";
         Path path = Paths.get("resources/settings/" + fileName);
@@ -64,6 +65,10 @@ public class DatabaseConnection {
         return conn;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         databaseConnection.getDatabaseConnection();

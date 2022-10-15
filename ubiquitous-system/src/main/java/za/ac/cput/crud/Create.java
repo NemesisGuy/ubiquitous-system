@@ -16,20 +16,30 @@ import javax.swing.JOptionPane;
  * @author Peter Buckingham
  */
 public class Create {
+    //class that creates a new object and saves them to the database
 
-   
+    /**
+     *
+     * @param title
+     * @param subTitle
+     * @param author
+     * @param ISBN
+     * @param description
+     * @param rate
+     * @param imageLink
+     */
+
     public void createBook(String title, String subTitle, String author, String ISBN, String description, String rate, String imageLink) {
-
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-
-        Connection conn = databaseConnection.getDatabaseConnection();
-
+        //createBook method with parameters : title, subTitle, author, ISBN, description, rate, imageLink
+        //createBook method with signature : public void createBook(String title, String subTitle, String author, String ISBN, String description, String rate, String imageLink);
+        //method that creates a new book object and saves it to the database
+        DatabaseConnection databaseConnection = new DatabaseConnection();   //create a new database connection object
+        Connection conn = databaseConnection.getDatabaseConnection();       //create a new connection object and assign it the value of the database connection object
         String sql = "INSERT INTO booktable(title, subTitle, author, ISBN, description, rate, imageLink) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-
             statement.setString(1, title);
             statement.setString(2, subTitle);
             statement.setString(3, author);
@@ -37,7 +47,6 @@ public class Create {
             statement.setString(5, description);
             statement.setString(6, rate);
             statement.setString(7, imageLink);
-
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("A new book was inserted successfully!");
@@ -48,20 +57,25 @@ public class Create {
         }
     }
 
-   
-
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param userName
+     * @param email
+     * @param password
+     * @param userAccessLevel
+     */
     public void createUser(String firstName, String lastName, String userName, String email, String password, int userAccessLevel) {
-
+        //createUser method with parameters : firstName, lastName, userName, email, password, userAccessLevel
+        //createUser method with signature : public void createUser(String firstName, String lastName, String userName, String email, String password, int userAccessLevel);
+        //method that creates a new user object and saves it to the database
         DatabaseConnection databaseConnection = new DatabaseConnection();
-
         Connection conn = databaseConnection.getDatabaseConnection();
-
         String sql = "INSERT INTO usertable(firstName, lastName, userName, email, password, userAccessLevel) VALUES (?, ?, ?, ?,?,?)";
-
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, userName);
@@ -80,32 +94,32 @@ public class Create {
         }
 
     }
-    
-    
-    
-    
+
+    /**
+     *
+     * @param user
+     * @param loan
+     */
     public void createLoan(User user, Loan loan){
+        //createLoan method with parameters : user, loan
+        //createLoan method with signature : public void createLoan(User user, Loan loan);
+        //method that creates a new loan object and saves it to the database
     String userId = user.getUserId();
     loan.getClass();
         if (loan.getReturnedDate()==null) {
             loan.setReturnedDate("0-0-0");
         }
-     DatabaseConnection databaseConnection = new DatabaseConnection();
-
+        DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-
         String sql = "INSERT INTO bookloanstable(userId, bookId, loanFromDate, dueOnDate, returned) VALUES (?, ?, ?, ?, ?)";
-
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-
             statement.setString(1, loan.getUserId());
             statement.setString(2, String.valueOf(loan.getBookId()));
             statement.setString(3, loan.getLoanFromDate());
             statement.setString(4, loan.getDueOnDate());
             statement.setString(5, loan.getReturnedDate());
-
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 JOptionPane.showMessageDialog(null, "A new user made a loan and  was inserted successfully!");
@@ -115,7 +129,6 @@ public class Create {
         } catch (SQLException ex) {
             Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
         }
-
      
     }
 }

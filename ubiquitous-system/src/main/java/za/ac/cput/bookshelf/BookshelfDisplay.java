@@ -34,6 +34,11 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     *
+     * @param user
+     * @param bookList
+     */
     public BookshelfDisplay(User user, ArrayList<Book> bookList) {
         setTitle("Ubiquitous System" +" - " + "Update Book" );
         initComponents();
@@ -552,11 +557,18 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
 
+    /**
+     *
+     */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

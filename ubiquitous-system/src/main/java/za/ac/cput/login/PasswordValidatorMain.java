@@ -10,6 +10,10 @@ package za.ac.cput.login;
  */
 public class PasswordValidatorMain {
  
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
     
     }

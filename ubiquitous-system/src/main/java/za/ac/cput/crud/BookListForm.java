@@ -18,23 +18,31 @@ import za.ac.cput.settings.FrameSettings;
  */
 public class BookListForm extends javax.swing.JFrame {
 
-    ArrayList<Book> bookList;
+    ArrayList<Book> bookList;   // ArrayList of type Book
 
     /**
      * Creates new form UserListForm
      */
+    // BookListForm constructor with no parameters
+
     public BookListForm() {
         setTitle("Ubiquitous System" +" - " + "Booklist" );
         initComponents();
     }
 
+    // BookListForm constructor with signature : public BookListForm(ArrayList<Book> bookList);
+    // BookListForm constructor with parameters : ArrayList<Book> bookList
+
+    /**
+     *
+     * @param bookList
+     */
     public BookListForm(ArrayList<Book> bookList) {
-        initComponents();
-        this.bookList = bookList;
+        initComponents();   // initComponents() method call
+        this.bookList = bookList;  // set this.bookList to bookList
         //loop though list to populate table
-        // this.userList = userList;
-        Object[][] data = new Object[bookList.size()][6];
-        for (int i = 0; i < bookList.size(); i++) {
+        Object[][] data = new Object[bookList.size()][6];   // Object array with 6 columns and size of bookList arrayList
+        for (int i = 0; i < bookList.size(); i++) {  // for loop to loop through bookList arrayList to populate tableModel
 
             data[i][0] = i;
             data[i][1] = bookList.get(i).getTitle();
@@ -44,17 +52,20 @@ public class BookListForm extends javax.swing.JFrame {
             data[i][5] = bookList.get(i).getRating();
 
         }
-
+        //set column names for table model
         Object[] columnNames = {"Number : ", "Title : ", "Sub-Title : ", "Author : ", "Description : ", "Rating : "};
+        //create table model with data and column names and set table model for table
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
 
             @Override
+            //isCellEditable method with signature : public boolean isCellEditable(int row, int column);
+            //isCellEditable method to set table cells to not editable
             public boolean isCellEditable(int row, int column) {
-                //all cells false
-                return false;
+                // This disables editing of cells  in the table
+                return false;   // return false to disable editing of cells in table
             }
         };
-        jTable1.setModel(model);
+        jTable1.setModel(model);    // set table model for jTable1 to  model
 
 // create JTable just once and pass model in the constructor
     }
@@ -249,20 +260,21 @@ public class BookListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        System.out.println("table prints this");// TODO add your handling code here:
+       //method with signature : public void JTableMouseClicked(java.awt.event.MouseEvent evt)
+        //JTableMouseClicked method is called when the mouse is clicked on the JTable
+        //jTabel1MouseClicked is used to get the selected row from the table and display it in a DisplayBookform
+        //
+        System.out.println("Event triggered : " + evt);
 
-        System.err.println("Event trigered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
+            //if the mouse is clicked twice and the selected row is not empty
+            //get the selected row from the table and display it in a DisplayBookform with the details of the book
             // your valueChanged overridden method 
 
-            System.out.println(jTable1.getSelectedRow());
+            System.out.println(jTable1.getSelectedRow());   //get the selected row from the table and print it to the console
+            //get the selected row from the table and display it in a DisplayBookform with the details of the book
             DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()),"none");
 
-            // BookDisplay currentBookDisplay = new BookDisplay();
-            ///       try {
-            //            currentBookDisplay.setBook(bookArrayList.get(Integer.valueOf(bookListJTable.getValueAt(bookListJTable.getSelectedRow(), 0).toString())));
-            // //        } catch (Exception e) {
-            //              e.printStackTrace();
         }
 
 
@@ -272,6 +284,8 @@ public class BookListForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        //method with signature : public static void main(String args[])
+        //main method is called when the program is executed
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -300,15 +314,33 @@ public class BookListForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                //method with signature : public void run()
+                //run method is called when the program is executed
+
                 new BookListForm().setVisible(true);
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
+        //method with signature : public Image displayFrameImageIcon()
+        //displayFrameImageIcon method is called to display the image icon of the frame
+
         FrameSettings frameSettings = new FrameSettings();
-        return frameSettings.frameSettingsSetIconImage();
+        return frameSettings.frameSettingsSetIconImage(); //return the image icon of the frameSettingsSetIconImage()
     }
+
+    /**
+     *
+     */
     public void exit() {
+        //method with signature : public void exit()
+        //exit method is called to exit the program
+
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");

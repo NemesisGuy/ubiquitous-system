@@ -13,18 +13,34 @@ package za.ac.cput.settings;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+/**
+ *
+ * @author Admin
+ */
 public class TimeZones{
  private String[] ids;
 
+    /**
+     *
+     * @return
+     */
     public String[] getIds() {
         return ids;
     }
 
+    /**
+     *
+     * @param ids
+     */
     public void setIds(String[] ids) {
         this.ids = ids;
     }
  
-	public static void main(String[] args) {
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
       //      ArrayList<Book> bookList = new ArrayList<Book>();
 		String[] ids = TimeZone.getAvailableIDs();
 		for (String id : ids) {

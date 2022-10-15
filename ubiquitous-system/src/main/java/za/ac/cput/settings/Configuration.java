@@ -31,16 +31,26 @@ import javax.swing.JOptionPane;
  */
 public class Configuration {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
     }
 
+    /**
+     *
+     */
     public void intiDefaultConfigs() {
         intiDefaultCompanyProfileConfig();
         intiDefaultDatabaseConnectionConfig();
 
     }
 
+    /**
+     *
+     */
     public void intiDefaultCompanyProfileConfig() {
         String fileName = "Company-Profile.properties";
         Path path = Paths.get("resources/settings/" + fileName);
@@ -62,6 +72,9 @@ public class Configuration {
         configuration.writeConfig(path, properties);
     }
 
+    /**
+     *
+     */
     public void intiDefaultDatabaseConnectionConfig() {
         String fileName = "Database-Connection.properties";
         Path path = Paths.get("resources/settings/" + fileName);
@@ -81,6 +94,9 @@ public class Configuration {
 
     }
 
+    /**
+     *
+     */
     public void initDefaultCompanyLogo() {
         String fileName = "logo.png";
         Path path = Paths.get("resources/images/" + fileName);
@@ -92,6 +108,10 @@ public class Configuration {
     //    fileHandler.copyFile(getClass().getResource("/resources/images/ubiquitous-system-icon.png"), folderPathtTo);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean writeConfigTest() {
 
         boolean success = false;
@@ -116,6 +136,10 @@ public class Configuration {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Icon displayLogoBannerFromConfig() {
         String fileName = "Company-Profile.properties";
         Path path = Paths.get("resources/settings/" + fileName);
@@ -154,6 +178,12 @@ public class Configuration {
 //    
 //    
 //    
+
+    /**
+     *
+     * @param path
+     * @return
+     */
     public Properties readConfig(Path path) {
         Properties properties = new Properties();
         try ( InputStream input = new FileInputStream(path.toString())) {
@@ -165,6 +195,12 @@ public class Configuration {
         return properties;
     }
 
+    /**
+     *
+     * @param path
+     * @param propertiesMap
+     * @return
+     */
     public boolean writeConfig(Path path, Map<String, String> propertiesMap) {
         boolean isConfigSet = false;
         try ( OutputStream output = new FileOutputStream(path.toString())) {

@@ -29,11 +29,30 @@ import javax.swing.JTextField;
 // Query format: "[<author|isbn|intitle>:]<query>"
 public class BookSearch implements ActionListener {
 
+    /**
+     *
+     */
     public JComboBox searchTypeJComboBox;
+
+    /**
+     *
+     */
     public JButton searchButton;
+
+    /**
+     *
+     */
     public JTextField searchTermJTextField;
+
+    /**
+     *
+     */
     public String[] searchTerm = new String[2];
 
+    /**
+     *
+     * @return
+     */
     public String[] searchBooksAPI() {
         // String bookTitleSerchTerm = JOptionPane.showInputDialog(null,"Enter Book Title to search for : ","Book Search :", JOptionPane.INFORMATION_MESSAGE);
         // Query format: "[<author|isbn|intitle>:]<query>"
@@ -79,6 +98,10 @@ public class BookSearch implements ActionListener {
 
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("searchButton")) {

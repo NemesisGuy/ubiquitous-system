@@ -20,11 +20,18 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     /**
      * Creates new form createUserForm
+     * @param parent
+     * @param user
+     * @param modal
      */
     public UserProfileForm(java.awt.Frame parent, boolean modal,User user) {
         super(parent, modal);
         setTitle("Ubiquitous System" +" - " + "User Profile" );
         initComponents();
+    }
+
+    private UserProfileForm() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -448,7 +455,16 @@ public class UserProfileForm extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {}
+            public void run() {
+                 UserProfileForm dialog = new UserProfileForm();//must fix next sprint
+                dialog.addWindowListener(new java.awt.event.WindowAdapter(){
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
         });
     }
 
@@ -478,17 +494,28 @@ public class UserProfileForm extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
 
+    //method to createUser
     private void createUser() {
     //    Create create = new Create(); 
     //    String tempPassword = new String(jPasswordFieldPassword.getPassword());
         
   //      create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
 
-    }
+    } //method that returns image
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
-        FrameSettings frameSettings = new FrameSettings();
-        return frameSettings.frameSettingsSetIconImage();
+        FrameSettings frameSettings = new FrameSettings();//create new FrameSettings object
+        return frameSettings.frameSettingsSetIconImage(); //return image object
     }
+    //method that displays joptionPane and exits
+
+    /**
+     *
+     */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");

@@ -19,7 +19,13 @@ public class Delete {
     String title;
     String userName;
 
+    /**
+     *
+     */
     public void deleteBook() {
+        //deletebook method parameters : none
+        //deletebook method signature : public void deleteBook();
+        //deletebook method description : This method deletes a book from the database and returns a message to the user
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -50,7 +56,14 @@ public class Delete {
         }
     }
 
+    /**
+     *
+     */
     public void deleteUser() {
+        //deleteUser method parameters : none
+        //deleteUser method signature : public void deleteUser();
+        //deleteUser method description : method that deletes a user object from the database
+
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
 

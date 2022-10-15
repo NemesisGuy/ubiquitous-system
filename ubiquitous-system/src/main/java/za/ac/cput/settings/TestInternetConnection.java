@@ -13,10 +13,19 @@ import javax.swing.JOptionPane;
  * nemesisnet.co.za
  */
 public class TestInternetConnection {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
        
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean testInternetConnection() {
        boolean  isDnsAddressReachable = false;
          try{

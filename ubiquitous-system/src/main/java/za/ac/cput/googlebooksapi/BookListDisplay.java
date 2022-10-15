@@ -34,6 +34,10 @@ import javax.swing.table.TableColumnModel;
  */
 public class BookListDisplay {
 
+    /**
+     *
+     * @param volumes
+     */
     public void diplay(Volumes volumes)//passed a booklist to display//passed a voulme list now
     {
         ArrayList <Book> bookArrayList = new ArrayList<>();

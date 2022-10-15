@@ -17,6 +17,10 @@ import javax.swing.JFrame;
  */
 public class FrameSettings {
 
+    /**
+     *
+     * @param selectedJFrame
+     */
     public void frameSettingsSetIconImage(JFrame selectedJFrame) {
         Frame f = selectedJFrame;
        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/ubiquitous-system-icon.png"));
@@ -28,6 +32,10 @@ public class FrameSettings {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Image frameSettingsSetIconImage() {
      
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/ubiquitous-system-icon.png"));
@@ -36,6 +44,10 @@ public class FrameSettings {
         return icon;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         new FrameSettings().frameSettingsSetIconImage(new JFrame());
     }

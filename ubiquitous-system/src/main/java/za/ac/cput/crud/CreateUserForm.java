@@ -19,8 +19,13 @@ public class CreateUserForm extends javax.swing.JDialog {
 
     /**
      * Creates new form createUserForm
+     * @param parent
+     * @param modal
      */
     public CreateUserForm(java.awt.Frame parent, boolean modal) {
+                //constructor with parameters : parent, modal
+        //constructor with signature : public CreateUserForm(java.awt.Frame parent, boolean modal);
+            //constructor set to properties : parent, modal and sets the frame title to "Create User"
         super(parent, modal);
         setTitle("Ubiquitous System" +" - " + "Create a User" );
         initComponents();
@@ -314,6 +319,12 @@ public class CreateUserForm extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
     private boolean validateFormNames()
+                //validateformnames method parameters : none
+                //validateformnames method signature : boolean
+                //validateformnames method return type : boolean
+                //validateformnames method description : this method validates the form names
+                // and returns true if the names are valid and false if the names are invalid and displays an error message
+
     {
         if(jTextFieldFirstName.getText().isBlank())
         {  JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
@@ -330,6 +341,11 @@ public class CreateUserForm extends javax.swing.JDialog {
         return false;
     }
     private boolean validateFormEmails() {
+        //validateformemails method parameters : none
+        //validateformemails method signature : boolean  true
+        //validateformemails method return type : boolean
+        //validateformemails method description : this method validates the form emails and returns true if the emails are valid and false,
+        // if the emails are invalid and displays an error message indicating the error and clearing the email field
 
         Validator validator = new Validator();
         if (validator.isEmailValid(jTextFieldEmail.getText())) {
@@ -347,7 +363,13 @@ public class CreateUserForm extends javax.swing.JDialog {
         return false;
     }
 
-    private void validateFormPaswords() {
+    private void validateFormPasswords() {
+        //validateformpasswords method parameters : none
+        //validateformpasswords method signature : void
+        //validateformpasswords method return type : void
+        //validateformpasswords method description : this method validates the form passwords and returns true if the passwords are valid and false,
+        // if the passwords are invalid and displays an error message indicating the error and clearing the password fields
+
         Create create = new Create();
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
@@ -371,25 +393,50 @@ public class CreateUserForm extends javax.swing.JDialog {
     }
 
     private void validateFormFileds() {
+        //validateformfields method parameters : none
+        //validateformfields method signature : void
+        //validateformfields method return type : void
+        //validateformfields method description : this method validates the form fields and returns true if the fields are valid and false,
+        // if the fields are invalid and displays an error message indicating the error and clearing the fields
+
+        if (validateFormNames()) {
+            if (validateFormEmails()) {
+                validateFormPasswords();
+            }
+        }
        if(validateFormNames()){
             if(validateFormEmails()){
-                validateFormPaswords();
+                validateFormPasswords();
             }
         }    
     }
 
     private void clearPasswords() {
+        //clearpasswords method parameters : none
+        //clearpasswords method signature : void
+        //clearpasswords method return type : void
+        //clearpasswords method description : this method clears the password fields
 
         jPasswordFieldPassword.setText("");
         jPasswordFieldConfirmPassword.setText("");
     }
 
     private void clearEmail() {
+        //clearemail method parameters : none
+        //clearemail method signature : void
+        //clearemail method return type : void
+        //clearemail method description : this method clears the email fields
+
         jTextFieldEmail.setText("");
         jTextFieldConfirmEmail.setText("");
     }
 
     private void clearForm() {
+        //clearform method parameters : none
+        //clearform method signature : void
+        //clearform method return type : void
+        //clearform method description : this method clears the form fields
+
         jTextFieldFirstName.setText("");
         jTextFieldLastName.setText("");
         jTextFieldUserName.setText("");
@@ -397,7 +444,11 @@ public class CreateUserForm extends javax.swing.JDialog {
         clearPasswords();
     }
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        // TODO add your handling code here:
+        // JButtonsubmitActionPerformed method parameters : none
+        // JButtonsubmitActionPerformed method signature : void
+        // JButtonsubmitActionPerformed method return type : void
+        // JButtonsubmitActionPerformed method description : this method validates the form fields and returns true if the fields are valid and false,
+        // if the fields are invalid and displays an error message indicating the error and clearing the fields
         //validate then talk to db
         validateFormFileds();
 
@@ -408,7 +459,11 @@ public class CreateUserForm extends javax.swing.JDialog {
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-        // TODO add your handling code here:
+        //jButtonCancelActionPerformed method parameters : none
+        //jButtonCancelActionPerformed method signature : void
+        //jButtonCancelActionPerformed method return type : void
+        //jButtonCancelActionPerformed method description : this method clears the form fields
+
         this.setVisible(false);
         this.dispose();
 
@@ -484,17 +539,42 @@ public class CreateUserForm extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void createUser() {
+        //createUser method parameters : none
+        //createUser method signature : void
+        //createUser method return type : void
+        //createUser method description : this method creates a user and inserts the user into the database
+        //create a user object and saves it to the database
         Create create = new Create(); 
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
         
         create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
 
     }
+
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
+        //displayFrameImageIcon method parameters : none
+        //displayFrameImageIcon method signature : Image
+        //displayFrameImageIcon method return type : Image
+        //displayFrameImageIcon method description : this method displays the image icon on the frame
+        //display the image icon on the frame
+
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
+
+    /**
+     *
+     */
     public void exit() {
+        //exit method parameters : none
+        //exit method signature : void
+        //exit method return type : void
+        //exit method description : this method exits the program when the user clicks the exit button and displays a goodbye messageDialog
+
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");

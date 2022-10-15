@@ -25,22 +25,85 @@ import za.ac.cput.bookshelf.ReturnBookingForm;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 
+/**
+ *
+ * @author Admin
+ */
 public class DisplayBookForm extends javax.swing.JFrame {
+    // Declare variablesLocal
 
-    public static String myBookTitle, subtTitle, author, description, rating, imageLink;
+    /**
+     *
+     */
+
+    public static String myBookTitle,
+
+    /**
+     *
+     */
+    subtTitle,
+
+    /**
+     *
+     */
+    author,
+
+    /**
+     *
+     */
+    description,
+
+    /**
+     *
+     */
+    rating,
+
+    /**
+     *
+     */
+    imageLink;
+
+    /**
+     *
+     */
     public Boolean displayBookLoanButton = false;
+
+    /**
+     *
+     */
     public Book book = null;
+
+    /**
+     *
+     */
     public User user = null;
 
     /**
      * Creates new form BookDisplayForm
      */
     public DisplayBookForm() {
+            //DisplayBookForm constructor with parameters : none
+        //DisplayBookForm constructor with signature : public DisplayBookForm();
+        //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
+
         setTitle("Ubiquitous System" +" - " + "Book Display"  );
         initComponents();
     }
 
+    /**
+     *
+     * @param titleIn
+     * @param subtTitleIn
+     * @param authorIn
+     * @param descriptionIn
+     * @param ratingIn
+     * @param imageLinkIn
+     */
     public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn) {
+        //DisplayBookForm constructor with parameters : titleIn, subtTitleIn, authorIn, descriptionIn, ratingIn, imageLinkIn
+        //DisplayBookForm constructor with signature : public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn);
+        //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
+
        
         myBookTitle = titleIn;
         subtTitle = subtTitleIn;
@@ -55,7 +118,17 @@ public class DisplayBookForm extends javax.swing.JFrame {
     //  create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
     //  public static DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
     //  public  DisplayBookForm displayBookForm = new DisplayBookForm("Hyperion ", "Space books ", "Dan Simmions", "The book that reinvented Space Opera, from the Hugo and World Fantasy Award-winning author of The Terror, which is now a chilling TV show. It is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.  ", "4", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405546838l/77566.jpg");
+
+    /**
+     *
+     * @param book
+     * @param displayBookButtons
+     */
     public DisplayBookForm(Book book, String displayBookButtons) {
+        //DisplayBookForm constructor with parameters : book, displayBookButtons
+        //DisplayBookForm constructor with signature : public DisplayBookForm(Book book, String displayBookButtons);
+        //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
+
         try {
             
             this.book = book;
@@ -104,7 +177,17 @@ public class DisplayBookForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @param user
+     * @param book
+     * @param displayBookButtons
+     */
     public DisplayBookForm(User user, Book book, String displayBookButtons) {
+        //DisplayBookForm constructor with parameters : user, book, displayBookButtons
+        //DisplayBookForm constructor with signature : public DisplayBookForm(User user, Book book, String displayBookButtons);
+        //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
+
         try {
             
             this.book = book;
@@ -161,50 +244,98 @@ public class DisplayBookForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getMyBookTitle() {
         return myBookTitle;
     }
 
+    /**
+     *
+     * @param title
+     */
     public static void setMyBookTitle(String title) {
         DisplayBookForm.myBookTitle = title;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getSubtTitle() {
         return subtTitle;
     }
 
+    /**
+     *
+     * @param subtTitle
+     */
     public static void setSubtTitle(String subtTitle) {
         DisplayBookForm.subtTitle = subtTitle;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getAuthor() {
         return author;
     }
 
+    /**
+     *
+     * @param author
+     */
     public static void setAuthor(String author) {
         DisplayBookForm.author = author;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public static void setDescription(String description) {
         DisplayBookForm.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getRating() {
         return rating;
     }
 
+    /**
+     *
+     * @param rating
+     */
     public static void setRating(String rating) {
         DisplayBookForm.rating = rating;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getImageLink() {
         return imageLink;
     }
 
+    /**
+     *
+     * @param imageLink
+     */
     public static void setImageLink(String imageLink) {
         DisplayBookForm.imageLink = imageLink;
     }
@@ -479,9 +610,9 @@ public class DisplayBookForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+        //jButtonCloseActionPerformed
         this.setVisible(false);
-        this.dispose();        // TODO add your handling code here:
-
+        this.dispose();
 
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
@@ -492,15 +623,17 @@ public class DisplayBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoanActionPerformed
-        // TODO add your handling code here:
+        //
         BookingForm bookingForm = new BookingForm(user, book);
         bookingForm.setVisible(true);
         //  bookingForm.setFont(getFont());
     }//GEN-LAST:event_jButtonLoanActionPerformed
 
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
-        // TODO add your handling code here:
-        ///return books here
+        //  jButtonReturnActionPerformed method parameter : evt
+
+        //jButtonReturnActionPerformed method signature : jButtonReturnActionPerformed(java.awt.event.ActionEvent evt)
+        //jButtonReturnActionPerformed method description : this method is called when the user clicks on the return button, the book will be returned to the library
         Loan loan = new Loan(user, book);
         Read read = new Read();
         loan = read.readOutstandingUserLoanByBookId(user.getUserId(), book);
@@ -546,12 +679,22 @@ public class DisplayBookForm extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     * @return
+     */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
 
+    /**
+     *
+     */
     public void exit() {
+        //exit method parameter : none
+        //exit method signature : exit()
+        //exit method description : this method is called when the user clicks on the exit button, the program will exit
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");

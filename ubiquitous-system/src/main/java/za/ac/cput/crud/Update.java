@@ -18,6 +18,10 @@ import utilities.Loan;
  */
 public class Update {
  private static final Logger LOGGER = Logger.getLogger( Update.class.getName() );
+
+    /**
+     *
+     */
     public void updateBook() {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -58,6 +62,12 @@ public class Update {
             //LOGGER.info("Logging an INFO-level message");
         }
     }
+
+    /**
+     *
+     * @param bookToUpdate
+     * @param book
+     */
     public void updateBook(String bookToUpdate, Book book) {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -100,6 +110,9 @@ public class Update {
         }
     }
 
+    /**
+     *
+     */
     public void updateUser() {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -140,6 +153,11 @@ public class Update {
         }
     }
     
+    /**
+     *
+     * @param userToUpdate
+     * @param user
+     */
     public void updateUser(String userToUpdate, User user) {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -181,6 +199,11 @@ public class Update {
             
         }
     }
+
+    /**
+     *
+     * @param loan
+     */
     public void updateLoan(Loan loan) {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
