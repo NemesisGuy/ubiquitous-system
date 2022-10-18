@@ -17,7 +17,8 @@ import utilities.Loan;
  * @author Peter Buckingham
  */
 public class Update {
- private static final Logger LOGGER = Logger.getLogger( Update.class.getName() );
+
+    private static final Logger LOGGER = Logger.getLogger(Update.class.getName());
 
     /**
      *
@@ -27,8 +28,8 @@ public class Update {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String bookToUpdate = null;
         while (bookToUpdate == null || bookToUpdate.isEmpty() || bookToUpdate.isEmpty()) {
-        bookToUpdate = JOptionPane.showInputDialog(null, "Please enter the title of the book you would like to update: ");
-         
+            bookToUpdate = JOptionPane.showInputDialog(null, "Please enter the title of the book you would like to update: ");
+
         }
 
         Connection conn = databaseConnection.getDatabaseConnection();
@@ -38,7 +39,7 @@ public class Update {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-                ///get data from form to push to DB
+            ///get data from form to push to DB
             statement.setString(1, "Harry Potter 2");
             statement.setString(2, "Secret Chamber");
             statement.setString(3, "jk. Roling");
@@ -53,8 +54,8 @@ public class Update {
                 JOptionPane.showMessageDialog(null, "An existing book titled : " + title + " was updated successfully!");
                 // System.out.println("An existing book was updated successfully!");
                 conn.close();
-            }else{
-            JOptionPane.showMessageDialog( null, "A book named: " +title+ " does not exsist !!", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "A book named: " + title + " does not exsist !!", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
                 LOGGER.warning("Warring user attemped updating a Book that does not exsist! ");
             }
         } catch (SQLException ex) {
@@ -73,8 +74,8 @@ public class Update {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         //String bookToUpdate = null;
         while (bookToUpdate == null || bookToUpdate.isEmpty() || bookToUpdate.isEmpty()) {
-        bookToUpdate = JOptionPane.showInputDialog(null, "Please enter the title of the book you would like to update: ");
-         
+            bookToUpdate = JOptionPane.showInputDialog(null, "Please enter the title of the book you would like to update: ");
+
         }
 
         Connection conn = databaseConnection.getDatabaseConnection();
@@ -84,11 +85,11 @@ public class Update {
         PreparedStatement statement = null;
         try {
             statement = conn.prepareStatement(sql);
-                ///get data from form to push to DB
+            ///get data from form to push to DB
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getSubTitle());
             statement.setString(3, book.getAuthors());
-           // statement.setString(4, "XXX XXX XXX XXX");
+            // statement.setString(4, "XXX XXX XXX XXX");
             statement.setString(4, book.getISBN());
             statement.setString(5, book.getDescription());
             statement.setString(6, book.getRating());
@@ -100,8 +101,8 @@ public class Update {
                 JOptionPane.showMessageDialog(null, "An existing book titled : " + title + " was updated successfully!");
                 // System.out.println("An existing book was updated successfully!");
                 conn.close();
-            }else{
-            JOptionPane.showMessageDialog( null, "A book named: " +title+ " does not exsist !!", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "A book named: " + title + " does not exsist !!", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
                 LOGGER.warning("Warring user attemped updating a Book that does not exsist! ");
             }
         } catch (SQLException ex) {
@@ -118,10 +119,10 @@ public class Update {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();
-        String userNameTmp =null;
+        String userNameTmp = null;
         while (userNameTmp == null || userNameTmp.isEmpty() || userNameTmp.isBlank()) {
-         userNameTmp = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to update: ");
-         
+            userNameTmp = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to update: ");
+
         }
         String sqlUserUpdateStament = "UPDATE usertable SET firstName=?, lastName=?, userName=? ,email=? , password=?, userAccessLevel=? WHERE userName=?";
 
@@ -136,23 +137,22 @@ public class Update {
             statement.setString(5, "1234");
             statement.setString(6, "0");
             statement.setString(7, userNameTmp);
-            
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(null, "An existing user Named: "+ userNameTmp +" was updated successfully!");
-                LOGGER.info("An existing user Named: "+ userNameTmp +" was updated successfully!");
+                JOptionPane.showMessageDialog(null, "An existing user Named: " + userNameTmp + " was updated successfully!");
+                LOGGER.info("An existing user Named: " + userNameTmp + " was updated successfully!");
 
                 conn.close();
-            }else{
-            JOptionPane.showMessageDialog( null, "A user named: " +userNameTmp+ " does not exsist !!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
-            LOGGER.warning("Warning user attemped updating a user named: " +userNameTmp+ " that does not exsist! ");
+            } else {
+                JOptionPane.showMessageDialog(null, "A user named: " + userNameTmp + " does not exsist !!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
+                LOGGER.warning("Warning user attemped updating a user named: " + userNameTmp + " that does not exsist! ");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Update.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      *
      * @param userToUpdate
@@ -165,8 +165,8 @@ public class Update {
         Connection conn = databaseConnection.getDatabaseConnection();
         String userNameTmp = userToUpdate;
         while (userNameTmp == null || userNameTmp.isEmpty() || userNameTmp.isBlank()) {
-         userNameTmp = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to update: ");
-         
+            userNameTmp = JOptionPane.showInputDialog(null, "Please enter the name of the user you would like to update: ");
+
         }
         String sqlUserUpdateStament = "UPDATE usertable SET firstName=?, lastName=?, userName=? ,email=? , password=?, userAccessLevel=? WHERE firstName=?";
 
@@ -181,22 +181,21 @@ public class Update {
             statement.setString(5, user.getPassword());
             statement.setString(6, "0");
             statement.setString(7, userNameTmp);
-            
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(null, "An existing user Named: "+ userNameTmp +" was updated successfully!");
-                LOGGER.info("An existing user Named: "+ userNameTmp +" was updated successfully!");
+                JOptionPane.showMessageDialog(null, "An existing user Named: " + userNameTmp + " was updated successfully!");
+                LOGGER.info("An existing user Named: " + userNameTmp + " was updated successfully!");
 
                 conn.close();
-            }else{
-            JOptionPane.showMessageDialog( null, "A user named: " +userNameTmp+ " does not exsist !!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
-            LOGGER.warning("Warning user attemped updating a user named: " +userNameTmp+ " that does not exsist! ");
-            conn.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "A user named: " + userNameTmp + " does not exsist !!", "CRUD - Opertation Failed - Missing Details ", JOptionPane.ERROR_MESSAGE);
+                LOGGER.warning("Warning user attemped updating a user named: " + userNameTmp + " that does not exsist! ");
+                conn.close();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Update.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
     }
 
@@ -208,31 +207,27 @@ public class Update {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
         //String bookToUpdate = null;
-      
-        
 
         Connection conn = databaseConnection.getDatabaseConnection();
         String loanId = loan.getLoanId();
         String date = "0-0-0";
-        
-        
-    
-         String sql = "UPDATE bookloanstable SET returned=?  WHERE id='" + loanId +"' ";
+
+        String sql = "UPDATE bookloanstable SET returned=?  WHERE id='" + loanId + "' ";
         Dates dates = new Dates();
         PreparedStatement statement = null;
-    try {
-        
+        try {
+
             statement = conn.prepareStatement(sql);
-            
+
             statement.setString(1, dates.getFormattedCurrentDate());
-            
+
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 JOptionPane.showMessageDialog(null, "An existing loan with the ID of: " + loanId + " was updated successfully!");
-                System.out.println("An existing loan with the ID of: " + loanId +" was updated successfully! returned on : " + dates.getFormattedCurrentDate());
+                System.out.println("An existing loan with the ID of: " + loanId + " was updated successfully! returned on : " + dates.getFormattedCurrentDate());
                 conn.close();
-            }else{
-            JOptionPane.showMessageDialog( null, "error occoured loan not found", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "error occoured loan not found", "Ubiquitous System - CRUD - Opertation - Failed  ", JOptionPane.ERROR_MESSAGE);
                 LOGGER.warning("Warring user attemped updating a Loan that does not esist! ");
             }
         } catch (SQLException ex) {

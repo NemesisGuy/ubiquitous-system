@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import za.ac.cput.crud.DatabaseConnection;
+import za.ac.cput.crud.User;
 
 /**
  *
@@ -21,11 +22,25 @@ import za.ac.cput.crud.DatabaseConnection;
  */
 public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
+    public static User user;
+    int userAccessLevel;
+   
+
     /**
-     * Creates new form SettingsForms
+     * @apiNote Creates new form SettingsForms - This form is used to set the database connection settings
      */
-    public SystemSettingsConectionsForm() {
-        initComponents();
+    public SystemSettingsConectionsForm(User user) {
+        this.user = user;
+        setTitle("Ubiquitous System" + " - " + "CRUD Control Panel");
+         userAccessLevel = Integer.parseInt(user.getAccessLevel());
+        System.out.println("User access level : " + userAccessLevel);
+        if (userAccessLevel > 0) {
+            initComponents();
+        } else {
+            System.err.println("you do not have access to this, please contact the system admin!");
+            JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "you Do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 
     /**
@@ -272,7 +287,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jTextFieldDatabaseUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                         .addComponent(jButtonCancel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,7 +308,6 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
                                         .addComponent(jLabelDatabaseUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(46, 46, 46)
                                         .addComponent(jTextFieldDatabaseUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
@@ -301,7 +315,8 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
-                                .addComponent(jTextFieldDatabaseUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldDatabaseUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -417,7 +432,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
 
         pack();
@@ -459,7 +474,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
 
         if (configuration.writeConfig(path, properties)) //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
         { //started at 5:22pm till am 14-Aug-2022
-            JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
+            JOptionPane.showMessageDialog(this, "Success : " + "\n Settings Saved!\n ");
         } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
 
@@ -542,14 +557,14 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SystemSettingsConectionsForm().setVisible(true);
+                new SystemSettingsConectionsForm(user).setVisible(true);
             }
         });
     }
 
     /**
      *
-     * @return
+     * @return Image Icon for the form title bar
      */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
@@ -557,7 +572,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * @apiNote This method is used to exit the application when the close button. It also displays a goodbye messageDialog
      */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);

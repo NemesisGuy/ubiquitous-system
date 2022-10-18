@@ -11,8 +11,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -37,7 +35,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
      * Creates new form LoadingSplashScreen
      */
     public LoadingSplashScreen() {
-        setTitle("Ubiquitous System" +" - " + "Welcome" );
+        setTitle("Ubiquitous System" + " - " + "Welcome");
         initComponents();
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -345,11 +343,11 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
         // url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-logo.png");ubiquitous-system-banner.png
         //        url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-banner.png");
         // C:\Users\Admin\Documents\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\src\main\resources\images\\ubiquitous-system-icon.png
-       //  url = getClass().getResource("/resources/images/icon.png");
-        url = getClass().getResource("/images/ubiquitous-system-banner.png"); 
+        //  url = getClass().getResource("/resources/images/icon.png");
+        url = getClass().getResource("/images/ubiquitous-system-banner.png");
         //^^^returns ...
         //file:/C:/Users/Admin/Documents/NetBeansProjects/ubiquitous-system/ubiquitous-system/target/classes/images/ubiquitous-system-banner.png
-        
+
         System.out.println(url);
         displayLogoBanner(url);
     }

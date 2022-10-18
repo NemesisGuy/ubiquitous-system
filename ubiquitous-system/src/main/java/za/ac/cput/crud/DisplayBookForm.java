@@ -35,33 +35,27 @@ public class DisplayBookForm extends javax.swing.JFrame {
     /**
      *
      */
-
     public static String myBookTitle,
-
-    /**
-     *
-     */
-    subtTitle,
-
-    /**
-     *
-     */
-    author,
-
-    /**
-     *
-     */
-    description,
-
-    /**
-     *
-     */
-    rating,
-
-    /**
-     *
-     */
-    imageLink;
+            /**
+             *
+             */
+            subtTitle,
+            /**
+             *
+             */
+            author,
+            /**
+             *
+             */
+            description,
+            /**
+             *
+             */
+            rating,
+            /**
+             *
+             */
+            imageLink;
 
     /**
      *
@@ -82,11 +76,11 @@ public class DisplayBookForm extends javax.swing.JFrame {
      * Creates new form BookDisplayForm
      */
     public DisplayBookForm() {
-            //DisplayBookForm constructor with parameters : none
+        //DisplayBookForm constructor with parameters : none
         //DisplayBookForm constructor with signature : public DisplayBookForm();
         //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
 
-        setTitle("Ubiquitous System" +" - " + "Book Display"  );
+        setTitle("Ubiquitous System" + " - " + "Book Display");
         initComponents();
     }
 
@@ -104,21 +98,19 @@ public class DisplayBookForm extends javax.swing.JFrame {
         //DisplayBookForm constructor with signature : public DisplayBookForm(String titleIn, String subtTitleIn, String authorIn, String descriptionIn, String ratingIn, String imageLinkIn);
         //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
 
-       
         myBookTitle = titleIn;
         subtTitle = subtTitleIn;
         author = authorIn;
         description = descriptionIn;
         rating = ratingIn;
         imageLink = imageLinkIn;
-         setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
+        setTitle("Ubiquitous System" + " - " + "Book Display" + " - " + myBookTitle);
         initComponents();
     }
 
     //  create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
     //  public static DisplayBookForm displayBookForm = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
     //  public  DisplayBookForm displayBookForm = new DisplayBookForm("Hyperion ", "Space books ", "Dan Simmions", "The book that reinvented Space Opera, from the Hugo and World Fantasy Award-winning author of The Terror, which is now a chilling TV show. It is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.  ", "4", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405546838l/77566.jpg");
-
     /**
      *
      * @param book
@@ -130,16 +122,16 @@ public class DisplayBookForm extends javax.swing.JFrame {
         //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
 
         try {
-            
+
             this.book = book;
             myBookTitle = book.getTitle();
-            
+
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
             description = book.getDescription();
             rating = book.getRating();
             imageLink = book.getImageLink();
-            setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
+            setTitle("Ubiquitous System" + " - " + "Book Display" + " - " + myBookTitle);
             this.setVisible(true);
             initComponents();
             switch (displayBookButtons) {
@@ -189,7 +181,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
         //DisplayBookForm constructor description : Creates new form BookDisplayForm() and sets the form title
 
         try {
-            
+
             this.book = book;
             this.user = user;
             myBookTitle = book.getTitle();
@@ -198,10 +190,10 @@ public class DisplayBookForm extends javax.swing.JFrame {
             description = book.getDescription();
             rating = book.getRating();
             imageLink = book.getImageLink();
-            setTitle("Ubiquitous System" +" - " + "Book Display" + " - " + myBookTitle );
+            setTitle("Ubiquitous System" + " - " + "Book Display" + " - " + myBookTitle);
 
             this.setVisible(true);
-            
+
             initComponents();
             switch (displayBookButtons) {
                 case "loan":
@@ -222,7 +214,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
                 default:
                     jButtonLoan.setVisible(false);
                     jButtonReturn.setVisible(false);
-                    
+
             }
 
             //jButtonLoan.setVisible(displayBookLoanButton);
@@ -367,7 +359,7 @@ public class DisplayBookForm extends javax.swing.JFrame {
         jLabelPictureBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD - Opertation - Display Book ");
+        setTitle("Ubiquitous System - Display Book ");
         setIconImage(displayFrameImageIcon());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

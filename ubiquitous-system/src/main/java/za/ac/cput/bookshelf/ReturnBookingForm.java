@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import utilities.Dates;
 import za.ac.cput.crud.Book;
-import za.ac.cput.crud.Create;
 import utilities.Loan;
 import za.ac.cput.crud.Read;
 import za.ac.cput.crud.Update;
@@ -33,7 +32,7 @@ public class ReturnBookingForm extends javax.swing.JFrame {
      * Creates new form registerForm
      */
     public ReturnBookingForm() {
-        setTitle("Ubiquitous System" +" - " + "Return Book");
+        setTitle("Ubiquitous System" + " - " + "Return Book");
         initComponents();
     }
 
@@ -47,12 +46,11 @@ public class ReturnBookingForm extends javax.swing.JFrame {
         this.book = book;
         this.user = user;
         this.loan = loan;
-        
-        
-        setTitle("Ubiquitous System" +" - " + "Return Book"+" - "+ book.getTitle() );
+
+        setTitle("Ubiquitous System" + " - " + "Return Book" + " - " + book.getTitle());
         initComponents();
         Dates dates = new Dates();
-      
+
         jTextFieldBookUserName.setText(user.getUserName());
         jTextFieldBookTitle.setText(book.getTitle());
         jTextFieldDateOfIssue.setText(dates.getFormattedStartDate());
@@ -334,18 +332,16 @@ public class ReturnBookingForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
-        JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked In " + book.getTitle() + ".\n Recorded Date of return is " + dates.getFormattedCurrentDate()+ ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked In " + book.getTitle() + ".\n Recorded Date of return is " + dates.getFormattedCurrentDate() + ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
 
-       // Loan loan = new Loan(user, book);
-        Update update =  new Update();
+        // Loan loan = new Loan(user, book);
+        Update update = new Update();
         Read read = new Read();
-     //   loan =read.readUserLoanByBookTitle(user.getUserId(), book);
+        //   loan =read.readUserLoanByBookTitle(user.getUserId(), book);
         update.updateLoan(loan);
 
-       // Create create = new Create();
-
-       // create.createLoan(user, loan);
-
+        // Create create = new Create();
+        // create.createLoan(user, loan);
         // TODO Fancy SQL JOIN Statments here:
         this.dispose();
 

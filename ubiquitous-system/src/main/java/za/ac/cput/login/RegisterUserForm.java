@@ -23,7 +23,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
      * Creates new form registerForm
      */
     public RegisterUserForm() {
-        setTitle("Ubiquitous System" +" - " + "Sign Up Form" );
+        setTitle("Ubiquitous System" + " - " + "Sign Up Form");
         initComponents();
     }
 
@@ -306,7 +306,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
     private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed
         // TODO add your handling code here:
         validateFormFileds();
-      
+
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
@@ -335,7 +335,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
         new LoginUserForm().setVisible(rootPaneCheckingEnabled);
         this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
-    
+
     /**
      *
      * @return
@@ -356,6 +356,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
         System.err.println("");
         System.exit(0);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -397,24 +398,23 @@ public class RegisterUserForm extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    private boolean validateFormNames()
-    {
-        if(jTextFieldFirstName.getText().isBlank())
-        {  JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldLastName.getText().isBlank())
-        { JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldUserName.getText().isBlank())
-        {JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
-        Random rand = new Random();
-        int number = rand.nextInt(9999);
-         jTextFieldUserName.setText(jTextFieldFirstName.getText()+"."+ jTextFieldLastName.getText() +"#"+number);
-        }else {
-        return true;
+
+    private boolean validateFormNames() {
+        if (jTextFieldFirstName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldLastName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldUserName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            Random rand = new Random();
+            int number = rand.nextInt(9999);
+            jTextFieldUserName.setText(jTextFieldFirstName.getText() + "." + jTextFieldLastName.getText() + "#" + number);
+        } else {
+            return true;
         }
         return false;
     }
+
     private boolean validateFormEmails() {
 
         Validator validator = new Validator();
@@ -457,11 +457,11 @@ public class RegisterUserForm extends javax.swing.JFrame {
     }
 
     private void validateFormFileds() {
-       if(validateFormNames()){
-            if(validateFormEmails()){
+        if (validateFormNames()) {
+            if (validateFormEmails()) {
                 validateFormPaswords();
             }
-        }    
+        }
     }
 
     private void clearPasswords() {
@@ -482,14 +482,15 @@ public class RegisterUserForm extends javax.swing.JFrame {
         clearEmail();
         clearPasswords();
     }
-     private void createUser() {
-        Create create = new Create(); 
+
+    private void createUser() {
+        Create create = new Create();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
-      
+
         create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
-         System.out.println("text in password field in register class : "+ jPasswordFieldPassword.getText());
+        System.out.println("text in password field in register class : " + jPasswordFieldPassword.getText());
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExit;

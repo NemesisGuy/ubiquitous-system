@@ -17,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-
 import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -180,7 +179,7 @@ public class BookDisplay {
         // String imageUrl = "https://covers.openlibrary.org/b/isbn/9781118957424-L.jpg";
         JFrame bookFrame = new JFrame("Libirary System - Book Details : ");
         JPanel bookPanel = new JPanel();
-        
+
         //BorderLayout layout = new BorderLayout();
         GridLayout layout = new GridLayout(6, 2);
         JLabel bookTitle = new JLabel("Title: " + book.getTitle());
@@ -192,16 +191,15 @@ public class BookDisplay {
         bookDescription.setColumns(50);
         bookDescription.setRows(50);
         bookDescription.setEditable(false);
-        
+
         bookDescription.setLineWrap(true);
         bookDescription.setWrapStyleWord(true);
-        
-        
+
         JScrollPane areaScrollPane = new JScrollPane(bookDescription);
         areaScrollPane.setVerticalScrollBarPolicy(
-         JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(250, 250));   
-        
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(250, 250));
+
         // bookDescription.setPreferredSize();
         String bookImageLink = book.getImageLink();
         bookImageLink = bookImageLink.substring(bookImageLink.lastIndexOf("http"), bookImageLink.length() - 2);
@@ -209,7 +207,7 @@ public class BookDisplay {
         //bookImageLink.lastIndexOf("http");
         JLabel bookCover = new JLabel();
         bookCover.setSize(500, 500);
-        bookCover.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10),  new EtchedBorder()));
+        bookCover.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10), new EtchedBorder()));
 
         URL url = new URL(bookImageLink);
         Image image = ImageIO.read(url);
@@ -229,8 +227,8 @@ public class BookDisplay {
         bookPanel.add(bookRating);
         bookPanel.add(bookCover);
         bookPanel.add(areaScrollPane);
-        
-        bookPanel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10),  new EtchedBorder()));
+
+        bookPanel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10), new EtchedBorder()));
         // bookPanel.add(picLabel);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

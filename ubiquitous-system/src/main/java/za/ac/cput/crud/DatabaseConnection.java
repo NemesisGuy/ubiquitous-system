@@ -2,9 +2,6 @@
  */
 package za.ac.cput.crud;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,7 +37,7 @@ public class DatabaseConnection {
         String dbPassword = properties.getProperty("db.password");
         // String dbURL = "jdbc:mysql://" + dbUrl + ":" + dbPort + "/" + dbName + "";
         //String dbURL = "jdbc:mysql://" +"librarydatabase.nemesisnet.co.za"+ ":" + "9042" + "/" +"Library " + "";
-   
+
         String dbURL = "jdbc:mysql://" + "librarydatabase.nemesisnet.co.za" + ":" + "3306" + "/" + "LibraryDatabase " + "";
         Connection conn = null;
 

@@ -8,7 +8,6 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import za.ac.cput.bookshelf.BookshelfDisplay;
-import za.ac.cput.crud.CRUDGui;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.crud.Read;
 import za.ac.cput.crud.User;
@@ -24,7 +23,7 @@ public class LoginUserForm extends javax.swing.JFrame {
      * Creates new form registerForm
      */
     public LoginUserForm() {
-        setTitle("Ubiquitous System" +" - " + "Login Form" );
+        setTitle("Ubiquitous System" + " - " + "Login Form");
         initComponents();
     }
 
@@ -242,13 +241,14 @@ public class LoginUserForm extends javax.swing.JFrame {
 
         if (user == null) {
             System.out.println("User not found - btn");
+            JOptionPane.showMessageDialog(null, "Login Failed! /n If you are a new user, please register first. /n If you are an existing user, please check your username and password and try again.");
         } else {
-
-            this.setVisible(false);
-
-            this.dispose();
+            System.out.println("User found - btn");
+            JOptionPane.showMessageDialog(null, "Login Successful! /n Welcome " + user.getFirstName() + " " + user.getLastName() + "!" + " /n You are being logged in now.");
             read.readAllBooks();
-            BookshelfDisplay libraryStatus = new BookshelfDisplay(user, read.readAllBooks());////////add user as an arg 
+            BookshelfDisplay libraryStatus = new BookshelfDisplay(user, read.readAllBooks());//passing user object to the next form
+            this.setVisible(false);
+            this.dispose();
             libraryStatus.setVisible(rootPaneCheckingEnabled);
         }
 
@@ -335,11 +335,11 @@ public class LoginUserForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               LoginUserForm loginUserForm = new LoginUserForm();
-             
-               loginUserForm.setTitle("Ubiquitous System" +" - " + "Login Form" );
-               loginUserForm.setVisible(true);
-                
+                LoginUserForm loginUserForm = new LoginUserForm();
+
+                loginUserForm.setTitle("Ubiquitous System" + " - " + "Login Form");
+                loginUserForm.setVisible(true);
+
             }
         });
     }

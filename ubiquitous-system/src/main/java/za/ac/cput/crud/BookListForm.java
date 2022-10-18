@@ -24,18 +24,16 @@ public class BookListForm extends javax.swing.JFrame {
      * Creates new form UserListForm
      */
     // BookListForm constructor with no parameters
-
     public BookListForm() {
-        setTitle("Ubiquitous System" +" - " + "Booklist" );
+        setTitle("Ubiquitous System" + " - " + "Booklist");
         initComponents();
     }
 
     // BookListForm constructor with signature : public BookListForm(ArrayList<Book> bookList);
     // BookListForm constructor with parameters : ArrayList<Book> bookList
-
     /**
      *
-     * @param bookList
+     * @param bookList ArrayList of type Book
      */
     public BookListForm(ArrayList<Book> bookList) {
         initComponents();   // initComponents() method call
@@ -89,6 +87,7 @@ public class BookListForm extends javax.swing.JFrame {
         jLabelPictureBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ubiquitous System - Book  List");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -260,7 +259,7 @@ public class BookListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       //method with signature : public void JTableMouseClicked(java.awt.event.MouseEvent evt)
+        //method with signature : public void JTableMouseClicked(java.awt.event.MouseEvent evt)
         //JTableMouseClicked method is called when the mouse is clicked on the JTable
         //jTabel1MouseClicked is used to get the selected row from the table and display it in a DisplayBookform
         //
@@ -273,7 +272,7 @@ public class BookListForm extends javax.swing.JFrame {
 
             System.out.println(jTable1.getSelectedRow());   //get the selected row from the table and print it to the console
             //get the selected row from the table and display it in a DisplayBookform with the details of the book
-            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()),"none");
+            DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()), "none");
 
         }
 
@@ -324,7 +323,7 @@ public class BookListForm extends javax.swing.JFrame {
 
     /**
      *
-     * @return
+     * @return the list of books
      */
     public Image displayFrameImageIcon() {
         //method with signature : public Image displayFrameImageIcon()
@@ -335,7 +334,7 @@ public class BookListForm extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * method with signature : public void exit()
      */
     public void exit() {
         //method with signature : public void exit()

@@ -20,13 +20,14 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     /**
      * Creates new form createUserForm
+     *
      * @param parent
      * @param user
      * @param modal
      */
-    public UserProfileForm(java.awt.Frame parent, boolean modal,User user) {
+    public UserProfileForm(java.awt.Frame parent, boolean modal, User user) {
         super(parent, modal);
-        setTitle("Ubiquitous System" +" - " + "User Profile" );
+        setTitle("Ubiquitous System" + " - " + "User Profile");
         initComponents();
     }
 
@@ -327,22 +328,22 @@ public class UserProfileForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
-    private boolean validateFormNames()
-    {
-        if(jTextFieldFirstName.getText().isBlank())
-        {  JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldLastName.getText().isBlank())
-        { JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldUserName.getText().isBlank())
-        {JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
-        Random rand = new Random();
-        int number = rand.nextInt(9999);
-         jTextFieldUserName.setText(jTextFieldFirstName.getText()+"."+ jTextFieldLastName.getText() +"#"+number);
-        }else {
-        return true;
+    private boolean validateFormNames() {
+        if (jTextFieldFirstName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldLastName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldUserName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            Random rand = new Random();
+            int number = rand.nextInt(9999);
+            jTextFieldUserName.setText(jTextFieldFirstName.getText() + "." + jTextFieldLastName.getText() + "#" + number);
+        } else {
+            return true;
         }
         return false;
     }
+
     private boolean validateFormEmails() {
 
         Validator validator = new Validator();
@@ -365,10 +366,8 @@ public class UserProfileForm extends javax.swing.JDialog {
         Create create = new Create();
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
-      
-        if (validator.isValidPassword(tempPassword)) {
 
-           
+        if (validator.isValidPassword(tempPassword)) {
 
         } else {
             JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
@@ -378,17 +377,17 @@ public class UserProfileForm extends javax.swing.JDialog {
     }
 
     private void validateFormFileds() {
-       if(validateFormNames()){
-            if(validateFormEmails()){
+        if (validateFormNames()) {
+            if (validateFormEmails()) {
                 validateFormPaswords();
             }
-        }    
+        }
     }
 
     private void clearPasswords() {
 
         jPasswordFieldPassword.setText("");
-       
+
     }
 
     private void clearEmail() {
@@ -456,8 +455,8 @@ public class UserProfileForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 UserProfileForm dialog = new UserProfileForm();//must fix next sprint
-                dialog.addWindowListener(new java.awt.event.WindowAdapter(){
+                UserProfileForm dialog = new UserProfileForm();//must fix next sprint
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -496,11 +495,10 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     //method to createUser
     private void createUser() {
-    //    Create create = new Create(); 
-    //    String tempPassword = new String(jPasswordFieldPassword.getPassword());
-        
-  //      create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
+        //    Create create = new Create(); 
+        //    String tempPassword = new String(jPasswordFieldPassword.getPassword());
 
+        //      create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
     } //method that returns image
 
     /**

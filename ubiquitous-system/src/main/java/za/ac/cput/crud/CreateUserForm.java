@@ -19,15 +19,16 @@ public class CreateUserForm extends javax.swing.JDialog {
 
     /**
      * Creates new form createUserForm
+     *
      * @param parent
      * @param modal
      */
     public CreateUserForm(java.awt.Frame parent, boolean modal) {
-                //constructor with parameters : parent, modal
+        //constructor with parameters : parent, modal
         //constructor with signature : public CreateUserForm(java.awt.Frame parent, boolean modal);
-            //constructor set to properties : parent, modal and sets the frame title to "Create User"
+        //constructor set to properties : parent, modal and sets the frame title to "Create User"
         super(parent, modal);
-        setTitle("Ubiquitous System" +" - " + "Create a User" );
+        setTitle("Ubiquitous System" + " - " + "Create a User");
         initComponents();
     }
 
@@ -63,7 +64,7 @@ public class CreateUserForm extends javax.swing.JDialog {
         jLabelPictureBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD - Opertation - Create User Form");
+        setTitle("CRUD - Operations - Create User Form");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -318,28 +319,27 @@ public class CreateUserForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
-    private boolean validateFormNames()
-                //validateformnames method parameters : none
-                //validateformnames method signature : boolean
-                //validateformnames method return type : boolean
-                //validateformnames method description : this method validates the form names
-                // and returns true if the names are valid and false if the names are invalid and displays an error message
-
+    private boolean validateFormNames() //validateformnames method parameters : none
+    //validateformnames method signature : boolean
+    //validateformnames method return type : boolean
+    //validateformnames method description : this method validates the form names
+    // and returns true if the names are valid and false if the names are invalid and displays an error message
     {
-        if(jTextFieldFirstName.getText().isBlank())
-        {  JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldLastName.getText().isBlank())
-        { JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldUserName.getText().isBlank())
-        {JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
-        Random rand = new Random();
-        int number = rand.nextInt(9999);
-         jTextFieldUserName.setText(jTextFieldFirstName.getText()+"."+ jTextFieldLastName.getText() +"#"+number);
-        }else {
-        return true;
+        if (jTextFieldFirstName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldLastName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldUserName.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            Random rand = new Random();
+            int number = rand.nextInt(9999);
+            jTextFieldUserName.setText(jTextFieldFirstName.getText() + "." + jTextFieldLastName.getText() + "#" + number);
+        } else {
+            return true;
         }
         return false;
     }
+
     private boolean validateFormEmails() {
         //validateformemails method parameters : none
         //validateformemails method signature : boolean  true
@@ -404,11 +404,11 @@ public class CreateUserForm extends javax.swing.JDialog {
                 validateFormPasswords();
             }
         }
-       if(validateFormNames()){
-            if(validateFormEmails()){
+        if (validateFormNames()) {
+            if (validateFormEmails()) {
                 validateFormPasswords();
             }
-        }    
+        }
     }
 
     private void clearPasswords() {
@@ -537,23 +537,25 @@ public class CreateUserForm extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
-
+    /**
+     * @apiNote createUsers method creates a user in the database
+     */
     private void createUser() {
         //createUser method parameters : none
         //createUser method signature : void
         //createUser method return type : void
         //createUser method description : this method creates a user and inserts the user into the database
         //create a user object and saves it to the database
-        Create create = new Create(); 
+        Create create = new Create();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
-        
+
         create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
 
     }
 
     /**
      *
-     * @return
+     * @return Image
      */
     public Image displayFrameImageIcon() {
         //displayFrameImageIcon method parameters : none
@@ -567,7 +569,7 @@ public class CreateUserForm extends javax.swing.JDialog {
     }
 
     /**
-     *
+     * @apiNote exit the application when the user clicks the close button , display a goodbye messageDialog
      */
     public void exit() {
         //exit method parameters : none

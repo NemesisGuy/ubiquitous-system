@@ -19,8 +19,9 @@ public class FileHandler {
 
     /**
      *
-     * @param from
-     * @param to
+     * @param from - The path of the file to be copied
+     * @param to - The path of the file to be copied
+     * @apiNote This method copies a file from one location to another. The file is copied from the "from" parameter to the "to" parameter.
      */
     public static void copyFile(File from, File to) {
         try {
@@ -34,27 +35,28 @@ public class FileHandler {
 
     /**
      *
-     * @param folderPath
-     * @param path
-     * @return
+     * @param folderPath - The path of the folder to be created
+     * @param path - The path of the folder to be created
+     * @return - Returns true if the folder was created successfully, otherwise returns false.
+     * @apiNote This method creates a folder at the location specified by the "path" parameter. The folder is created at the location specified by the "path" parameter.
      */
     public boolean initConfig(Path folderPath, Path path) {
-      
+
         FileHandler fileHandler = new FileHandler();
         if (!fileHandler.isConfigFileFound(path)) {
             fileHandler.createFolder(folderPath);
             fileHandler.createFile(path);
             fileHandler.isFilePermissionValid(path);
-           
-        } 
+
+        }
         return true;
 
     }
 
     /**
      *
-     * @param path
-     * @return
+     * @param path - The path of the file to be created
+     * @return Boolean - Returns true if the file was created successfully, otherwise returns false.
      */
     public boolean isConfigFileFound(Path path) {
         boolean fileExsits = false;
@@ -77,8 +79,9 @@ public class FileHandler {
 
     /**
      *
-     * @param path
-     * @return
+     * @param path - The path of the file to be created
+     * @return Boolean - Returns true if the file was created successfully, otherwise returns false.
+     * @apiNote This method creates a file at the location specified by the "path" parameter. The file is created at the location specified by the "path" parameter. If the file already exists, the method returns false. If the file does not exist, the method creates the file and returns true. Otherwise returns false.
      */
     public boolean isFilePermissionValid(Path path) {
         boolean filePermissionValid = false;
@@ -105,8 +108,10 @@ public class FileHandler {
 
     /**
      *
-     * @param path
-     * @return
+     * @param path - The path of the file to be created
+     * @return Boolean - Returns true if the file was created successfully, otherwise returns false.
+     * @apiNote This method creates a file at the location specified by the "path" parameter. The file is created at the location specified by the "path" parameter. The method returns true if the file was created successfully, otherwise returns false.
+     *
      */
     public boolean createFile(Path path) {
         boolean completed = false;
@@ -124,8 +129,9 @@ public class FileHandler {
 
     /**
      *
-     * @param folderPath
-     * @return
+     * @param folderPath - The path of the folder to be created
+     * @return Boolean - Returns true if the folder was created successfully, otherwise returns false. Returns true if the folder was created successfully, otherwise returns false.
+     * @apiNote This method creates a folder at the location specified by the "folderPath" parameter. The folder is created at the location specified by the "folderPath" parameter. The
      */
     public boolean createFolder(Path folderPath) {
         boolean folderCreated = false;

@@ -4,8 +4,10 @@
  */
 package za.ac.cput.settings;
 
+import za.ac.cput.crud.User;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,14 +32,26 @@ import javax.swing.Icon;
 public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
 
     File selectedFile = null;
+    public static User user = null;
+    int userAccessLevel ;
 
     /**
-     * Creates new form SettingsForms
+     * @apiNote This constructor initializes the form.
+     *
      */
-    public SystemSettingsCompanyProfileForm() {
-        initComponents();
-      //  displayFrameImageIcon();
-        
+    public SystemSettingsCompanyProfileForm(User user) {
+
+        this.user = user;
+         userAccessLevel = Integer.parseInt(user.getAccessLevel());
+        setTitle("Ubiquitous System" + " - " + "CRUD Control Panel");
+        if (userAccessLevel > 0) {
+            initComponents();
+        } else {
+            System.err.println("you do not have access to this, please contact the system admin!");
+            JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "you Do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        //  displayFrameImageIcon();
     }
 
     /**
@@ -445,9 +459,9 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         jPanelBottomcLayout.setVerticalGroup(
             jPanelBottomcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomcLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(20, 20, 20)
                 .addComponent(jButtonClose1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
@@ -471,8 +485,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelTestDatabseConnection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelBottomc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addComponent(jPanelBottomc, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -483,9 +496,7 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -514,9 +525,9 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         properties.put("company.currency", jTextFieldCurrencyUnit.getText());
         Configuration configuration = new Configuration();
 
-        if (configuration.writeConfig(path, properties)) //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
+        if (configuration.writeConfig(path, properties)) //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built settings package)
         { //started at 5:22pm till am 14-Aug-2022
-            JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
+            JOptionPane.showMessageDialog(this, "Success : " + "\n Settings Saved!\n ");
         } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
 
@@ -551,27 +562,26 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String fileName = "Company-Profile.properties";
         Path configsPath = Paths.get("resources/settings/" + fileName);
-        
+
         selectedFile = jFileChooser.getSelectedFile();
         System.out.println("Image set asp Banner logo : " + selectedFile.getAbsolutePath());
         displayLogoBanner(selectedFile);
         //CopyFile
-        Path folderPath = Paths.get("resources/images/"+selectedFile.getName());
+        Path folderPath = Paths.get("resources/images/" + selectedFile.getName());
         FileHandler fileHandler = new FileHandler();
         File file = new File(folderPath.toString());
-        System.out.println("Folder write path is : \t" +folderPath+selectedFile.getName());
-               
+        System.out.println("Folder write path is : \t" + folderPath + selectedFile.getName());
+
         file.getParentFile().mkdirs(); // Will create parent directories if not exists
         fileHandler.copyFile(selectedFile, file);
         //set in conifg
         ;
         Map<String, String> properties = new HashMap<String, String>();
-        //     name website conrty timzone adminname currency
+        //     name website county timezone adminname currency
         properties.put("company.logoPath", file.getAbsolutePath());
         Configuration configuration = new Configuration();
 
-        if (configuration.writeConfig(configsPath, properties)) 
-        {
+        if (configuration.writeConfig(configsPath, properties)) {
             JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
         } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
@@ -642,15 +652,17 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SystemSettingsCompanyProfileForm().setVisible(true);
+                new SystemSettingsCompanyProfileForm(user).setVisible(true);
             }
         });
     }
 
     /**
      *
-     * @param selectedFile
-     * @throws IOException
+     * @param selectedFile - The file to be displayed
+     * @throws IOException - If the file is not foundException
+     * @throws FileNotFoundException - If the file is not foundException
+     * @apiNote - This method is used to display the image in the jlabel after it has been selected and loaded
      */
     public void displayLogo(File selectedFile) throws IOException {
         URL url;
@@ -668,7 +680,8 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
 
     /**
      *
-     * @param selectedFile
+     * @param selectedFile - The file to be displayed in the jlabel
+     * @apiNote - This method is used to display the image in the jlabel after it has been selected and loaded
      */
     public void displayLogoBanner(File selectedFile) {
         URL url;
@@ -692,29 +705,29 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
 
     /**
      *
-     * @return
+     * @return - The file selected by the user
+     * @apiNote - This method is used to get the file selected by the user and return it
      */
-    public Icon displayLogoBannerFromConfig(){
+    public Icon displayLogoBannerFromConfig() {
         Configuration configuration = new Configuration();
         configuration.displayLogoBannerFromConfig();
-        
+
         return configuration.displayLogoBannerFromConfig();
-        
-    
+
     }
 
     /**
      *
-     * @return
+     * @return - The file selected by the user
+     * @apiNote - This method is used to get the file selected by the user and return it
      */
-    public Image displayFrameImageIcon()
-    {
+    public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
-        return frameSettings.frameSettingsSetIconImage();  
+        return frameSettings.frameSettingsSetIconImage();
     }
 
     /**
-     *
+     * @apiNote - This method is used to exit the application when the close button is clicked on the form, its also displays a goodbye messageDialog
      */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);

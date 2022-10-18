@@ -25,27 +25,32 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
     ArrayList<Book> bookList;
     User user;
+    int userAccessLevel;
 
     /**
-     * Creates new form UserListForm
+     * @apiNote This constructor is used to create a new BookshelfDisplay object.
      */
     public BookshelfDisplay() {
-        setTitle("Ubiquitous System" +" - " + "Bookshelf");
+        setTitle("Ubiquitous System" + " - " + "Bookshelf");
         initComponents();
     }
 
     /**
      *
-     * @param user
-     * @param bookList
+     * @param user - The user.
+     * @param bookList - The book list.
+     * @apiNote This constructor is used to create a new BookshelfDisplay object.
      */
     public BookshelfDisplay(User user, ArrayList<Book> bookList) {
-        setTitle("Ubiquitous System" +" - " + "Update Book" );
+        setTitle("Ubiquitous System" + " - " + "Bookshelf");
         initComponents();
         this.bookList = bookList;
         this.user = user;
+        userAccessLevel = Integer.parseInt(user.getAccessLevel());
+        System.out.println("User Acces leve is set to : " + userAccessLevel);
         //loop though list to populate table
         // this.userList = userList;
+        
         Object[][] data = new Object[bookList.size()][6];
         for (int i = 0; i < bookList.size(); i++) {
 
@@ -94,7 +99,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         jMenuFile = new javax.swing.JMenu();
         jMenuItemNewLoan = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
-        jMenuItemUserProfile = new javax.swing.JMenuItem();
         jMenuItemCRUD = new javax.swing.JMenuItem();
         jMenuSettings = new javax.swing.JMenu();
         jMenuItemConnectivity = new javax.swing.JMenuItem();
@@ -138,7 +142,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Number", "Ttile", "Sub-Title", "Autor", "Description", "Rating"
+                "Number", "Title", "Sub-Title", "Author", "Description", "Rating"
             }
         ) {
             Class[] types = new Class [] {
@@ -273,7 +277,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         jMenuFile.setMnemonic('F');
         jMenuFile.setText("File");
 
-        jMenuItemNewLoan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
+        jMenuItemNewLoan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
         jMenuItemNewLoan.setMnemonic('L');
         jMenuItemNewLoan.setText("New Loan");
         jMenuItemNewLoan.addActionListener(new java.awt.event.ActionListener() {
@@ -287,16 +291,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
         jMenuEdit.setMnemonic('e');
         jMenuEdit.setText("Edit");
-
-        jMenuItemUserProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, 0));
-        jMenuItemUserProfile.setMnemonic('u');
-        jMenuItemUserProfile.setText("User Profile");
-        jMenuItemUserProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUserProfileActionPerformed(evt);
-            }
-        });
-        jMenuEdit.add(jMenuItemUserProfile);
 
         jMenuItemCRUD.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
         jMenuItemCRUD.setMnemonic('c');
@@ -378,13 +372,13 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-        // TODO add your handling code here:
+
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        System.out.println("table prints this");// TODO add your handling code here:
+        System.out.println("table prints this");
         String button = "none";
         System.out.println("Event trigered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
@@ -401,23 +395,20 @@ public class BookshelfDisplay extends javax.swing.JFrame {
             Loan lastLoan = read.readLatestLoanByBookId(book);
             if (lastLoan.getReturnedDate().equalsIgnoreCase("0-0-0")) {
                 if (lastLoan.getUserId().equalsIgnoreCase(userId)) {
-                    button ="returns";                   
+                    button = "returns";
                 }
                 System.out.println("Not alavlible , a user cutrently has this book");
-                System.out.println("This is the return due date : " +lastLoan.getReturnedDate());
-                System.out.println("Currnetly out on loan with User id : " +lastLoan.getUserId());
+                System.out.println("This is the return due date : " + lastLoan.getReturnedDate());
+                System.out.println("Currnetly out on loan with User id : " + lastLoan.getUserId());
             } else {
                 System.out.println("Book avalible to loan");
                 button = "loan";
             }
 
-           
+            System.out.println("Current Book id : " + book.getBookId());
+            System.out.println("Currnet User id : " + user.getUserId());
 
-            System.out.println("Current Book id : " +book.getBookId());
-            System.out.println("Currnet User id : " +user.getUserId());
-            
-
-            System.out.println("Button is set to : "+button);
+            System.out.println("Button is set to : " + button);
 
             DisplayBookForm displayBookForm = new DisplayBookForm(user, bookList.get(jTable1.getSelectedRow()), button);// means display loan buton
         }
@@ -426,52 +417,62 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConnectivityActionPerformed
-        // TODO add your handling code here:
-        SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm();
-        systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
-        // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+
+        System.out.println("User Access Level : " + userAccessLevel);
+        if (userAccessLevel > 0) {
+            SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm(user);
+            systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
+            // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "You do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_jMenuItemConnectivityActionPerformed
 
     private void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompanyProfileActionPerformed
-        // TODO add your handling code here:
-        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
-        systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
-        // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+
+        System.out.println("User Access Level : " + userAccessLevel);
+        if (userAccessLevel > 0) {
+            SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm(user);
+            systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
+            // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "You do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jMenuItemCompanyProfileActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        // TODO add your handling code here:
+
+        AboutForm aboutForm = new AboutForm();
+        aboutForm.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     private void jMenuItemHelpWikiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpWikiActionPerformed
-        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(new JFrame(), "Error!  \n " + "This feature is under Development! \n  Please contact the system developers for assistance!", "Ubiquitous System - Under Development ", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItemHelpWikiActionPerformed
 
-    private void jMenuItemUserProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUserProfileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemUserProfileActionPerformed
-
     private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
-        // TODO add your handling code here:
-        int userAccessLevel = Integer.valueOf(user.getAccessLevel());
-        if (userAccessLevel>0) {
-        CRUDGui cRUDGui = new CRUDGui();
-        cRUDGui.setVisible(rootPaneCheckingEnabled);
-        cRUDGui.setAutoRequestFocus(true);
-        }
-        else
+
+        System.out.println("User Access Level : " + userAccessLevel);
+        if (userAccessLevel > 0) {
+            CRUDGui cRUDGui = new CRUDGui(user);
+            cRUDGui.setVisible(rootPaneCheckingEnabled);
+            cRUDGui.setAutoRequestFocus(true);
+        }else
         {
-        JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "you Do not have sufficent privliages to acces this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "Error!  "+ " " + "You do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         //  cRUDGui.set
         // this.setVisible(true);
         // this.dispose();
     }//GEN-LAST:event_jMenuItemCRUDActionPerformed
 
     private void jMenuItemNewLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewLoanActionPerformed
-        // TODO add your handling code here:
+
         Read read = new Read();
         //   DisplayBookForm displayBookForm = new DisplayBookForm(user, read.loanBookByTitle(), rootPaneCheckingEnabled);
         BookingForm bookingForm = new BookingForm(user, read.loanBookByTitle());
@@ -482,7 +483,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNewLoanActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        // TODO add your handling code here:
         SwingUtilities.updateComponentTreeUI(this);
         this.invalidate();
         this.validate();
@@ -490,7 +490,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        // TODO add your handling code here:
         SwingUtilities.updateComponentTreeUI(this);
         this.invalidate();
         this.validate();
@@ -498,7 +497,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        // TODO add your handling code here:
     }//GEN-LAST:event_formMouseEntered
 
     /**
@@ -559,7 +557,8 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
     /**
      *
-     * @return
+     * @return image
+     * @apiNote this method is used to get the image from the database and return it
      */
     public Image displayFrameImageIcon() {
         FrameSettings frameSettings = new FrameSettings();
@@ -567,7 +566,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * @apiNote this method exits the application and displays a goodbye message
      */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
@@ -592,7 +591,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemConnectivity;
     private javax.swing.JMenuItem jMenuItemHelpWiki;
     private javax.swing.JMenuItem jMenuItemNewLoan;
-    private javax.swing.JMenuItem jMenuItemUserProfile;
     private javax.swing.JMenu jMenuSettings;
     private javax.swing.JPanel jPanelBottom;
     private javax.swing.JPanel jPanelImagePanelBanner;

@@ -4,7 +4,6 @@
  */
 package za.ac.cput.login;
 
-import za.ac.cput.crud.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.validator.EmailValidator;
@@ -35,8 +34,8 @@ public class LoginValidator {
     public boolean isEmailValid(String emailAddress) {
         //  String emailAddress = "username@domain.com";
 
-       /// return   this.isEmailValid(emailAddress) ;
-        return  EmailValidator.getInstance().isValid(emailAddress);
+        /// return   this.isEmailValid(emailAddress) ;
+        return EmailValidator.getInstance().isValid(emailAddress);
 
     }
 

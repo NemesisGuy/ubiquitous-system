@@ -23,7 +23,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
      * Creates new form UpdateUserForm
      */
     public UpdateUserForm() {
-        setTitle("Ubiquitous System" +" - " + "Update User Form" );
+        setTitle("Ubiquitous System" + " - " + "Update User Form");
         initComponents();
     }
 
@@ -32,13 +32,13 @@ public class UpdateUserForm extends javax.swing.JFrame {
      * @param user
      */
     public UpdateUserForm(User user) {
-    
+
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.userName = user.getUserName();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        setTitle("Ubiquitous System" +" - " + "Update User Form"+" - "+ userName );
+        setTitle("Ubiquitous System" + " - " + "Update User Form" + " - " + userName);
         initComponents();
         jTextFieldFirstNameUpdate.setText(user.getFirstName());
         jTextFieldLastNameUpdate.setText(user.getLastName());
@@ -47,30 +47,31 @@ public class UpdateUserForm extends javax.swing.JFrame {
         jPasswordFieldPasswordUpdate.setText(user.getPassword());
 
     }
-    private void updateUser()
-    {
-        User user = new User("",jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), jPasswordFieldPasswordUpdate.getText(),"0");
+
+    private void updateUser() {
+        User user = new User("", jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), jPasswordFieldPasswordUpdate.getText(), "0");
         Update update = new Update();
         update.updateUser(firstName, user);
         dispose();
-    
+
     }
-    private boolean validateFormNames()
-    {
-        if(jTextFieldFirstNameUpdate.getText().isBlank())
-        {  JOptionPane.showMessageDialog(null, "Error: invald First Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldLastNameUpdate.getText().isBlank())
-        { JOptionPane.showMessageDialog(null, "Error: invald Last Name! \n User creation unsuccessfull!");
-        }else if(jTextFieldUserNameUpdate.getText().isBlank())
-        {JOptionPane.showMessageDialog(null, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
-        Random rand = new Random();
-        int number = rand.nextInt(9999);
-         jTextFieldUserNameUpdate.setText(jTextFieldFirstNameUpdate.getText()+"."+ jTextFieldLastNameUpdate.getText() +"#"+number);
-        }else {
-        return true;
+
+    private boolean validateFormNames() {
+        if (jTextFieldFirstNameUpdate.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Error: invald First Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldLastNameUpdate.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Error: invald Last Name! \n User creation unsuccessfull!");
+        } else if (jTextFieldUserNameUpdate.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            Random rand = new Random();
+            int number = rand.nextInt(9999);
+            jTextFieldUserNameUpdate.setText(jTextFieldFirstNameUpdate.getText() + "." + jTextFieldLastNameUpdate.getText() + "#" + number);
+        } else {
+            return true;
         }
         return false;
     }
+
     private boolean validateFormEmails() {
 
         Validator validator = new Validator();
@@ -90,7 +91,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }
 
     private void validateFormPaswords() {
-       
+
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPasswordUpdate.getText());
         String tempPasswordConfirm = new String(jPasswordFieldConfirmPasswordUpdate.getText());
@@ -113,11 +114,11 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }
 
     private void validateFormFileds() {
-       if(validateFormNames()){
-            if(validateFormEmails()){
+        if (validateFormNames()) {
+            if (validateFormEmails()) {
                 validateFormPaswords();
             }
-        }    
+        }
     }
 
     private void clearPasswords() {
@@ -134,7 +135,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     private void clearForm() {
         jTextFieldFirstNameUpdate.setText("");
         jTextFieldLastNameUpdate.setText("");
-        
+
         jTextFieldUserNameUpdate.setText("");
         clearEmail();
         clearPasswords();
@@ -172,6 +173,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
         jTextFieldFirstNameUpdate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CRUD - Operations - Update User");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -436,8 +438,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
-       validateFormFileds();
-        
+        validateFormFileds();
 
         // Create create = new Create();
         // String tempPassword = new String(jPasswordFieldPasswordUpdate.getPassword());

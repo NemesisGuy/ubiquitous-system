@@ -8,7 +8,7 @@ package za.ac.cput.crud;
  *
  * @author Peter Buckingham
  */
-  import java.awt.Image;
+import java.awt.Image;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -32,42 +32,36 @@ public class UpdateBookForm extends javax.swing.JFrame {
      *
      */
     public String title,
-
-    /**
-     *
-     */
-    subtTitle,
-
-    /**
-     *
-     */
-    author,
-
-    /**
-     *
-     */
-    description,
-
-    /**
-     *
-     */
-    rating,
-
-    /**
-     *
-     */
-    imageLink;
+            /**
+             *
+             */
+            subtTitle,
+            /**
+             *
+             */
+            author,
+            /**
+             *
+             */
+            description,
+            /**
+             *
+             */
+            rating,
+            /**
+             *
+             */
+            imageLink;
 
     /**
      * Creates new form CreateBookForm
      */
     public UpdateBookForm() {
-        setTitle("Ubiquitous System" +" - " + "Update Book");
+        setTitle("Ubiquitous System" + " - " + "Update Book");
         initComponents();
     }
 
     //        create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
-
     /**
      *
      * @param title
@@ -85,7 +79,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
             this.description = description;
             this.rating = rating;
             this.imageLink = imageLink;
-            setTitle("Ubiquitous System" +" - " + "Update Book"+" - "+ title );
+            setTitle("Ubiquitous System" + " - " + "Update Book" + " - " + title);
             initComponents();
             jTextFieldTitle.setText(title);
             jTextFieldSubTitle.setText(subtTitle);
@@ -108,14 +102,14 @@ public class UpdateBookForm extends javax.swing.JFrame {
     //  public UpdateBookForm updateBookForm = new  UpdateBookForm(title, subtTitle, author, description, rating, imageLink);
 
     UpdateBookForm(Book book) {
-         try {
+        try {
             this.title = book.getTitle();
             this.subtTitle = book.getSubTitle();
             this.author = book.getAuthors();
             this.description = book.getDescription();
             this.rating = book.getRating();
             this.imageLink = book.getImageLink();
-            setTitle("Ubiquitous System" +" - " + "Update Book"+" - "+ title );
+            setTitle("Ubiquitous System" + " - " + "Update Book" + " - " + title);
             initComponents();
             jTextFieldTitle.setText(title);
             jTextFieldSubTitle.setText(subtTitle);
@@ -125,11 +119,11 @@ public class UpdateBookForm extends javax.swing.JFrame {
             jTextFieldImageLink.setText(imageLink);
             URL url = new URL(imageLink);
             Image image = ImageIO.read(url);
-            if (image!=null){
+            if (image != null) {
                 ImageIcon imageIcon;
                 jLabelPicture.setIcon(imageIcon = new ImageIcon(image.getScaledInstance(jPanelImagePanel.getWidth(), jPanelImagePanel.getHeight(), Image.SCALE_SMOOTH)));
             }
-            } catch (MalformedURLException ex) {
+        } catch (MalformedURLException ex) {
             Logger.getLogger(UpdateBookForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(UpdateBookForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,7 +163,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
         jLabelPictureBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD - Opertation - Update Book ");
+        setTitle("CRUD - Operations - Update Book ");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -435,13 +429,13 @@ public class UpdateBookForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-     //   Book book = new Book( title, subtTitle, subtTitle, author, description, rating, imageLink);
-        Book book = new Book( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuhor.getText(), jTextAreaDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText());
+        //   Book book = new Book( title, subtTitle, subtTitle, author, description, rating, imageLink);
+        Book book = new Book(jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuhor.getText(), jTextAreaDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText());
         Update update = new Update();
         update.updateBook(title, book);
         // TODO add your handling code here:
 
-        
+
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jTextFieldSubTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSubTitleActionPerformed
@@ -491,7 +485,7 @@ public class UpdateBookForm extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      *
      * @return

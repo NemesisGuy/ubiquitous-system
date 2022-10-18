@@ -4,16 +4,13 @@
  */
 package za.ac.cput.settings;
 
-import com.google.api.client.testing.json.AbstractJsonParserTest;
 import java.awt.Image;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -23,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,15 +28,14 @@ import javax.swing.JOptionPane;
 public class Configuration {
 
     /**
-     *
-     * @param args
+     * @apiNote @param args
      */
     public static void main(String[] args) {
 
     }
 
     /**
-     *
+     * @apiNote This method initializes the configuration file for the application, which is stored in the resources/settings folder.
      */
     public void intiDefaultConfigs() {
         intiDefaultCompanyProfileConfig();
@@ -49,7 +44,8 @@ public class Configuration {
     }
 
     /**
-     *
+     * @apiNote This method initializes the default company profile configuration file. This file is stored in the resources/settings folder.
+     * @apiNote The default company profile configuration file is used to store the company name, address, contact details, logo and other company details.
      */
     public void intiDefaultCompanyProfileConfig() {
         String fileName = "Company-Profile.properties";
@@ -73,7 +69,7 @@ public class Configuration {
     }
 
     /**
-     *
+     * @apiNote This method initializes the default database connection configuration file. This file is stored in the resources/settings folder. The default database connection configuration file is used to store the database connection details. The database connection details are used to connect to the database.
      */
     public void intiDefaultDatabaseConnectionConfig() {
         String fileName = "Database-Connection.properties";
@@ -95,7 +91,7 @@ public class Configuration {
     }
 
     /**
-     *
+     * @apiNote This method writes the configuration file to the specified path.
      */
     public void initDefaultCompanyLogo() {
         String fileName = "logo.png";
@@ -103,14 +99,14 @@ public class Configuration {
         Path folderPathFrom = Paths.get("resources/images/");
         Path folderPathtTo = Paths.get("resources/images/");
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/images/ubiquitous-system-icon.png"));
-      
+
         FileHandler fileHandler = new FileHandler();
-    //    fileHandler.copyFile(getClass().getResource("/resources/images/ubiquitous-system-icon.png"), folderPathtTo);
+        //    fileHandler.copyFile(getClass().getResource("/resources/images/ubiquitous-system-icon.png"), folderPathtTo);
     }
 
     /**
      *
-     * @return
+     * @return boolean indicating if the configuration file exists. Default is false. The configuration file is stored in the resources/settings folder. if the configuration file exists, the method returns true.
      */
     public boolean writeConfigTest() {
 
@@ -138,7 +134,8 @@ public class Configuration {
 
     /**
      *
-     * @return
+     * @return icon of the company logo. The logo is stored in the resources/images folder.
+     * @apiNote This method returns the company logo. The logo is stored in the resources/images folder. The logo is used to display the company logo in the application.
      */
     public Icon displayLogoBannerFromConfig() {
         String fileName = "Company-Profile.properties";
@@ -178,11 +175,11 @@ public class Configuration {
 //    
 //    
 //    
-
     /**
      *
-     * @param path
-     * @return
+     * @param path the path of the configuration file.
+     * @return the configuration file as a properties object.
+     * @apiNote This method returns the configuration file as a properties object.
      */
     public Properties readConfig(Path path) {
         Properties properties = new Properties();
@@ -197,9 +194,9 @@ public class Configuration {
 
     /**
      *
-     * @param path
-     * @param propertiesMap
-     * @return
+     * @param path the path of the configuration file.
+     * @param propertiesMap the properties map to be written to the configuration file.
+     * @return boolean indicating if the configuration file was written successfully. Default is false.
      */
     public boolean writeConfig(Path path, Map<String, String> propertiesMap) {
         boolean isConfigSet = false;

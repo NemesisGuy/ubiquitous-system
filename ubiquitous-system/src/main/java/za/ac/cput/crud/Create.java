@@ -28,7 +28,6 @@ public class Create {
      * @param rate
      * @param imageLink
      */
-
     public void createBook(String title, String subTitle, String author, String ISBN, String description, String rate, String imageLink) {
         //createBook method with parameters : title, subTitle, author, ISBN, description, rate, imageLink
         //createBook method with signature : public void createBook(String title, String subTitle, String author, String ISBN, String description, String rate, String imageLink);
@@ -65,6 +64,8 @@ public class Create {
      * @param email
      * @param password
      * @param userAccessLevel
+     * @apiNote This method creates a new user object and saves it to the database, it is used by the admin user, and is not available to the general public,
+     *
      */
     public void createUser(String firstName, String lastName, String userName, String email, String password, int userAccessLevel) {
         //createUser method with parameters : firstName, lastName, userName, email, password, userAccessLevel
@@ -97,16 +98,18 @@ public class Create {
 
     /**
      *
-     * @param user
-     * @param loan
+     * @param user user object
+     * @param loan loan object
+     * @apiNote this method creates a new loan object and saves it to the database using the user object and the loan object, the user object is used to get the user id and the loan object is used to get the book id the user id and the book id are then used to create a new loan object and save it to the database the loan object is then returned
+     *
      */
-    public void createLoan(User user, Loan loan){
+    public void createLoan(User user, Loan loan) {
         //createLoan method with parameters : user, loan
         //createLoan method with signature : public void createLoan(User user, Loan loan);
         //method that creates a new loan object and saves it to the database
-    String userId = user.getUserId();
-    loan.getClass();
-        if (loan.getReturnedDate()==null) {
+        String userId = user.getUserId();
+        loan.getClass();
+        if (loan.getReturnedDate() == null) {
             loan.setReturnedDate("0-0-0");
         }
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -129,6 +132,6 @@ public class Create {
         } catch (SQLException ex) {
             Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
+
     }
 }

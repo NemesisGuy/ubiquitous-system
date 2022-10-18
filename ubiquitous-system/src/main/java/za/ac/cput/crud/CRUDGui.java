@@ -7,6 +7,8 @@ package za.ac.cput.crud;
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import za.ac.cput.bookshelf.AboutForm;
+import za.ac.cput.bookshelf.BookingForm;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 import za.ac.cput.settings.SystemSettingsCompanyProfileForm;
@@ -22,20 +24,29 @@ public class CRUDGui extends javax.swing.JFrame {
      *
      */
     public static User user;
+    public int userAccessLevel ;
+
+
     /**
      * Creates new form CRUDGui
+     *
      * @param user
      */
     public CRUDGui(User user) {
-        //constructor with signature : public CRUDGui(User user);
-        //constructor with parameters : User user
-        //constructor description : Creates new form CRUDGui with user parameter , sets the title of the frame
+        //constructor with signature : public CRUDGui(User readUser);
+        //constructor with parameters : User readUser
+        //constructor description : Creates new form CRUDGui with readUser parameter , sets the title of the frame
         this.user = user;
-        setTitle("Ubiquitous System" +" - " + "CRUD Control Panel" );
-        if (Integer.getInteger(user.getAccessLevel())>0) {
+        userAccessLevel = Integer.parseInt(user.getAccessLevel());
+        System.out.println("User access level is : " + userAccessLevel);
+
+        setTitle("Ubiquitous System" + " - " + "CRUD Control Panel");
+        if (userAccessLevel > 0) {
             initComponents();
-        }else{System.err.println("you do not have access to this, please contact the system admin!");}
-       // initComponents();
+        } else {
+            System.err.println("you do not have access to this, please contact the system admin!");
+        }
+        // initComponents();
     }
 
     /**
@@ -45,7 +56,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //constructor with signature : public CRUDGui();
         //constructor with parameters : none
         //constructor description : Creates new form CRUDGui with no parameters , creates some objects
-       
+
         initComponents();
     }
     CreateUserForm createUserForm = new CreateUserForm(this, rootPaneCheckingEnabled);
@@ -80,10 +91,9 @@ public class CRUDGui extends javax.swing.JFrame {
         jPanelImagePanelBanner = new javax.swing.JPanel();
         jLabelPictureBanner = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuFile = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuFile1 = new javax.swing.JMenu();
+        jMenuItemNewLoan = new javax.swing.JMenuItem();
         jMenuEdit = new javax.swing.JMenu();
-        jMenuItemUserProfile = new javax.swing.JMenuItem();
         jMenuItemCRUD = new javax.swing.JMenuItem();
         jMenuSettings = new javax.swing.JMenu();
         jMenuItemConnectivity = new javax.swing.JMenuItem();
@@ -93,7 +103,7 @@ public class CRUDGui extends javax.swing.JFrame {
         jMenuItemHelpWiki = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CRUD - Opertations -  Menu");
+        setTitle("CRUD - Operations -  Menu");
         setIconImage(displayFrameImageIcon());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -322,33 +332,23 @@ public class CRUDGui extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        jMenuFile.setMnemonic('F');
-        jMenuFile.setText("File");
+        jMenuFile1.setMnemonic('F');
+        jMenuFile1.setText("File");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
-        jMenuItem2.setMnemonic('R');
-        jMenuItem2.setText("New Rental");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNewLoan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        jMenuItemNewLoan.setMnemonic('L');
+        jMenuItemNewLoan.setText("New Loan");
+        jMenuItemNewLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemNewLoanActionPerformed(evt);
             }
         });
-        jMenuFile.add(jMenuItem2);
+        jMenuFile1.add(jMenuItemNewLoan);
 
-        jMenuBar1.add(jMenuFile);
+        jMenuBar1.add(jMenuFile1);
 
         jMenuEdit.setMnemonic('e');
         jMenuEdit.setText("Edit");
-
-        jMenuItemUserProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, 0));
-        jMenuItemUserProfile.setMnemonic('u');
-        jMenuItemUserProfile.setText("User Profile");
-        jMenuItemUserProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUserProfileActionPerformed(evt);
-            }
-        });
-        jMenuEdit.add(jMenuItemUserProfile);
 
         jMenuItemCRUD.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
         jMenuItemCRUD.setMnemonic('c');
@@ -433,7 +433,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonDeleteUserActionPerformed method parameters : ActionEvent evt
         //jButtonDeleteUserActionPerformed method signature : public void jButtonDeleteUserActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonDeleteUserActionPerformed method return type : void
-        //JButtonDeleteUserActionPerformed method description : This method is called when the user clicks on the Delete User button. It deletes the user from the database.
+        //JButtonDeleteUserActionPerformed method description : This method is called when the readUser clicks on the Delete User button. It deletes the readUser from the database.
         Delete delete = new Delete();
         delete.deleteUser();
     }//GEN-LAST:event_jButtonDeleteUserActionPerformed
@@ -442,7 +442,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonDeleteBookActionPerformed method parameters : ActionEvent evt
         //  JButtonDeleteBookActionPerformed method signature : void jButtonDeleteBookActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonDeleteBookActionPerformed method return type : void
-        //JButtonDeleteBookActionPerformed method description : This method is called when the user clicks on the Delete Book button. It deletes the book from the database.
+        //JButtonDeleteBookActionPerformed method description : This method is called when the readUser clicks on the Delete Book button. It deletes the book from the database.
         Delete delete = new Delete();
         delete.deleteBook();
     }//GEN-LAST:event_jButtonDeleteBookActionPerformed
@@ -451,7 +451,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonSearchBookActionPerformed method parameters : ActionEvent evt
         //JButtonSearchBookActionPerformed method signature : void jButtonSearchBookActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonSearchBookActionPerformed method return type : void
-         //JButtonSearchBookActionPerformed method description : This method is called when the user clicks on the Search Book button. It searches the book from the database.
+        //JButtonSearchBookActionPerformed method description : This method is called when the readUser clicks on the Search Book button. It searches the book from the database.
 
         Read read = new Read();
         read.readBookByTitle();
@@ -461,7 +461,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //  JButtonSearchUserActionPerformed method parameters : ActionEvent evt
         //JButtonSearchUserActionPerformed method signature : void jButtonSearchUserActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonSearchUserActionPerformed method return type : void
-        //JButtonSearchUserActionPerformed method description : This method is called when the user clicks on the Search User button. It searches the user from the database.
+        //JButtonSearchUserActionPerformed method description : This method is called when the readUser clicks on the Search User button. It searches the readUser from the database.
 
         Read read = new Read();
         read.readUserByName();
@@ -471,13 +471,13 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonUpdateUserActionPerformed method parameters : ActionEvent evt
         //JButtonUpdateUserActionPerformed method signature : void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonUpdateUserActionPerformed method return type : void
-        //JButtonUpdateUserActionPerformed method description : This method is called when the user clicks on the Update User button. It updates the user in the database.
+        //JButtonUpdateUserActionPerformed method description : This method is called when the readUser clicks on the Update User button. It updates the readUser in the database.
 
-        //find user  
-        //update user
+        //find readUser  
+        //update readUser
         Read read = new Read();
-        User user = read.readUserByName();
-        updateUserForm = new UpdateUserForm(user);
+        User readUser = read.readUserByName();
+        updateUserForm = new UpdateUserForm(readUser);
         updateUserForm.setVisible(rootPaneCheckingEnabled);
         Update update = new Update();
 
@@ -487,7 +487,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonUserListActionPerformed method parameters : ActionEvent evt
         //JButtonUserListActionPerformed method signature : void jButtonUserListActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonUserListActionPerformed method return type : void
-        //JButtonUserListActionPerformed method description : This method is called when the user clicks on the User List button. It displays the list of users in the database.
+        //JButtonUserListActionPerformed method description : This method is called when the readUser clicks on the User List button. It displays the list of users in the database.
 
         Read read = new Read();
         UserListForm userListForm = new UserListForm(read.readAllUsers());
@@ -501,7 +501,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonAddUserActionPerformed method parameters : ActionEvent evt
         //JButtonAddUserActionPerformed method signature : void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonAddUserActionPerformed method return type : void
-        //JButtonAddUserActionPerformed method description : This method is called when the user clicks on the Add User button. It adds the user to the database.
+        //JButtonAddUserActionPerformed method description : This method is called when the readUser clicks on the Add User button. It adds the readUser to the database.
 
         createUserForm.setVisible(rootPaneCheckingEnabled);
         createUserForm.setAlwaysOnTop(rootPaneCheckingEnabled);
@@ -511,7 +511,7 @@ public class CRUDGui extends javax.swing.JFrame {
         //JButtonUpdateBookActionPerformed method parameters : ActionEvent evt
         //JButtonUpdateBookActionPerformed method signature : void jButtonUpdateBookActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonUpdateBookActionPerformed method return type : void
-        //JButtonUpdateBookActionPerformed method description : This method is called when the user clicks on the Update Book button. It updates the book in the database.
+        //JButtonUpdateBookActionPerformed method description : This method is called when the readUser clicks on the Update Book button. It updates the book in the database.
 
         //read book 
         Read read = new Read();
@@ -524,80 +524,87 @@ public class CRUDGui extends javax.swing.JFrame {
 
         //if book found
         //display boo update form and populate with data from DB
-        //if user presses update button then push to DB (update)
+        //if readUser presses update button then push to DB (update)
         ////////////// Update update = new Update();
         ////////////// update.updateBook();
-        // if book found then diplay book details with form
+        // if book found then display book details with form
 
     }//GEN-LAST:event_jButtonUpdateBookActionPerformed
-
-    private void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBookListActionPerformed
+    /**
+     *
+     * @apiNote This method is called when the user clicks on the Book List button. It displays the list of books in the database, and the user can select a book to view the details.
+     * @param evt ActionEvent evt
+     */
+    private void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt) {
         //JButtonBookListActionPerformed method parameters : ActionEvent evt
         //JButtonBookListActionPerformed method signature : void jButtonBookListActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonBookListActionPerformed method return type : void
-        //JButtonBookListActionPerformed method description : This method is called when the user clicks on the Book List button. It displays the list of books in the database.
-
+        //JButtonBookListActionPerformed method description : This method is called when the readUser clicks on the Book List button. It displays the list of books in the database.
         Read read = new Read();
         //read.readAllBooks();
         BookListForm bookListForm = new BookListForm(read.readAllBooks());
         bookListForm.setVisible(true);
         bookListForm.setAutoRequestFocus(rootPaneCheckingEnabled);
-    }//GEN-LAST:event_jButtonBookListActionPerformed
+    }
 
+    /**
+     *
+     * @apiNote This method is called when the user clicks on the Add Book button. It adds the book to the database.
+     * @param evt ActionEvent evt
+     */
     private void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBookActionPerformed
 
         //JButtonAddBookActionPerformed method parameters : ActionEvent evt
         //JButtonAddBookActionPerformed method signature : void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt)
         //JButtonAddBookActionPerformed method return type : void
-        //JButtonAddBookActionPerformed method description : This method is called when the user clicks on the Add Book button. It adds the book to the database.
-
+        //JButtonAddBookActionPerformed method description : This method is called when the readUser clicks on the Add Book button. It adds the book to the database.
         createBookForm.setVisible(rootPaneCheckingEnabled);
         createBookForm.setAlwaysOnTop(rootPaneCheckingEnabled);
         //  Create create = new Create();
         //create.createBook();/////
 
     }//GEN-LAST:event_jButtonAddBookActionPerformed
-
+    /**
+     *
+     * @apiNote This method is called when the user clicks on the cancel button, and it closes the current form.
+     * @param evt ActionEvent evt
+     */
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         //  jButtonCancelActionPerformed method parameters : ActionEvent evt
         //  jButtonCancelActionPerformed method signature : void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt)
         //  jButtonCancelActionPerformed method return type : void
-        //  jButtonCancelActionPerformed method description : This method is called when the user clicks on the Cancel button. It closes the application.
+        //  jButtonCancelActionPerformed method description : This method is called when the readUser clicks on the Cancel button. It closes the application.
 
         this.setVisible(false);
         this.dispose();
-      //  exit();
+        //  exit();
 
     }//GEN-LAST:event_jButtonCancelActionPerformed
-
+    /**
+     *
+     * @apiNote windowClosing method this method is called when the user clicks on the close button on the form. It updates the user in the database.
+     * @param evt ActionEvent evt
+     */
     private void windowClosingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosingHandler
         //  windowClosingHandler method parameters : WindowEvent evt
         //  windowClosingHandler method signature : void windowClosingHandler(java.awt.event.WindowEvent evt)
         //  windowClosingHandler method return type : void
-        //  windowClosingHandler method description : This method is called when the user clicks on the X button. It closes the application.
+        //  windowClosingHandler method description : This method is called when the readUser clicks on the X button. It closes the application.
 
         this.setVisible(false);
         this.dispose();
-      //  exit();
+        //  exit();
 
 
     }//GEN-LAST:event_windowClosingHandler
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItemUserProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUserProfileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemUserProfileActionPerformed
 
     private void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCRUDActionPerformed
         // jMenuItemCRUDActionPerformed method parameters : ActionEvent evt
         // jMenuItemCRUDActionPerformed method signature : void jMenuItemCRUDActionPerformed(java.awt.event.ActionEvent evt)
         // jMenuItemCRUDActionPerformed method return type : void
-        // jMenuItemCRUDActionPerformed method description : This method is called when the user clicks on the CRUD button. It displays the CRUD form.
+        // jMenuItemCRUDActionPerformed method description : This method is called when the readUser clicks on the CRUD button. It displays the CRUD form.
 
-        CRUDGui cRUDGui =  new CRUDGui(user);
+        CRUDGui cRUDGui = new CRUDGui(user);
         cRUDGui.setVisible(rootPaneCheckingEnabled);
         this.setVisible(false);
         this.dispose();
@@ -607,9 +614,9 @@ public class CRUDGui extends javax.swing.JFrame {
         //  jMenuItemConnectivityActionPerformed method parameters : ActionEvent evt
         //  jMenuItemConnectivityActionPerformed method signature : void jMenuItemConnectivityActionPerformed(java.awt.event.ActionEvent evt)
         //  jMenuItemConnectivityActionPerformed method return type : void
-        //  jMenuItemConnectivityActionPerformed method description : This method is called when the user clicks on the Connectivity button. It displays the Connectivity form.
+        //  jMenuItemConnectivityActionPerformed method description : This method is called when the readUser clicks on the Connectivity button. It displays the Connectivity form.
 
-        SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm();
+        SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm(user);
         systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
         // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItemConnectivityActionPerformed
@@ -618,19 +625,37 @@ public class CRUDGui extends javax.swing.JFrame {
         //  jMenuItemCompanyProfileActionPerformed method parameters : ActionEvent evt
         //  jMenuItemCompanyProfileActionPerformed method signature : void jMenuItemCompanyProfileActionPerformed(java.awt.event.ActionEvent evt)
         //  jMenuItemCompanyProfileActionPerformed method return type : void
-        //  jMenuItemCompanyProfileActionPerformed method description : This method is called when the user clicks on the Company Profile button. It displays the Company Profile form.
-        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm();
+        //  jMenuItemCompanyProfileActionPerformed method description : This method is called when the readUser clicks on the Company Profile button. It displays the Company Profile form.
+        SystemSettingsCompanyProfileForm systemSettingsCompanyProfileForm = new SystemSettingsCompanyProfileForm(user);
         systemSettingsCompanyProfileForm.setVisible(rootPaneCheckingEnabled);
         // systemSettingsCompanyProfileForm.setAlwaysOnTop(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItemCompanyProfileActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        // TODO add your handling code here:
+
+         AboutForm aboutForm = new AboutForm();
+            aboutForm.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     private void jMenuItemHelpWikiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpWikiActionPerformed
-        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(new JFrame(), "Error!  \n " + "This feature is under Development! \n  Please contact the system developers for assistance!", "Ubiquitous System - Under Development ", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jMenuItemHelpWikiActionPerformed
+
+    private void jMenuItemNewLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewLoanActionPerformed
+
+        Read read = new Read();
+        Book bookFromDatabase = read.loanBookByTitle();
+        if (bookFromDatabase != null) {
+        BookingForm bookingForm = new BookingForm(user,bookFromDatabase );
+        bookingForm.setVisible(true);
+        bookingForm.setAutoRequestFocus(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "No book found with that title, please try again!");
+        }
+
+    }//GEN-LAST:event_jMenuItemNewLoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -676,7 +701,7 @@ public class CRUDGui extends javax.swing.JFrame {
         FrameSettings frameSettings = new FrameSettings();
         return frameSettings.frameSettingsSetIconImage();
     }
-  
+
     /**
      *
      */
@@ -684,7 +709,7 @@ public class CRUDGui extends javax.swing.JFrame {
         // exit method parameters : none
         // exit method signature : void exit()
         // exit method return type : void
-        // exit method description : This method is called when the user clicks on the exit button. It closes the application.
+        // exit method description : This method is called when the readUser clicks on the exit button. It closes the application.
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("");
         System.out.println("Thanks for using my program!");
@@ -709,15 +734,14 @@ public class CRUDGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPictureBanner;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEdit;
-    private javax.swing.JMenu jMenuFile;
+    private javax.swing.JMenu jMenuFile1;
     private javax.swing.JMenu jMenuHelp;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemCRUD;
     private javax.swing.JMenuItem jMenuItemCompanyProfile;
     private javax.swing.JMenuItem jMenuItemConnectivity;
     private javax.swing.JMenuItem jMenuItemHelpWiki;
-    private javax.swing.JMenuItem jMenuItemUserProfile;
+    private javax.swing.JMenuItem jMenuItemNewLoan;
     private javax.swing.JMenu jMenuSettings;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

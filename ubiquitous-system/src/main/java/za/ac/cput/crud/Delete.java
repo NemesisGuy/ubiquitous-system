@@ -64,7 +64,6 @@ public class Delete {
         //deleteUser method signature : public void deleteUser();
         //deleteUser method description : method that deletes a user object from the database
 
-
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
         Connection conn = databaseConnection.getDatabaseConnection();

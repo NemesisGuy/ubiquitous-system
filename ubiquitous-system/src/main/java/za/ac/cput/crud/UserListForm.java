@@ -17,12 +17,14 @@ import za.ac.cput.settings.FrameSettings;
  * @author Peter Buckingham
  */
 public class UserListForm extends javax.swing.JFrame {
-ArrayList<User> userList;
+
+    ArrayList<User> userList;
+
     /**
      * Creates new form UserListForm
      */
     public UserListForm() {
-        setTitle("Ubiquitous System" +" - " + "User List");
+        setTitle("Ubiquitous System" + " - " + "User List");
         initComponents();
     }
 
@@ -31,36 +33,34 @@ ArrayList<User> userList;
      * @param userList
      */
     public UserListForm(ArrayList<User> userList) {
-        setTitle("Ubiquitous System" +" - " + "User List");
+        setTitle("Ubiquitous System" + " - " + "User List");
         initComponents();
-        //loop though list to poulate table
+        //loop though list to populate table
         this.userList = userList;
         Object[][] data = new Object[userList.size()][6];
         for (int i = 0; i < userList.size(); i++) {
-            
+
             data[i][0] = i;
             data[i][1] = userList.get(i).getFirstName();
             data[i][2] = userList.get(i).getLastName();
             data[i][3] = userList.get(i).getUserName();
             data[i][4] = userList.get(i).getEmail();
             data[i][5] = userList.get(i).getPassword().toString();
-            
-            
+
         }
 
-        Object[] columnNames = {"Number : ","Frist Name : ", "Last Name : ", "User Name : ", "Email : ", "Password : "};
-        DefaultTableModel model = new DefaultTableModel(data, columnNames){
+        Object[] columnNames = {"Number : ", "First Name : ", "Last Name : ", "User Name : ", "Email : ", "Password : "};
+        DefaultTableModel model = new DefaultTableModel(data, columnNames) {
 
-                @Override
-                    public boolean isCellEditable(int row, int column) {
-                    //all cells false
-                    return false;
-                    }
-                };
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
         jTable1.setModel(model);
-        
-// create JTable just once and pass model in the constructor
 
+// create JTable just once and pass model in the constructor
     }
 
     /**
@@ -82,7 +82,7 @@ ArrayList<User> userList;
         jLabelPictureBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("User List");
+        setTitle("CRUD - Operations - User List");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -273,9 +273,8 @@ ArrayList<User> userList;
             java.util.logging.Logger.getLogger(UserListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
