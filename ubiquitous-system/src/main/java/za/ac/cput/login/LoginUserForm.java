@@ -236,15 +236,18 @@ public class LoginUserForm extends javax.swing.JFrame {
 
         User user = read.userLogin(jTextFieldUserName.getText(), pwd);
 
-        System.out.println("user name from loin form " + jTextFieldUserName.getText());
-        System.out.println("from Login password form : " + pwd);
+        System.out.println("User name from loin form " + jTextFieldUserName.getText());
+        System.out.println("From Login password form : " + pwd);
 
         if (user == null) {
             System.out.println("User not found - btn");
-            JOptionPane.showMessageDialog(null, "Login Failed! /n If you are a new user, please register first. /n If you are an existing user, please check your username and password and try again.");
+            JOptionPane.showMessageDialog(new JFrame(), "Login Failed! \n If you are a new user, please register first. \n If you are an existing user, please check your username and password and try again.");
+            JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+
         } else {
+
             System.out.println("User found - btn");
-            JOptionPane.showMessageDialog(null, "Login Successful! /n Welcome " + user.getFirstName() + " " + user.getLastName() + "!" + " /n You are being logged in now.");
+            JOptionPane.showMessageDialog(new JFrame(), "Login Successful! \n Welcome " + user.getFirstName() + " " + user.getLastName() + "!" + " \n You are being logged in now.");
             read.readAllBooks();
             BookshelfDisplay libraryStatus = new BookshelfDisplay(user, read.readAllBooks());//passing user object to the next form
             this.setVisible(false);
@@ -291,6 +294,7 @@ public class LoginUserForm extends javax.swing.JFrame {
      */
     public void exit() {
         JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
+
         System.out.println("");
         System.out.println("Thanks for using my program!");
         System.out.println("Author : Peter Buckingham \n");

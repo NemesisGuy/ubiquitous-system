@@ -283,7 +283,7 @@ public class UpdateCommentForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
+
         this.setVisible(false);
         this.dispose();
         exit();
@@ -291,7 +291,7 @@ public class UpdateCommentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButtonConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfimActionPerformed
-        // TODO add your handling code here:
+
         this.setVisible(false);
         //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
         JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked out " + book.getTitle() + ".\n Please return it by the due date of " + dates.getFormattedEndDate() + ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
@@ -302,23 +302,23 @@ public class UpdateCommentForm extends javax.swing.JFrame {
 
         create.createLoan(user, loan);
 
-        // TODO Fancy SQL JOIN Statments here:
+
         this.dispose();
 
 
     }//GEN-LAST:event_jButtonConfimActionPerformed
 
     private void jTextFieldBookUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBookUserNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldBookUserNameActionPerformed
 
     private void jTextFieldDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDueDateActionPerformed
-        // TODO add your handling code here:
+
 
     }//GEN-LAST:event_jTextFieldDueDateActionPerformed
 
     private void jTextFieldBookTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBookTitleActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldBookTitleActionPerformed
 
     /**

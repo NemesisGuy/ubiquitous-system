@@ -47,7 +47,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         this.bookList = bookList;
         this.user = user;
         userAccessLevel = Integer.parseInt(user.getAccessLevel());
-        System.out.println("User Acces leve is set to : " + userAccessLevel);
+        System.out.println("User Access leve is set to : " + userAccessLevel);
         //loop though list to populate table
         // this.userList = userList;
         
@@ -378,9 +378,10 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        Loan lastLoan = null;
         System.out.println("table prints this");
         String button = "none";
-        System.out.println("Event trigered : " + evt);
+        System.out.println("Event triggered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
             // your valueChanged overridden method 
 
@@ -391,22 +392,38 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
             String userId = user.getUserId();
             String bookId = String.valueOf(book.getBookId());///get the loan of this book to compare with this users
+            //if loan is null then the book is available for loan,catch the exception and display the book
+            try {
+                lastLoan = read.readLatestLoanByBookId(book);
+                System.out.println("The last loan found for this book, BookId : " + book.getBookId() + " Title: " + book.getTitle()+ " is " + lastLoan.toString());
 
-            Loan lastLoan = read.readLatestLoanByBookId(book);
-            if (lastLoan.getReturnedDate().equalsIgnoreCase("0-0-0")) {
-                if (lastLoan.getUserId().equalsIgnoreCase(userId)) {
-                    button = "returns";
-                }
-                System.out.println("Not alavlible , a user cutrently has this book");
-                System.out.println("This is the return due date : " + lastLoan.getReturnedDate());
-                System.out.println("Currnetly out on loan with User id : " + lastLoan.getUserId());
-            } else {
-                System.out.println("Book avalible to loan");
+            } catch (Exception e) {
+                System.out.println("Book :" + book.getBookId() + " Title: " + book.getTitle() + " is available for loan, because no previous loan was found!");
                 button = "loan";
             }
+         //   Loan lastLoan = read.readLatestLoanByBookId(book);
+            //if loan is null then the book is available for loan,catch the exception and display the book
+            if (lastLoan == null) {
+                System.out.println("Book :" + book.getBookId() + " Title: " + book.getTitle() + " is available for loan, because no previous loan was found!");
+
+            }else{
+                if (lastLoan.getReturnedDate().equalsIgnoreCase("0-0-0")) {
+                    if (lastLoan.getUserId().equalsIgnoreCase(userId)) {
+                        button = "returns";
+                    }
+                    System.out.println("Not available , a user currently has this book");
+                    System.out.println("This is the return due date : " + lastLoan.getReturnedDate());
+                    System.out.println("Currently out on loan with User id : " + lastLoan.getUserId());
+                } else {
+                    System.out.println("Book avalible to loan");
+                    button = "loan";
+                }
+            }
+
+
 
             System.out.println("Current Book id : " + book.getBookId());
-            System.out.println("Currnet User id : " + user.getUserId());
+            System.out.println("Current User id : " + user.getUserId());
 
             System.out.println("Button is set to : " + button);
 

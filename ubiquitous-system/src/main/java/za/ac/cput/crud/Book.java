@@ -245,7 +245,7 @@ public class Book {
     public String getISBN() {
         if (ISBN == null) //
         {
-            ISBN = "book isbn getter set this";   //
+            ISBN = " ";   //
         }
         return ISBN;
     }
