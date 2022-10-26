@@ -486,9 +486,11 @@ public class RegisterUserForm extends javax.swing.JFrame {
     private void createUser() {
         Create create = new Create();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
+        Encryption encryption = new Encryption();
+        String encryptedPassword = encryption.encrypt(tempPassword);
 
-        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
-        System.out.println("text in password field in register class : " + jPasswordFieldPassword.getText());
+        create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), encryptedPassword, 0);
+        System.out.println("Text encrypted in password field in register class : " + encryptedPassword);
     }
 
 

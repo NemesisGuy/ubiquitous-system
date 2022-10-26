@@ -233,11 +233,13 @@ public class LoginUserForm extends javax.swing.JFrame {
 
         Read read = new Read();
         String pwd = jPasswordFieldPassword.getText();
+        Encryption encryption = new Encryption();
+        String encryptedPassword  = encryption.encrypt(pwd);
 
-        User user = read.userLogin(jTextFieldUserName.getText(), pwd);
+        User user = read.userLogin(jTextFieldUserName.getText(), encryptedPassword);
 
         System.out.println("User name from loin form " + jTextFieldUserName.getText());
-        System.out.println("From Login password form : " + pwd);
+        System.out.println("From Login password form : " + encryptedPassword);
 
         if (user == null) {
             System.out.println("User not found - btn");
