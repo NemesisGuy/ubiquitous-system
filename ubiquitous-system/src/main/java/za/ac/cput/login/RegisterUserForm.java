@@ -305,7 +305,7 @@ public class RegisterUserForm extends javax.swing.JFrame {
 
     private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed
         // TODO add your handling code here:
-        validateFormFileds();
+        validateFormFields();
 
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
@@ -401,11 +401,11 @@ public class RegisterUserForm extends javax.swing.JFrame {
 
     private boolean validateFormNames() {
         if (jTextFieldFirstName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid First Name! \n User creation unsuccessful!");
         } else if (jTextFieldLastName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid Last Name! \n User creation unsuccessful!");
         } else if (jTextFieldUserName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid User Name! \n Setting Suggested Name \n User creation unsuccessful!");
             Random rand = new Random();
             int number = rand.nextInt(9999);
             jTextFieldUserName.setText(jTextFieldFirstName.getText() + "." + jTextFieldLastName.getText() + "#" + number);
@@ -422,18 +422,18 @@ public class RegisterUserForm extends javax.swing.JFrame {
             if (validator.compareEmails(jTextFieldEmail.getText(), jTextFieldConfirmEmail.getText())) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(this, "Error: email address missmatch! \n User creation unsuccessfull!");
+                JOptionPane.showMessageDialog(this, "Error: email address mismatch! \n User creation unsuccessful!");
                 clearEmail();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Error: invald email address! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid email address! \n User creation unsuccessful!");
             clearEmail();
         }
 
         return false;
     }
 
-    private void validateFormPaswords() {
+    private void validateFormPasswords() {
         Create create = new Create();
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
@@ -445,21 +445,21 @@ public class RegisterUserForm extends javax.swing.JFrame {
                 clearForm();
             } else {
 
-                JOptionPane.showMessageDialog(this, "Error: password missmatch! \n User creation unsuccessfull!");
+                JOptionPane.showMessageDialog(this, "Error: password mismatch ! \n User creation unsuccessful!");
                 clearPasswords();
             }
 
         } else {
-            JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessful!");
             clearPasswords();
             //not stronk
         }
     }
 
-    private void validateFormFileds() {
+    private void validateFormFields() {
         if (validateFormNames()) {
             if (validateFormEmails()) {
-                validateFormPaswords();
+                validateFormPasswords();
             }
         }
     }

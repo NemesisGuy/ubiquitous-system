@@ -21,7 +21,6 @@ public class UserProfileForm extends javax.swing.JDialog {
     /**
      * Creates new form createUserForm
      *
-     * @param parent
      * @param user
      * @param modal
      */
@@ -30,7 +29,7 @@ public class UserProfileForm extends javax.swing.JDialog {
         setTitle("Ubiquitous System" + " - " + "User Profile");
         initComponents();
         this.user = user;
-        //get arrarlist of user past loans to display in tableModel
+        //get array list of user past loans to display in tableModel
         //set table model
 
     }
@@ -81,7 +80,7 @@ public class UserProfileForm extends javax.swing.JDialog {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD - Opertation - Create User Form");
+        setTitle("CRUD - Operation - Create User Form");
         setIconImage(displayFrameImageIcon());
 
         jPanelMain.setBackground(new java.awt.Color(250, 249, 246));
@@ -369,11 +368,11 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     private boolean validateFormNames() {
         if (jTextFieldFirstName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald First Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid First Name! \n User creation unsuccessful!");
         } else if (jTextFieldLastName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald Last Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid Last Name! \n User creation unsuccessful!");
         } else if (jTextFieldUserName.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid User Name! \n Setting Suggested Name \n User creation unsuccessful!");
             Random rand = new Random();
             int number = rand.nextInt(9999);
             jTextFieldUserName.setText(jTextFieldFirstName.getText() + "." + jTextFieldLastName.getText() + "#" + number);
@@ -392,7 +391,7 @@ public class UserProfileForm extends javax.swing.JDialog {
         return false;
     }
 
-    private void validateFormPaswords() {
+    private void validateFormPasswords() {
         Create create = new Create();
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPassword.getPassword());
@@ -400,16 +399,16 @@ public class UserProfileForm extends javax.swing.JDialog {
         if (validator.isValidPassword(tempPassword)) {
 
         } else {
-            JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(this, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessful!");
             clearPasswords();
             //not stronk
         }
     }
 
-    private void validateFormFileds() {
+    private void validateFormFields() {
         if (validateFormNames()) {
             if (validateFormEmails()) {
-                validateFormPaswords();
+                validateFormPasswords();
             }
         }
     }
@@ -445,7 +444,7 @@ public class UserProfileForm extends javax.swing.JDialog {
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
         //validate then talk to db
-        validateFormFileds();
+        validateFormFields();
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jTextFieldEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmail1ActionPerformed

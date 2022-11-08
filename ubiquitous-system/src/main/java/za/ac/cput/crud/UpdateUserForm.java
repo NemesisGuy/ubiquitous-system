@@ -62,11 +62,11 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
     private boolean validateFormNames() {
         if (jTextFieldFirstNameUpdate.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Error: invald First Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(null, "Error: invalid First Name! \n User creation unsuccessful!");
         } else if (jTextFieldLastNameUpdate.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Error: invald Last Name! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(null, "Error: invalid Last Name! \n User creation unsuccessful!");
         } else if (jTextFieldUserNameUpdate.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Error: invald User Name! \n Setting Suggested Name \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(null, "Error: invalid User Name! \n Setting Suggested Name \n User creation unsuccessful!");
             Random rand = new Random();
             int number = rand.nextInt(9999);
             jTextFieldUserNameUpdate.setText(jTextFieldFirstNameUpdate.getText() + "." + jTextFieldLastNameUpdate.getText() + "#" + number);
@@ -94,7 +94,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
         return false;
     }
 
-    private void validateFormPaswords() {
+    private void validateFormPasswords() {
 
         Validator validator = new Validator();
         String tempPassword = new String(jPasswordFieldPasswordUpdate.getText());
@@ -117,10 +117,10 @@ public class UpdateUserForm extends javax.swing.JFrame {
         }
     }
 
-    private void validateFormFileds() {
+    private void validateFormFields() {
         if (validateFormNames()) {
             if (validateFormEmails()) {
-                validateFormPaswords();
+                validateFormPasswords();
             }
         }
     }
@@ -442,7 +442,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
-        validateFormFileds();
+        validateFormFields();
 
         // Create create = new Create();
         // String tempPassword = new String(jPasswordFieldPasswordUpdate.getPassword());
