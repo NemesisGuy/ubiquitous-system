@@ -107,7 +107,8 @@ public class Create {
         //createLoan method with parameters : user, loan
         //createLoan method with signature : public void createLoan(User user, Loan loan);
         //method that creates a new loan object and saves it to the database
-        String userId = user.getUserId();
+     //   String userId = user.getUserId();
+        String userId = loan.getUserId();
         loan.getClass();
         if (loan.getReturnedDate() == null) {
             loan.setReturnedDate("0-0-0");

@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import za.ac.cput.login.Encryption;
 import za.ac.cput.settings.Configuration;
 import za.ac.cput.settings.FrameSettings;
 
@@ -49,7 +51,9 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }
 
     private void updateUser() {
-        User user = new User("", jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), jPasswordFieldPasswordUpdate.getText(), "0");
+        Encryption encryption = new Encryption();
+        String encryptedPassword = encryption.encrypt(jPasswordFieldPasswordUpdate.getText());
+        User user = new User("", jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText(), jTextFieldUserNameUpdate.getText(), jTextFieldEmailUpdate.getText(), encryptedPassword, "0");
         Update update = new Update();
         update.updateUser(firstName, user);
         dispose();
@@ -79,11 +83,11 @@ public class UpdateUserForm extends javax.swing.JFrame {
             if (validator.compareEmails(jTextFieldEmailUpdate.getText(), jTextFieldConfirmEmailUpdate.getText())) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Error: email address missmatch! \n User creation unsuccessfull!");
+                JOptionPane.showMessageDialog(null, "Error: email address mismatch! \n User creation unsuccessful!");
                 clearEmail();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Error: invald email address! \n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(null, "Error: invalid email address! \n User creation unsuccessful!");
             clearEmail();
         }
 
@@ -102,12 +106,12 @@ public class UpdateUserForm extends javax.swing.JFrame {
                 clearForm();
             } else {
 
-                JOptionPane.showMessageDialog(null, "Error: password missmatch! \n User creation unsuccessfull!");
+                JOptionPane.showMessageDialog(null, "Error: password mismatch! \n User creation unsuccessful!");
                 clearPasswords();
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessfull!");
+            JOptionPane.showMessageDialog(null, "Error: invalid password! \nrequired :\n It contains at least 8 characters and at most 20 characters.\n It contains at least one digit. \nIt contains at least one upper case alphabet.\n It contains at least one lower case alphabet.\nIt contains at least one special character which includes !@#$%&*()-+=^.\n It doesn’t contain any white space.\n User creation unsuccessful!");
             clearPasswords();
             //not stronk
         }

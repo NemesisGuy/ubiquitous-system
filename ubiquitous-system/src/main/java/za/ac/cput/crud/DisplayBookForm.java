@@ -125,7 +125,6 @@ public class DisplayBookForm extends javax.swing.JFrame {
 
             this.book = book;
             myBookTitle = book.getTitle();
-
             subtTitle = book.getSubTitle();
             author = book.getAuthors();
             description = book.getDescription();

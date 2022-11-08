@@ -64,7 +64,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
         }
 
-        Object[] columnNames = {"Number : ", "Title : ", "Sub-Title : ", "Author : ", "Description : ", "Rating : "};
+        Object[] columnNames = {"Book ID : ", "Title : ", "Sub-Title : ", "Author : ", "Description : ", "Rating : "};
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
 
             @Override
@@ -379,7 +379,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         Loan lastLoan = null;
-        System.out.println("table prints this");
+        System.out.println("Clicking the table prints this");
         String button = "none";
         System.out.println("Event triggered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
@@ -394,7 +394,9 @@ public class BookshelfDisplay extends javax.swing.JFrame {
             String bookId = String.valueOf(book.getBookId());///get the loan of this book to compare with this users
             //if loan is null then the book is available for loan,catch the exception and display the book
             try {
-                lastLoan = read.readLatestLoanByBookId(book);
+                lastLoan = read.readLatestLoanByBookId(book);//gets books last loan
+                Book bookFromDB = read.readBookById(book.getBookId());
+                book = bookFromDB;
                 System.out.println("The last loan found for this book, BookId : " + book.getBookId() + " Title: " + book.getTitle()+ " is " + lastLoan.toString());
 
             } catch (Exception e) {
@@ -415,19 +417,14 @@ public class BookshelfDisplay extends javax.swing.JFrame {
                     System.out.println("This is the return due date : " + lastLoan.getReturnedDate());
                     System.out.println("Currently out on loan with User id : " + lastLoan.getUserId());
                 } else {
-                    System.out.println("Book avalible to loan");
+                    System.out.println("Book available to loan");
                     button = "loan";
                 }
             }
-
-
-
             System.out.println("Current Book id : " + book.getBookId());
             System.out.println("Current User id : " + user.getUserId());
-
             System.out.println("Button is set to : " + button);
-
-            DisplayBookForm displayBookForm = new DisplayBookForm(user, bookList.get(jTable1.getSelectedRow()), button);// means display loan buton
+            DisplayBookForm displayBookForm = new DisplayBookForm(user, bookList.get(jTable1.getSelectedRow()), button);// means display loan button
         }
 
 
@@ -439,7 +436,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
         if (userAccessLevel > 0) {
             SystemSettingsConectionsForm systemSettingsConectionsForm = new SystemSettingsConectionsForm(user);
             systemSettingsConectionsForm.setVisible(rootPaneCheckingEnabled);
-            // systemSettingsConectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
+            // systemSettingsConnectionsForm.setAlwaysOnTop(rootPaneCheckingEnabled);
         } else {
             JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "You do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
         }

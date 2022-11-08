@@ -53,8 +53,8 @@ public class ReturnBookingForm extends javax.swing.JFrame {
 
         jTextFieldBookUserName.setText(user.getUserName());
         jTextFieldBookTitle.setText(book.getTitle());
-        jTextFieldDateOfIssue.setText(dates.getFormattedStartDate());
-        jTextFieldDueDate.setText(dates.getFormattedEndDate());
+        jTextFieldDateOfIssue.setText(loan.getLoanFromDate());
+        jTextFieldDueDate.setText(loan.getDueOnDate());
     }
 
     /**

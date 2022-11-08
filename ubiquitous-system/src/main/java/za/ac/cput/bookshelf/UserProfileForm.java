@@ -17,7 +17,7 @@ import za.ac.cput.settings.FrameSettings;
  * @author Peter Buckingham
  */
 public class UserProfileForm extends javax.swing.JDialog {
-
+    User user = new User();
     /**
      * Creates new form createUserForm
      *
@@ -29,6 +29,10 @@ public class UserProfileForm extends javax.swing.JDialog {
         super(parent, modal);
         setTitle("Ubiquitous System" + " - " + "User Profile");
         initComponents();
+        this.user = user;
+        //get arrarlist of user past loans to display in tableModel
+        //set table model
+
     }
 
     private UserProfileForm() {
@@ -42,6 +46,9 @@ public class UserProfileForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanelMain = new javax.swing.JPanel();
         jPanelMid = new javax.swing.JPanel();
         jLabelFirstName = new javax.swing.JLabel();
@@ -51,13 +58,14 @@ public class UserProfileForm extends javax.swing.JDialog {
         jTextFieldUserName = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelLastName = new javax.swing.JLabel();
-        jLabelComfirmEmail = new javax.swing.JLabel();
         jTextFieldLastName = new javax.swing.JTextField();
-        jTextFieldConfirmEmail = new javax.swing.JTextField();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jTextFieldFirstName = new javax.swing.JTextField();
         jLabelComfirmEmail1 = new javax.swing.JLabel();
         jTextFieldEmail1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabelFirstName1 = new javax.swing.JLabel();
         jPanelBottom = new javax.swing.JPanel();
         jButtonSubmit = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
@@ -65,6 +73,12 @@ public class UserProfileForm extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jPanelImagePanelBanner = new javax.swing.JPanel();
         jLabelPictureBanner = new javax.swing.JLabel();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD - Opertation - Create User Form");
@@ -106,14 +120,8 @@ public class UserProfileForm extends javax.swing.JDialog {
         jLabelLastName.setForeground(new java.awt.Color(0, 0, 0));
         jLabelLastName.setText("Last Name: ");
 
-        jLabelComfirmEmail.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelComfirmEmail.setText("Confirm Email:");
-
         jTextFieldLastName.setColumns(40);
         jTextFieldLastName.setToolTipText("Enter last name");
-
-        jTextFieldConfirmEmail.setColumns(40);
-        jTextFieldConfirmEmail.setToolTipText("Re-enter email");
 
         jPasswordFieldPassword.setColumns(40);
         jPasswordFieldPassword.setToolTipText("Enter password");
@@ -138,6 +146,31 @@ public class UserProfileForm extends javax.swing.JDialog {
             }
         });
 
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "First Name", "Last Name", "User Name", "Email ", "Password"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabelFirstName1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelFirstName1.setText("Loan History :");
+
         javax.swing.GroupLayout jPanelMidLayout = new javax.swing.GroupLayout(jPanelMid);
         jPanelMid.setLayout(jPanelMidLayout);
         jPanelMidLayout.setHorizontalGroup(
@@ -150,17 +183,22 @@ public class UserProfileForm extends javax.swing.JDialog {
                     .addComponent(jLabelLastName)
                     .addComponent(jLabelUserName)
                     .addComponent(jLabelPassword)
-                    .addComponent(jLabelComfirmEmail)
                     .addComponent(jLabelComfirmEmail1))
-                .addGap(20, 20, 20)
+                .addGap(28, 28, 28)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldLastName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldUserName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldConfirmEmail, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldEmail1))
+                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMidLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMidLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabelFirstName1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMidLayout.setVerticalGroup(
@@ -169,32 +207,33 @@ public class UserProfileForm extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelFirstName)
-                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelFirstName1)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLastName)
-                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelUserName)
-                    .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEmail)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldConfirmEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelComfirmEmail))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPassword)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelComfirmEmail1)
-                    .addComponent(jTextFieldEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMidLayout.createSequentialGroup()
+                        .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelLastName)
+                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelUserName)
+                            .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelEmail)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPassword)
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelMidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelComfirmEmail1))))
+                .addGap(21, 21, 21))
         );
 
         jPanelBottom.setBackground(new java.awt.Color(192, 192, 192));
@@ -219,11 +258,11 @@ public class UserProfileForm extends javax.swing.JDialog {
         jPanelBottomLayout.setHorizontalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBottomLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addContainerGap(651, Short.MAX_VALUE))
         );
         jPanelBottomLayout.setVerticalGroup(
             jPanelBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,9 +312,9 @@ public class UserProfileForm extends javax.swing.JDialog {
             .addGroup(jPanelTopLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanelImagePanelBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanelTopLayout.setVerticalGroup(
             jPanelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,17 +386,8 @@ public class UserProfileForm extends javax.swing.JDialog {
     private boolean validateFormEmails() {
 
         Validator validator = new Validator();
-        if (validator.isEmailValid(jTextFieldEmail.getText())) {
-            if (validator.compareEmails(jTextFieldEmail.getText(), jTextFieldConfirmEmail.getText())) {
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(this, "Error: email address missmatch! \n User creation unsuccessfull!");
-                clearEmail();
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Error: invald email address! \n User creation unsuccessfull!");
-            clearEmail();
-        }
+
+
 
         return false;
     }
@@ -392,7 +422,7 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     private void clearEmail() {
         jTextFieldEmail.setText("");
-        jTextFieldConfirmEmail.setText("");
+    //    jTextFieldConfirmEmail.setText("");
     }
 
     private void clearForm() {
@@ -471,21 +501,25 @@ public class UserProfileForm extends javax.swing.JDialog {
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSubmit;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelComfirmEmail;
     private javax.swing.JLabel jLabelComfirmEmail1;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelFirstName;
+    private javax.swing.JLabel jLabelFirstName1;
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPictureBanner;
     private javax.swing.JLabel jLabelUserName;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelBottom;
     private javax.swing.JPanel jPanelImagePanelBanner;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMid;
     private javax.swing.JPanel jPanelTop;
     private javax.swing.JPasswordField jPasswordFieldPassword;
-    private javax.swing.JTextField jTextFieldConfirmEmail;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEmail1;
     private javax.swing.JTextField jTextFieldFirstName;

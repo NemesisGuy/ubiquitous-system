@@ -211,8 +211,10 @@ public class Update {
         Connection conn = databaseConnection.getDatabaseConnection();
         String loanId = loan.getLoanId();
         String date = "0-0-0";
+        int loanIdnum = Integer.valueOf(loanId); 
 
-        String sql = "UPDATE bookloanstable SET returned=?  WHERE id='" + loanId + "' ";
+        String sql = "UPDATE bookloanstable SET returned=? WHERE id='" + loanId +"'";
+        System.out.println("updating loans with the id of : " + loanId);
         Dates dates = new Dates();
         PreparedStatement statement = null;
         try {
@@ -220,6 +222,7 @@ public class Update {
             statement = conn.prepareStatement(sql);
 
             statement.setString(1, dates.getFormattedCurrentDate());
+            System.out.println("Update sending "+dates.getFormattedCurrentDate() +" the database");
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {

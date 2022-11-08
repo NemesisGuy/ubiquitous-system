@@ -76,12 +76,62 @@ public class Read {
         }
         return null;
     }
+    
+    public Book readBookById(int bookId) {
+        String inputTitle = null;
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+
+       
+        String sql = "SELECT * FROM booktable WHERE id='" + bookId + "'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+            String output = "Connected: \n";
+            if (!result.isBeforeFirst()) {//id DB give data back ? if not do this...
+                JOptionPane.showMessageDialog(null, "Error : The book with the id " + bookId + " was not found!");
+                System.out.println("No data");
+            } else {///dose have data do this
+                while (result.next()) {
+                    title = result.getString(2);
+                    subTitle = result.getString(3);
+                    author = result.getString("author");
+                    ISBN = result.getString(5);
+                    description = result.getString(6);
+                    rating = result.getString(7);
+                    imageLink = result.getString(8);
+
+                    output = output + ++count + " " + title + " " + subTitle + " " + author + " " + ISBN + " " + rating + " \n" + description + "\n" + imageLink;
+
+                    break;
+                }
+                conn.close();
+                JOptionPane.showMessageDialog(null, "Success - Book titled " + inputTitle + " found: \n" + output);
+
+                Book book = new Book(0, title, subTitle, ISBN, author, description, rating, imageLink);
+                //displayBookForm = new DisplayBookForm(book);
+                System.out.println(book.getISBN() + "from read class");
+
+                System.out.println(title + " " + subTitle);
+                return book;
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 
     /**
      *
      * @return
      */
-    public Book loanBookByTitle() {
+    public Book loanBookByTitle() {///////////////////////////////????????????????????????????????????
         String inputTitle = null;
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
@@ -483,11 +533,12 @@ public class Read {
      * @param bookId
      * @return
      */
-    public Loan readUserLoanByBookTitle(String userId, String bookId) {
+    public ArrayList<Loan> readUserLoansByUserIdAndBookId(String userId, String bookId) {
         int userIdInt = Integer.parseInt(userId);
         int bookIdint = Integer.parseInt(bookId);
+        ArrayList<Loan> loanList = new ArrayList<Loan>();
         Loan loan = null;
-        String date = "0-0-0";
+        //String date = "0-0-0";
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
         //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
@@ -500,9 +551,9 @@ public class Read {
             int count = 0;
             String output = "Connected: \n";
             while (result.next()) {
-                System.out.println("User data found!");
+                System.out.println("User loan data found!");
 
-                if (result.getString(3).equalsIgnoreCase(bookId) && result.getString(6).equalsIgnoreCase(date)) {
+                if (result.getString(3).equalsIgnoreCase(bookId) && result.getString(2).equalsIgnoreCase(userId) ) {//dont need uid chek really
                     // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     System.out.println("Loan ID found = " + loan.getLoanId());
@@ -511,8 +562,9 @@ public class Read {
                     System.out.println("Returned Date found = " + loan.getReturnedDate());
                     System.out.println("Was retruned as Loan! ");
 
-                    conn.close();
-                    return loan;
+                 //   conn.close();
+                    //return loan;
+                    loanList.add(loan);
 
                 }
                 //  System.out.println("Missmatch ");
@@ -524,7 +576,52 @@ public class Read {
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return loan;
+        return loanList;
+
+    }public ArrayList<Loan> readUserLoansByUserId(String userId) {
+        int userIdInt = Integer.parseInt(userId);
+        
+        ArrayList<Loan> loanList = new ArrayList<Loan>();
+        Loan loan = null;
+        //String date = "0-0-0";
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection conn = databaseConnection.getDatabaseConnection();
+        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
+        String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
+        //  String sql = "UPDATE bookloanstable SET returned=?  WHERE id=" + loanId +" AND returned !='"+date +"'";
+        Statement statement = null;
+        try {
+            statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            int count = 0;
+            String output = "Connected: \n";
+            while (result.next()) {
+                System.out.println("User loan data found!");
+
+                if (result.getString(2).equalsIgnoreCase(userId) ) {//dont need uid chek really
+                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
+                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                    System.out.println("Loan ID found = " + loan.getLoanId());
+                    System.out.println("Book ID found = " + loan.getBookId());
+                    System.out.println("User ID found = " + loan.getUserId());
+                    System.out.println("Returned Date found = " + loan.getReturnedDate());
+                    System.out.println("Was retruned as Loan! ");
+
+                 //   conn.close();
+                    //return loan;
+                    loanList.add(loan);
+
+                }
+                //  System.out.println("Missmatch ");
+                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
+                //  System.out.println("Missmatch ");
+
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return loanList;
 
     }
 
@@ -704,7 +801,7 @@ public class Read {
      * @param user
      * @return
      */
-    public ArrayList<Loan> readUserLoanByUserId(User user) {
+    public ArrayList<Loan> readUserLoansByUserId(User user) {
 
         ArrayList<Loan> loanList = new ArrayList<Loan>();
         // User user = new User();
