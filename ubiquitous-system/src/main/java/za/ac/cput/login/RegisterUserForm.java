@@ -304,13 +304,13 @@ public class RegisterUserForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed
-        // TODO add your handling code here:
+
         validateFormFields();
 
     }//GEN-LAST:event_jButtonSignUpActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
+
         this.setVisible(false);
         this.dispose();
         exit();
@@ -318,19 +318,18 @@ public class RegisterUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         new LoginUserForm().setVisible(rootPaneCheckingEnabled);
         this.dispose();

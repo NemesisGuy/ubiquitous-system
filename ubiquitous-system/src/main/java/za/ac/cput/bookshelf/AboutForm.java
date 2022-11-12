@@ -346,8 +346,6 @@ public class AboutForm extends javax.swing.JFrame {
 
     public void displayLogoBannerCenter(URL selectedFileUrl) {
 
-        // System.out.println(selectedFile.getAbsolutePath());
-        //   url = new URL("file:///" + selectedFile.getAbsolutePath());
         Image image = null;
         try {
             image = ImageIO.read(selectedFileUrl);

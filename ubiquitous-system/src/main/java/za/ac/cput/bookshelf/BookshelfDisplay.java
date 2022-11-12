@@ -386,7 +386,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
             // your valueChanged overridden method 
 
             System.out.println(jTable1.getSelectedRow());
-            // DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
+
             Read read = new Read();
             Book book = bookList.get(jTable1.getSelectedRow());//book
 
@@ -403,7 +403,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
                 System.out.println("Book :" + book.getBookId() + " Title: " + book.getTitle() + " is available for loan, because no previous loan was found!");
                 button = "loan";
             }
-         //   Loan lastLoan = read.readLatestLoanByBookId(book);
+
             //if loan is null then the book is available for loan,catch the exception and display the book
             if (lastLoan == null) {
                 System.out.println("Book :" + book.getBookId() + " Title: " + book.getTitle() + " is available for loan, because no previous loan was found!");
@@ -488,7 +488,6 @@ public class BookshelfDisplay extends javax.swing.JFrame {
     private void jMenuItemNewLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewLoanActionPerformed
 
         Read read = new Read();
-        //   DisplayBookForm displayBookForm = new DisplayBookForm(user, read.loanBookByTitle(), rootPaneCheckingEnabled);
         BookingForm bookingForm = new BookingForm(user, read.loanBookByTitle());
         bookingForm.setVisible(true);
         bookingForm.setAutoRequestFocus(true);
@@ -561,10 +560,7 @@ public class BookshelfDisplay extends javax.swing.JFrame {
             public void run() {
                 new BookshelfDisplay().setVisible(true);
                 Read read = new Read();
-                //read.readAllBooks();
-                //bookListForm = new BookListForm(read.readAllBooks());
-                //  bookListForm.setVisible(true);
-                //bookListForm.setAutoRequestFocus(rootPaneCheckingEnabled);
+
             }
         });
     }

@@ -296,7 +296,7 @@ public class BookingForm extends javax.swing.JFrame {
 
         this.setVisible(false);
         this.dispose();
-        //exit();
+
 
     }//GEN-LAST:event_jButtonExitActionPerformed
 
@@ -307,7 +307,7 @@ public class BookingForm extends javax.swing.JFrame {
     private void jButtonConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfimActionPerformed
 
         this.setVisible(false);
-        //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
+
         JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked out " + book.getTitle() + ".\n Please return it by the due date of " + dates.getFormattedEndDate() + ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
 
         Loan loan = new Loan(user, book);
@@ -316,7 +316,7 @@ public class BookingForm extends javax.swing.JFrame {
 
         create.createLoan(user, loan);
 
-        // TODO Fancy SQL JOIN Statments here:
+
         this.dispose();
 
 

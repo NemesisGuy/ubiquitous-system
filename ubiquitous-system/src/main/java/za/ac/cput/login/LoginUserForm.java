@@ -229,25 +229,18 @@ public class LoginUserForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        // TODO add your handling code here:
-
         Read read = new Read();
         String pwd = jPasswordFieldPassword.getText();
         Encryption encryption = new Encryption();
         String encryptedPassword  = encryption.encrypt(pwd);
-
         User user = read.userLogin(jTextFieldUserName.getText(), encryptedPassword);
-
         System.out.println("User name from loin form " + jTextFieldUserName.getText());
         System.out.println("From Login password form : " + encryptedPassword);
-
         if (user == null) {
             System.out.println("User not found - btn");
             JOptionPane.showMessageDialog(new JFrame(), "Login Failed! \n If you are a new user, please register first. \n If you are an existing user, please check your username and password and try again.");
             JOptionPane.showMessageDialog(new JFrame(), "Thanks for using my program!  \n \n " + "Author : Peter Buckingham \n Student Number: ****65289 \n Date: May 2022", "Ubiquitous System - CRUD ", JOptionPane.INFORMATION_MESSAGE);
-
         } else {
-
             System.out.println("User found - btn");
             JOptionPane.showMessageDialog(new JFrame(), "Login Successful! \n Welcome " + user.getFirstName() + " " + user.getLastName() + "!" + " \n You are being logged in now.");
             read.readAllBooks();
@@ -268,11 +261,11 @@ public class LoginUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
 
     private void jButtonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignUpActionPerformed

@@ -21,11 +21,8 @@ import za.ac.cput.crud.User;
  * @author Peter B nemesisnet.co.za
  */
 public class SystemSettingsConectionsForm extends javax.swing.JFrame {
-
     public static User user;
     int userAccessLevel;
-   
-
     /**
      * @apiNote Creates new form SettingsForms - This form is used to set the database connection settings
      */
@@ -40,7 +37,6 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
             System.err.println("you do not have access to this, please contact the system admin!");
             JOptionPane.showMessageDialog(new JFrame(), "Error!  \n \n " + "you Do not have sufficient privileges to access this menu! \n  Please contact the system admin for assistance!", "Ubiquitous System - UAC ", JOptionPane.INFORMATION_MESSAGE);
         }
-
     }
 
     /**
@@ -448,10 +444,8 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(SystemSettingsConectionsForm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error : " + "\n Connection to remote Database not Established successfully!!  \n");
-
         }
     }//GEN-LAST:event_jButtonCancel3ActionPerformed
-
     private void jTextFieldDatabaseConnectionNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabaseConnectionNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseConnectionNameActionPerformed
@@ -462,7 +456,7 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         Path path = Paths.get("resources/settings/" + fileName);
         Path folderPath = Paths.get("resources/settings/");
         Map<String, String> properties = new HashMap<String, String>(); // creates Map where keys and values of string type
-//method to store elements
+        //method to store elements
         properties.put("db.connectionName", jTextFieldDatabaseConnectionName.getText());
         properties.put("db.url", jTextFieldDatabaseUrl.getText());
         properties.put("db.port", jTextFieldDatabasePort.getText());
@@ -471,42 +465,34 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         properties.put("db.password", jTextFieldDatabaseUserPassword.getText());
         Configuration configuration = new Configuration();
         //  Path path = Paths.get("/src/settings/");
-
         if (configuration.writeConfig(path, properties)) //?Started working at 5pm , ended 4:52am 13/14-aug-2022 (built setttings package)
         { //started at 5:22pm till am 14-Aug-2022
             JOptionPane.showMessageDialog(this, "Success : " + "\n Settings Saved!\n ");
         } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
-
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonCancel10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancel10ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonCancel10ActionPerformed
 
     private void jTextFieldDatabaseUserPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabaseUserPasswordActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseUserPasswordActionPerformed
 
     private void jTextFieldDatabaseUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabaseUserNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseUserNameActionPerformed
 
     private void jTextFieldDatabaseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabaseNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseNameActionPerformed
 
     private void jTextFieldDatabasePortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabasePortActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabasePortActionPerformed
 
     private void jTextFieldDatabaseUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDatabaseUrlActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDatabaseUrlActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
 
@@ -516,8 +502,6 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         TestInternetConnection testInternetConnection = new TestInternetConnection();
         testInternetConnection.testInternetConnection();
-
-
     }//GEN-LAST:event_jButtonTestInternetConnectionActionPerformed
 
     /**
@@ -553,7 +537,6 @@ public class SystemSettingsConectionsForm extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

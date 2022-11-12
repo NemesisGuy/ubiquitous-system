@@ -9,7 +9,6 @@ package za.ac.cput.crud;
  * @author Peter Buckingham
  */
 public class User {
-
     private String userId, firstName, lastName, userName, email, password, accessLevel;
 
     /**

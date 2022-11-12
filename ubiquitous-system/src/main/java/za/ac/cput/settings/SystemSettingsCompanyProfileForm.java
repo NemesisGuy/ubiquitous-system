@@ -562,7 +562,6 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String fileName = "Company-Profile.properties";
         Path configsPath = Paths.get("resources/settings/" + fileName);
-
         selectedFile = jFileChooser.getSelectedFile();
         System.out.println("Image set asp Banner logo : " + selectedFile.getAbsolutePath());
         displayLogoBanner(selectedFile);
@@ -571,23 +570,18 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         FileHandler fileHandler = new FileHandler();
         File file = new File(folderPath.toString());
         System.out.println("Folder write path is : \t" + folderPath + selectedFile.getName());
-
         file.getParentFile().mkdirs(); // Will create parent directories if not exists
         fileHandler.copyFile(selectedFile, file);
-        //set in conifg
-        ;
+        //set in conifg file
         Map<String, String> properties = new HashMap<String, String>();
-        //     name website county timezone adminname currency
+        //name website county timezone admin name currency
         properties.put("company.logoPath", file.getAbsolutePath());
         Configuration configuration = new Configuration();
-
         if (configuration.writeConfig(configsPath, properties)) {
             JOptionPane.showMessageDialog(this, "Sucssess : " + "\n Settings Saved!\n ");
         } else {
             JOptionPane.showMessageDialog(this, "Error : " + "\n Unable to Save settings!\n Please try again!  \n ");
-
         }
-
     }//GEN-LAST:event_jButtonSetLogoActionPerformed
 
     private void jButtonUploadLogo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUploadLogo1ActionPerformed
@@ -612,7 +606,6 @@ public class SystemSettingsCompanyProfileForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
-
     }//GEN-LAST:event_jButtonClose1ActionPerformed
 
     /**

@@ -113,7 +113,7 @@ public class Read {
                 JOptionPane.showMessageDialog(null, "Success - Book titled " + inputTitle + " found: \n" + output);
 
                 Book book = new Book(0, title, subTitle, ISBN, author, description, rating, imageLink);
-                //displayBookForm = new DisplayBookForm(book);
+
                 System.out.println(book.getISBN() + "from read class");
 
                 System.out.println(title + " " + subTitle);
@@ -491,9 +491,7 @@ public class Read {
         String date = "0-0-0";
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
         String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
-        //  String sql = "UPDATE bookloanstable SET returned=?  WHERE id=" + loanId +" AND returned !='"+date +"'";
         Statement statement = null;
         try {
             statement = conn.createStatement();
@@ -504,27 +502,19 @@ public class Read {
                 System.out.println("User data found!");
 
                 if (result.getString("bookId").equalsIgnoreCase(String.valueOf(bookId)) && result.getString("returned").equalsIgnoreCase(String.valueOf(date))) {
-                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     System.out.println("Book Id found!" + loan.getBookId());
                     System.out.println("User ID found!" + loan.getUserId());
                     System.out.println("Returned Date found!" + loan.getReturnedDate());
-
                     conn.close();
                     return loan;
-
                 }
-                //  System.out.println("Missmatch ");
-                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                //  System.out.println("Missmatch ");
-
             }
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
         return loan;
-
     }
 
     /**
@@ -554,23 +544,14 @@ public class Read {
                 System.out.println("User loan data found!");
 
                 if (result.getString(3).equalsIgnoreCase(bookId) && result.getString(2).equalsIgnoreCase(userId) ) {//dont need uid chek really
-                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     System.out.println("Loan ID found = " + loan.getLoanId());
                     System.out.println("Book ID found = " + loan.getBookId());
                     System.out.println("User ID found = " + loan.getUserId());
                     System.out.println("Returned Date found = " + loan.getReturnedDate());
                     System.out.println("Was retruned as Loan! ");
-
-                 //   conn.close();
-                    //return loan;
                     loanList.add(loan);
-
                 }
-                //  System.out.println("Missmatch ");
-                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                //  System.out.println("Missmatch ");
-
             }
             conn.close();
         } catch (SQLException ex) {
@@ -583,12 +564,9 @@ public class Read {
         
         ArrayList<Loan> loanList = new ArrayList<Loan>();
         Loan loan = null;
-        //String date = "0-0-0";
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        //String sql =  "SELECT TOP 1 userId FROM loantable  WHERE userId='" + userId + "'";
         String sql = "SELECT * FROM bookloanstable WHERE userId='" + userIdInt + "'";
-        //  String sql = "UPDATE bookloanstable SET returned=?  WHERE id=" + loanId +" AND returned !='"+date +"'";
         Statement statement = null;
         try {
             statement = conn.createStatement();
@@ -599,24 +577,15 @@ public class Read {
                 System.out.println("User loan data found!");
 
                 if (result.getString(2).equalsIgnoreCase(userId) ) {//dont need uid chek really
-                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
-                    loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                   loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     System.out.println("Loan ID found = " + loan.getLoanId());
                     System.out.println("Book ID found = " + loan.getBookId());
                     System.out.println("User ID found = " + loan.getUserId());
                     System.out.println("Returned Date found = " + loan.getReturnedDate());
                     System.out.println("Was retruned as Loan! ");
-
-                 //   conn.close();
-                    //return loan;
-                    loanList.add(loan);
-
+                loanList.add(loan);
                 }
-                //  System.out.println("Missmatch ");
-                // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                //  System.out.println("Missmatch ");
-
-            }
+        }
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
@@ -653,10 +622,7 @@ public class Read {
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     break;
                 } else {
-                    //  System.out.println("Missmatch ");
-                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                    //  System.out.println("Missmatch ");
-                }
+            }
 
             }
             conn.close();
@@ -678,7 +644,6 @@ public class Read {
         User user = new User();
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
-        //     String sql = "SELECT * FROM usertable";
         String sql = "SELECT * FROM bookloanstable WHERE bookId='" + bookId + "'";
         Statement statement = null;
         try {
@@ -696,19 +661,16 @@ public class Read {
                 String dueOnDate = result.getString(5);
                 String returned = result.getString(6);
 
-                //  output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
                 loanList.add(new Loan(Id, userId, bookIddbd, loanFromDate, dueOnDate, returned));
                 System.out.println("dueOnDate : " + dueOnDate);
 
             }
             conn.close();
             JOptionPane.showMessageDialog(null, output);
-
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
         return loanList;
-
     }
 
     /**
@@ -734,14 +696,10 @@ public class Read {
                 System.out.println("book loan data found!");
 
                 if (result.isLast()) {
-                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
 
                 } else {
-                    //  System.out.println("Missmatch ");
-                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                    //  System.out.println("Missmatch ");
-                }
+                                   }
 
             }
             conn.close();
@@ -758,9 +716,7 @@ public class Read {
      * @return
      */
     public Loan readIsBookAvalible(Book book) {
-
         Loan loan = null;
-
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection conn = databaseConnection.getDatabaseConnection();
 
@@ -777,23 +733,15 @@ public class Read {
 
                     System.out.println("Book not avalible");
                     loan = new Loan(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6));
-
-                    // System.out.println(result.getString(1)+ result.getString(2)+ result.getString(3)+ result.getString(4)+ result.getString(5)+ result.getString(6));
                 } else {
-                    //  System.out.println("Missmatch ");
-                    // JOptionPane.showMessageDialog(null, "Error - User name or password are incorrect! \n Check for typos \n Try register for a new account!");
-                    //  System.out.println("Missmatch ");
                     System.out.println("Book avalible");
-
                 }
-
             }
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
         return loan;
-
     }
 
     /**
@@ -802,21 +750,16 @@ public class Read {
      * @return
      */
     public ArrayList<Loan> readUserLoansByUserId(User user) {
-
         ArrayList<Loan> loanList = new ArrayList<Loan>();
-        // User user = new User();
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        Connection conn = databaseConnection.getDatabaseConnection();
-        //     String sql = "SELECT * FROM usertable";
+        Connection conn = databaseConnection.getDatabaseConnection();//     String sql = "SELECT * FROM usertable";
         String sql = "SELECT * FROM bookloanstable WHERE userId='" + user.getUserId() + "'";
         Statement statement = null;
         try {
             statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
-
             int count = 0;
             String output = "Connected: \n";
-
             while (result.next()) {
                 String Id = result.getString(1);
                 String userId = result.getString(2);
@@ -824,19 +767,14 @@ public class Read {
                 String loanFromDate = result.getString(4);
                 String dueOnDate = result.getString(5);
                 String returned = result.getString(6);
-
-                //  output = output + ++count + " " + firstName + " " + lastName + " " + userName + " " + email + " " + password + " " + userAccessLevel + "\n";
                 loanList.add(new Loan(Id, userId, bookIddbd, loanFromDate, dueOnDate, returned));
                 System.out.println("loan Id : " + Id + "\tBook Id : " + bookIddbd + "\t dueOnDate : " + dueOnDate);
-
             }
             conn.close();
             JOptionPane.showMessageDialog(null, output);
-
         } catch (SQLException ex) {
             Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
         return loanList;
-
     }
 }

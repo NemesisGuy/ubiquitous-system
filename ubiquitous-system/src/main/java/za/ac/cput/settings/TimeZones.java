@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
  * @author Admin
  */
 public class TimeZones {
-
     private String[] ids;
 
     /**
@@ -43,14 +42,11 @@ public class TimeZones {
      * @param args - The command line arguments for the application.
      */
     public static void main(String[] args) {
-        //      ArrayList<Book> bookList = new ArrayList<Book>();
         String[] ids = TimeZone.getAvailableIDs();
         for (String id : ids) {
             System.out.println(displayTimeZone(TimeZone.getTimeZone(id)));
         }
-
         System.out.println("\nTotal TimeZone ID " + ids.length);
-
     }
 
     /**

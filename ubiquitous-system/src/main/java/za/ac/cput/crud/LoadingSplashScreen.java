@@ -93,8 +93,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
 
                 /////////////////////////////////////////////////////////////////////
                 //              jLabelSplashBanner
-                //selectedFile.
-                // displayLogoBanner(url);
+
                 String fileName = "Database-Connection.properties";
                 Path path = Paths.get("resources/settings/" + fileName);
                 FileHandler fileHandler = new FileHandler();
@@ -104,10 +103,9 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
                     System.out.println("Default Configs created and active");
                 }
 
-                //intiDefaultConfigs();
+
                 dispose();
                 new LoginUserForm().setVisible(rootPaneCheckingEnabled);
-                // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
         });
@@ -323,8 +321,6 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
      */
     public void displayLogoBanner(URL selectedFileUrl) {
 
-        // System.out.println(selectedFile.getAbsolutePath());
-        //   url = new URL("file:///" + selectedFile.getAbsolutePath());
         Image image = null;
         try {
             image = ImageIO.read(selectedFileUrl);
@@ -342,11 +338,7 @@ public class LoadingSplashScreen extends javax.swing.JFrame {
      */
     public void displayBanner() {
         URL url;
-        //   url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\OpenBookLogo.jpg");
-        // url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-logo.png");ubiquitous-system-banner.png
-        //        url = new URL("file:///C:\\Users\\Admin\\Documents\\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\\src\\main\\resources\\images\\ubiquitous-system-banner.png");
-        // C:\Users\Admin\Documents\NetBeansProjects\\ubiquitous-system\\ubiquitous-system\src\main\resources\images\\ubiquitous-system-icon.png
-        //  url = getClass().getResource("/resources/images/icon.png");
+
         url = getClass().getResource("/images/ubiquitous-system-banner.png");
         //^^^returns ...
         //file:/C:/Users/Admin/Documents/NetBeansProjects/ubiquitous-system/ubiquitous-system/target/classes/images/ubiquitous-system-banner.png

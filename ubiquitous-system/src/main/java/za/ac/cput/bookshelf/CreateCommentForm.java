@@ -291,13 +291,13 @@ public class CreateCommentForm extends javax.swing.JFrame {
     private void jButtonConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfimActionPerformed
 
         this.setVisible(false);
-        //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
+
         JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked out " + book.getTitle() + ".\n Please return it by the due date of " + dates.getFormattedEndDate() + ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
 
         Loan loan = new Loan(user, book);
 
         Create create = new Create();
-        //createcomment
+        //create comment
         create.createLoan(user, loan);
 
         // TODO Fancy SQL JOIN Statments here:

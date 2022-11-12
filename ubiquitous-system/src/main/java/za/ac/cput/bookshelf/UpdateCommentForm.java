@@ -48,7 +48,7 @@ public class UpdateCommentForm extends javax.swing.JFrame {
         Dates dates = new Dates();
         jTextFieldBookUserName.setText(user.getUserName());
         jTextFieldBookTitle.setText(book.getTitle());
-        //  jTextFieldDateOfIssue.setText(dates.getFormattedStartDate());
+
         jTextFieldDueDate.setText(dates.getFormattedEndDate());
 
     }

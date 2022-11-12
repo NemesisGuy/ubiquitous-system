@@ -61,7 +61,6 @@ public class UpdateBookForm extends javax.swing.JFrame {
         initComponents();
     }
 
-    //        create.createBook( jTextFieldTitle.getText(), jTextFieldSubTitle.getText(), jTextFieldAuthor.getText(), jTextFieldISBN.getText(), jTextFieldDescription.getText(), jTextFieldRating.getText(), jTextFieldImageLink.getText() );
     /**
      *
      * @param title
@@ -98,8 +97,6 @@ public class UpdateBookForm extends javax.swing.JFrame {
         }
 
     }
-    //  public static DisplayBookForm createBookForm  = new DisplayBookForm(title,  subtTitle, author, description ,  rating,  imageLink);
-    //  public UpdateBookForm updateBookForm = new  UpdateBookForm(title, subtTitle, author, description, rating, imageLink);
 
     UpdateBookForm(Book book) {
         try {

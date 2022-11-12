@@ -31,7 +31,6 @@ public class Configuration {
      * @apiNote @param args
      */
     public static void main(String[] args) {
-
     }
 
     /**
@@ -87,7 +86,6 @@ public class Configuration {
         properties.put("db.password", "NcP_?+3gV63g");
         fileHandler.initConfig(folderPath, path);
         configuration.writeConfig(path, properties);
-
     }
 
     /**
@@ -99,9 +97,7 @@ public class Configuration {
         Path folderPathFrom = Paths.get("resources/images/");
         Path folderPathtTo = Paths.get("resources/images/");
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/images/ubiquitous-system-icon.png"));
-
         FileHandler fileHandler = new FileHandler();
-        //    fileHandler.copyFile(getClass().getResource("/resources/images/ubiquitous-system-icon.png"), folderPathtTo);
     }
 
     /**
@@ -109,27 +105,19 @@ public class Configuration {
      * @return boolean indicating if the configuration file exists. Default is false. The configuration file is stored in the resources/settings folder. if the configuration file exists, the method returns true.
      */
     public boolean writeConfigTest() {
-
         boolean success = false;
-
         try ( OutputStream output = new FileOutputStream("/config.properties")) {
-
             Properties prop = new Properties();
-
             prop.setProperty("db.url", "testurl");
             prop.setProperty("db.user", "testuser");
             prop.setProperty("db.password", "testpassword");
-
             prop.store(output, null);
-
             System.out.println(prop);
             success = true;
-
         } catch (IOException io) {
             io.printStackTrace();
         }
         return success;
-
     }
 
     /**
@@ -143,12 +131,9 @@ public class Configuration {
         Path folderPath = Paths.get("resources/settings/");
         ImageIcon imageIcon = null;
         try ( InputStream input = new FileInputStream(path.toString())) {
-
             Properties prop = new Properties();
-
             // load a properties file
             prop.load(input);
-
             // get the property value and print it out
             System.out.println(prop.getProperty("company.logoPath"));
             // Icon  new ImageIcon(input);
@@ -191,7 +176,6 @@ public class Configuration {
         }
         return properties;
     }
-
     /**
      *
      * @param path the path of the configuration file.
@@ -201,9 +185,7 @@ public class Configuration {
     public boolean writeConfig(Path path, Map<String, String> propertiesMap) {
         boolean isConfigSet = false;
         try ( OutputStream output = new FileOutputStream(path.toString())) {
-
             Properties properties = new Properties();
-
             // set the properties value
             for (Map.Entry element : propertiesMap.entrySet()) {
                 String key = (String) element.getKey();
@@ -215,7 +197,6 @@ public class Configuration {
             properties.store(output, null);
             System.out.println(path);
             System.out.println("Writing : \t" + properties);
-
         } catch (IOException io) {
             io.printStackTrace();
         }

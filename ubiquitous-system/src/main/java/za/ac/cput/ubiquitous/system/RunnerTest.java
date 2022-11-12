@@ -29,7 +29,6 @@ public class RunnerTest {
         updateUserInDatabase();
         deleteUserFromDatabase();
         readBookByNameFromDatabase();
-
     }
 
     /**
@@ -38,7 +37,6 @@ public class RunnerTest {
     public static void updateBookInDatabase() {
         Update update = new Update();
         update.updateBook();
-
     }
 
     /**
@@ -46,7 +44,6 @@ public class RunnerTest {
      */
     public static void addBookToDatabase() {
         Create create = new Create();
-        //    create.createBook();///create a constructor that can build it with args mayb
     }
 
     /**
@@ -70,7 +67,6 @@ public class RunnerTest {
      */
     public static void addUserToDatabase() {
         Create create = new Create();
-        //   create.createUser();
     }
 
     /**

@@ -34,7 +34,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
      * @param user
      */
     public UpdateUserForm(User user) {
-
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.userName = user.getUserName();
@@ -47,7 +46,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
         jTextFieldUserNameUpdate.setText(user.getUserName());
         jTextFieldEmailUpdate.setText(user.getEmail());
         jPasswordFieldPasswordUpdate.setText(user.getPassword());
-
     }
 
     private void updateUser() {
@@ -57,7 +55,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
         Update update = new Update();
         update.updateUser(firstName, user);
         dispose();
-
     }
 
     private boolean validateFormNames() {
@@ -126,7 +123,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }
 
     private void clearPasswords() {
-
         jPasswordFieldPasswordUpdate.setText("");
         jPasswordFieldConfirmPasswordUpdate.setText("");
     }
@@ -139,7 +135,6 @@ public class UpdateUserForm extends javax.swing.JFrame {
     private void clearForm() {
         jTextFieldFirstNameUpdate.setText("");
         jTextFieldLastNameUpdate.setText("");
-
         jTextFieldUserNameUpdate.setText("");
         clearEmail();
         clearPasswords();
@@ -429,31 +424,26 @@ public class UpdateUserForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldUserNameUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameUpdateActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldUserNameUpdateActionPerformed
 
     private void jTextFieldEmailUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailUpdateActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldEmailUpdateActionPerformed
 
     private void jPasswordFieldPasswordUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordUpdateActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPasswordFieldPasswordUpdateActionPerformed
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        // TODO add your handling code here:
-        validateFormFields();
 
-        // Create create = new Create();
-        // String tempPassword = new String(jPasswordFieldPasswordUpdate.getPassword());
-        // create.createUser(jTextFieldFirstNameUpdate.getText(), jTextFieldLastNameUpdate.getText() ,jTextFieldUserName.getText(), jTextFieldEmailUpdate.getText(),tempPassword, 0);
-    }//GEN-LAST:event_jButtonSubmitActionPerformed
+        validateFormFields();
+     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
-
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**

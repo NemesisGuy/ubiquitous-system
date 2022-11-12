@@ -48,7 +48,7 @@ public class DatabaseConnection {
             System.out.println(dbURL + " " + dbUser + " " + dbPassword);
             conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
-            // conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+
             if (conn != null) {
                 System.out.println("Connected");
             }

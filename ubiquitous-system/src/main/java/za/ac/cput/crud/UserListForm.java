@@ -41,19 +41,16 @@ public class UserListForm extends javax.swing.JFrame {
         this.userList = userList;
         Object[][] data = new Object[userList.size()][6];
         for (int i = 0; i < userList.size(); i++) {
-
             data[i][0] = userList.get(i).getUserId();
             data[i][1] = userList.get(i).getFirstName();
             data[i][2] = userList.get(i).getLastName();
             data[i][3] = userList.get(i).getUserName();
             data[i][4] = userList.get(i).getEmail();
             data[i][5] = userList.get(i).getPassword().toString();
-
         }
 
         Object[] columnNames = {"Number : ", "First Name : ", "Last Name : ", "User Name : ", "Email : ", "Password : "};
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
-
             @Override
             public boolean isCellEditable(int row, int column) {
                 //all cells false
@@ -82,7 +79,6 @@ public class UserListForm extends javax.swing.JFrame {
         jLabelBannerHeading = new javax.swing.JLabel();
         jPanelImagePanelBanner1 = new javax.swing.JPanel();
         jLabelPictureBanner1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CRUD - Operations - User List");
         setIconImage(displayFrameImageIcon());
@@ -261,14 +257,9 @@ public class UserListForm extends javax.swing.JFrame {
         //    String button = "none";
         System.out.println("Event triggered : " + evt);
         if (evt.getClickCount() == 2 && jTable1.getSelectedRow() != -1) {
-            // your valueChanged overridden method 
-
-            /// System.out.println(jTable1.getSelectedRow());
-            // DisplayBookForm displayBookForm = new DisplayBookForm(bookList.get(jTable1.getSelectedRow()));
             Read read = new Read();
             User selectedUser = new User();
             selectedUser = userList.get(jTable1.getSelectedRow()); // get the selected user
-
             System.out.println("Selected user is " + selectedUser);
             ArrayList<Loan> usersLoanList = new ArrayList<Loan>();
             usersLoanList = read.readUserLoansByUserId(selectedUser.getUserId());

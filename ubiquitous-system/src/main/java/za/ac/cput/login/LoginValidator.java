@@ -32,9 +32,6 @@ public class LoginValidator {
      * @return
      */
     public boolean isEmailValid(String emailAddress) {
-        //  String emailAddress = "username@domain.com";
-
-        /// return   this.isEmailValid(emailAddress) ;
         return EmailValidator.getInstance().isValid(emailAddress);
 
     }

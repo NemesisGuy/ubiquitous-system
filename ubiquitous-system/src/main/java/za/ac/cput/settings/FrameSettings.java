@@ -30,7 +30,6 @@ public class FrameSettings {
         f.setLayout(null);
         f.setSize(400, 400);
         f.setVisible(true);
-
     }
 
     /**
@@ -39,10 +38,8 @@ public class FrameSettings {
      * @apiNote This method returns the application icon.png.
      */
     public Image frameSettingsSetIconImage() {
-
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/ubiquitous-system-icon.png"));
         Image icon = imageIcon.getImage();
-
         return icon;
     }
 
@@ -63,7 +60,6 @@ public class FrameSettings {
         f.setLayout(null);
         f.setSize(400, 400);
         f.setVisible(true);
-
     }
 
 }

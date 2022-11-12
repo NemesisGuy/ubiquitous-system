@@ -359,11 +359,11 @@ public class UserProfileForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     private void jTextFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldUserNameActionPerformed
 
     private boolean validateFormNames() {
@@ -385,9 +385,6 @@ public class UserProfileForm extends javax.swing.JDialog {
     private boolean validateFormEmails() {
 
         Validator validator = new Validator();
-
-
-
         return false;
     }
 
@@ -421,7 +418,7 @@ public class UserProfileForm extends javax.swing.JDialog {
 
     private void clearEmail() {
         jTextFieldEmail.setText("");
-    //    jTextFieldConfirmEmail.setText("");
+
     }
 
     private void clearForm() {
@@ -527,12 +524,6 @@ public class UserProfileForm extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     //method to createUser
-    private void createUser() {
-        //    Create create = new Create(); 
-        //    String tempPassword = new String(jPasswordFieldPassword.getPassword());
-
-        //      create.createUser(jTextFieldFirstName.getText(), jTextFieldLastName.getText(), jTextFieldUserName.getText(), jTextFieldEmail.getText(), jPasswordFieldPassword.getText(), 0);
-    } //method that returns image
 
     /**
      *

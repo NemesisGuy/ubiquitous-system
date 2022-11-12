@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Project 2");
-        System.out.println("Ubiquitus System.... ");
+        System.out.println("Ubiquitous System.... ");
         System.out.println(".....Staring Up.... ");
         new LoadingSplashScreen().setVisible(true);
         System.out.println(".....Please Standby.... ");

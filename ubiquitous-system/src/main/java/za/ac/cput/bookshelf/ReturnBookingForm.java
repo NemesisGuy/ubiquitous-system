@@ -329,20 +329,19 @@ public class ReturnBookingForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBookTitleActionPerformed
 
     private void jButtonConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfimActionPerformed
-        // TODO add your handling code here:
+
         this.setVisible(false);
-        //new RegisterUserForm().setVisible(rootPaneCheckingEnabled);
+
         JOptionPane.showMessageDialog(this, user.getUserName() + ", You Have booked In " + book.getTitle() + ".\n Recorded Date of return is " + dates.getFormattedCurrentDate() + ".", "Ubiquitous System - Bookings ", JOptionPane.INFORMATION_MESSAGE);
 
-        // Loan loan = new Loan(user, book);
+
         Update update = new Update();
         Read read = new Read();
-        //   loan =read.readUserLoanByBookTitle(user.getUserId(), book);
+
         update.updateLoan(loan);
 
-        // Create create = new Create();
-        // create.createLoan(user, loan);
-        // TODO Fancy SQL JOIN Statments here:
+
+
         this.dispose();
 
 

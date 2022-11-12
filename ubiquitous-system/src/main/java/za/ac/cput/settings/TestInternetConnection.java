@@ -19,9 +19,7 @@ public class TestInternetConnection {
      * @param args - The command line arguments for the application.
      */
     public static void main(String[] args) {
-
     }
-
     /**
      *
      * @return - Returns true if the internet connection is available.
@@ -34,19 +32,16 @@ public class TestInternetConnection {
             InetAddress amazonAddress = InetAddress.getByName("amazon.com");
             InetAddress nemesisnetAddress = InetAddress.getByName("nemesisnet.co.za");
             InetAddress dnsAddress = InetAddress.getByName("8.8.8.8");
-
             boolean isGoogleAddressReachable = googleAddress.isReachable(2000);
             boolean isAmazonAddressReachable = amazonAddress.isReachable(2000);
             boolean isNemesisnetAddressReachable = nemesisnetAddress.isReachable(2000);
             isDnsAddressReachable = dnsAddress.isReachable(2000);
-
             JOptionPane.showMessageDialog(null, "Succseful Conection to :" + "  \n"
                     + googleAddress.getHostName() + " " + isGoogleAddressReachable + "  \n"
                     + amazonAddress.getHostName() + " " + isAmazonAddressReachable + "  \n"
                     + nemesisnetAddress.getHostName() + " " + isNemesisnetAddressReachable + "  \n"
                     + dnsAddress.getHostName() + " " + isDnsAddressReachable + "  \n"
                     + "");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
